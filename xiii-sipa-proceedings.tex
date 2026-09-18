@@ -1,0 +1,124 @@
+\documentclass{sipa}
+
+%===========================================================
+%  External packages
+%===========================================================
+\usepackage[version=4]{mhchem}
+
+%===========================================================
+%  Number and authors
+%===========================================================
+
+\number{13}
+\date{del 7 al 11 de septiembre de 2026}
+
+% Name between {} to avoid problems with the code, and orcid ID
+% The code is structured to work regardless of whether you include an Orcid ID or not
+\autores{
+  {Navarrete Molina, Calletano},0000-0001-7867-2745;
+  {Véliz Romero, Francisco},0000-0002-3456-7890;
+  {e.g. This name doesn't have an Orcid},;
+}
+
+%===========================================================
+%  Pagestyle and other stuff
+%===========================================================
+
+% Forces a pagestyle in all TOC
+\tocloftpagestyle{preindex}
+\raggedbottom
+
+\begin{document}
+
+%===============================================================================================
+%  Pre table of contents section
+%===============================================================================================
+
+% Additional content in the proceedings, including information about the committees
+% established for the event, the congress program and more
+\input{contenido/preindice}
+
+% Additional content in the proceedings, including information about the speakers
+\input{contenido/conferencistas}
+
+%===============================================================================================
+%  Table of contents
+%===============================================================================================
+
+% For some reason, the TOC didnt allow me to change the title's format
+% The following code forces TOC to stop resetting the aforementioned format
+\newpage
+\begingroup
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \subseccion{\contentsname}%
+  \@starttoc{toc}%
+  \if@restonecol\twocolumn\fi
+}
+\makeatother
+
+\tableofcontents
+\endgroup
+
+%===============================================================================================
+%  Post table of contents section
+%===============================================================================================
+
+\newpage
+\pagestyle{posindex}
+\pagenumbering{arabic}
+
+
+\pagenblanc{no}
+\part{Conferencias magistrales}
+
+\input{contenido/conferencias_magistrales_d7}
+%\input{contenido/conferencias_magistrales_d8}
+%\input{contenido/conferencias_magistrales_d9}
+%\input{contenido/conferencias_magistrales_d10}
+
+\newpage
+\pagenblanc{yes}
+\nombsec{}
+\setlength{\footskip}{19.0pt}
+\part{Resúmenes}
+
+\newpage
+\layout
+
+\newpage
+
+\addtocontents{toc}{%
+  \protect\setlength{\cftsubsecindent}{3em}%
+}
+
+\input{contenido/resumenes}
+
+\newpage
+\pagenblanc{yes}
+\nombsec{}
+\part{Cursos teórico-prácticos}
+
+\input{contenido/cursos}
+
+\newpage
+\pagenblanc{yes}
+\nombsec{}
+\part{Conversatorio}
+
+\newpage
+\input{contenido/conversatorio}
+
+\newpage
+\part{Galería fotográfica}
+
+\newpage
+\input{contenido/galeria}
+
+\end{document}
