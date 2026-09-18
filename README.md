@@ -32,18 +32,16 @@ The LaTeX source code in this repository was developed by Francisco Gerardo Vél
 
 This repository documents the typesetting and code development work used to produce the conference proceedings.
 
-# License
-
-The LaTeX source code developed for this project is distributed under the terms of the MIT License.
-
-The license applies to the code developed by the author. The proceedings' texts, photographs, logos, trademarks, manuscripts, figures, and other third-party materials included in the repository may be subject to separate copyright, permissions, or licensing terms and are not automatically covered by the MIT License.
-
-Compilation
+## Notes
 
 The document requires a LaTeX distribution compatible with the packages used by the project.
 
 Refer to the main project file and configuration files for information about dependencies and the compilation process.
 
-Note
+This repository is intended to document and preserve the code used for the composition of the proceedings of the XIII International Week on Agricultural Production, as well as to facilitate its maintenance and potential reuse in similar academic typesetting projects.
 
-This repository is intended to document and preserve the code used for the composition of the proceedings of the III International Week on Agricultural Production, as well as to facilitate its maintenance and potential reuse in similar academic typesetting projects.
+# License
+
+The LaTeX source code developed for this project is distributed under the terms of the MIT License.
+
+The license applies to the code developed by the author. The proceedings' texts, photographs, logos, trademarks, manuscripts, figures, and other third-party materials included in the repository may be subject to separate copyright, permissions, or licensing terms and are not automatically covered by the MIT License.
