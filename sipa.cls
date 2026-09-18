@@ -1,0 +1,263 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{sipa}[2026/09/18 XIII SIPA Cover Class]
+
+\LoadClass[twoside,a4paper,12pt,openany]{book}
+
+% ============================================================
+%								Paquetes
+% ============================================================
+
+\RequirePackage[spanish]{babel}
+\RequirePackage{lmodern}
+\RequirePackage{helvet}
+\RequirePackage{sansmath}
+
+\RequirePackage{expl3}
+\RequirePackage{xpatch}
+\RequirePackage{xparse}
+\RequirePackage{etoolbox}
+\RequirePackage{xstring}
+
+\RequirePackage{xcolor}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{gensymb}
+\RequirePackage{academicons}
+\RequirePackage{worldflags}
+\RequirePackage{wrapstuff}
+\RequirePackage{graphicx}
+\RequirePackage{adjustbox}
+
+\RequirePackage[showframe=true]{geometry}
+\RequirePackage{layout}
+\RequirePackage{setspace}
+
+\RequirePackage{tikz}
+\RequirePackage{float}
+\RequirePackage{booktabs}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{enumitem}
+
+\RequirePackage{caption}
+\RequirePackage{titlesec}
+\RequirePackage{tocloft}
+
+%\RequirePackage{imakeidx}
+
+\RequirePackage{ragged2e}
+
+\RequirePackage{csquotes}
+
+\RequirePackage{orcidlink}
+\RequirePackage{pdfpages}
+\RequirePackage{comment}
+\RequirePackage{blindtext}
+\RequirePackage{textcomp}
+\RequirePackage{fancyhdr}
+
+\RequirePackage{hyperref}
+
+\RequirePackage[style=apa,dashed=true,isbn=true,sorting=nty,refsection=section]{biblatex}
+\addbibresource{referencias_sipa_xiii.bib}	
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    linktocpage
+}
+
+%========================
+%			 modulos
+%========================
+
+\RequirePackage{clase/sipa-autores}
+\RequirePackage{clase/sipa-cover-general}
+\RequirePackage{clase/sipa-cover-sub}
+\RequirePackage{clase/sipa-headers}
+\RequirePackage{clase/sipa-footers}
+\RequirePackage{clase/sipa-page-formats}
+\RequirePackage{clase/sipa-conferencistas}
+\RequirePackage{clase/sipa-toc}
+\RequirePackage{clase/sipa-documentos}
+\RequirePackage{clase/sipa-referencias}
+
+% ============================================================
+%							Dimensiones
+% ============================================================
+
+\geometry{
+    paperwidth=210mm,
+    paperheight=297mm,
+    left=0mm,
+    right=0mm,
+    top=0mm,
+    bottom=0mm,
+    headheight=0mm,
+    headsep=0mm,
+    footskip=0mm
+}
+
+\newif\ifshow
+\ifshow
+    \includecomment{wrap}
+\else
+    \excludecomment{wrap}
+\fi
+
+\pagestyle{empty}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{covergreen}{RGB}{54,88,35}
+\definecolor{lightgreen}{RGB}{159,192,150}
+\definecolor{midgreen}{RGB}{78,120,75}
+\definecolor{darkgreen}{RGB}{60,82,58}
+
+\renewcommand\normalsize{%
+    \@setfontsize\normalsize{12pt}{15pt}%
+}
+
+%====================================================
+%						Custon functions
+%====================================================
+
+\newcommand{\eventnumber}{}
+
+\newcommand{\numero}[1]{%
+    \edef\eventnumber{\uppercase\expandafter{\romannumeral #1}}%
+}
+
+\newcommand{\eventdate}
+
+\newcommand{\fecha}[1]{%
+    \renewcommand{\eventdate}{#1}%
+}
+
+\newcommand{\eventtitle}
+
+\newcommand{\titulo}[1]{%
+    \renewcommand{\eventtitle}{#1}%
+}
+
+\defbibheading{misubseccion}[\bibname]{%
+  \subsection*{#1}%
+}
+
+\newcommand{\cientifico}[1]{%
+	\emph{\textit{\MakeSentenceCase{#1}}}%
+}
+
+% ============================================================
+%							Geometria resto del documento
+% ============================================================
+
+\newcommand{\bookbodygeometry}{%
+  \newgeometry{
+    textwidth=185mm,
+    top=0in,
+    bottom=2in,
+    footskip=19pt
+  }%
+  \setlength{\oddsidemargin}{0pt}%
+  \setlength{\evensidemargin}{0pt}%
+  \setlength{\hoffset}{-0.5in}%
+  \setlength{\headheight}{65pt}%
+  \setlength{\headsep}{10pt}%
+  \setlength{\textheight}{720pt}%
+  \setlength{\vsize}{720pt}%
+}
+
+\AtBeginDocument{%
+\noindent%
+\makecover%
+\noindent%
+\subcover
+\newpage
+\bookbodygeometry
+\sansmath
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Texto titulo centrado negritas largo
+
+%%%%%%%%%%%%%%% Tablas
+
+\DeclareCaptionLabelFormat{figlabel}{Fig.~#2}
+\captionsetup[figure]{
+  name = Tabla,
+  labelformat  = figlabel,
+  labelsep     = period,
+  font         = normalsize,
+  justification= raggedright,
+  position     = below,
+  skip         = 6pt
+}
+\captionsetup[table]{
+  name         = Tabla,
+  labelsep     = period,
+  font         = normalsize,
+  justification= raggedright,
+  position     = above,
+  skip         = 6pt
+}
+
+%%%%%%%%%%%%% Cuerpo inicial resumenes y documentos
+
+\newcommand{\cero}{
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+}
+
+\setlist[enumerate]{leftmargin=*}
+\setlist[itemize]{leftmargin=*}
+
+\newcommand{\imagenderecha}[3]{%
+  \begin{tikzpicture}
+    \node[anchor=west, inner sep=0pt] at (0,0) {%
+      \begin{minipage}{0.95\textwidth}
+        \begin{minipage}[c]{0.55\textwidth}
+          \centering
+          \includegraphics[height = #3 cm, keepaspectratio]{#1}%width=\linewidth, 
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[c]{0.35\textwidth}
+        \centering
+        #2
+        \end{minipage}%
+      \end{minipage}
+    };
+  \end{tikzpicture}%
+}
+
+\newcommand{\imagenizquierda}[3]{%
+  \begin{tikzpicture}
+    \node[anchor=west, inner sep=0pt] at (0,0) {%
+      \begin{minipage}[c]{0.95\textwidth}
+        \begin{minipage}[c]{0.35\textwidth}
+        \centering
+        #2
+        \end{minipage}%
+        \hfill
+        \begin{minipage}[c]{0.55\textwidth}
+          \centering
+          \includegraphics[height = #3 cm, keepaspectratio]{#1}%width=\linewidth, 
+        \end{minipage}%
+      \end{minipage}
+    };
+  \end{tikzpicture}%
+}
+
+\AtEveryCitekey{\ifnameundef{shortauthor}{}{\def\cbx@apa@ifnamesaved{\@firstoftwo}}}
+
+\renewenvironment{thebibliography}[1]
+  {\section*{\refname}%
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\settowidth\labelwidth{\@biblabel{#1}}%
+         \leftmargin\labelwidth
+         \advance\leftmargin\labelsep
+         \usecounter{enumiv}}%
+   \sloppy}
+  {\endlist}
+
+\endinput
