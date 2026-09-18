@@ -74,19 +74,23 @@
 \pagestyle{posindex}
 \pagenumbering{arabic}
 
-
+% This function is key to the proceedings
+% "no" allows you to place the Author's name in the header
+% "yes" leaves a blanc spaceto write the section custom title
 \pagenblanc{no}
+
+% Master Lectures title
 \part{Conferencias magistrales}
 
+% Master Lectures tex files
+\newpage
 \input{contenido/conferencias_magistrales_d7}
-%\input{contenido/conferencias_magistrales_d8}
-%\input{contenido/conferencias_magistrales_d9}
-%\input{contenido/conferencias_magistrales_d10}
 
+% Abstracts sections
 \newpage
 \pagenblanc{yes}
+% This function cleans all the header's names
 \nombsec{}
-\setlength{\footskip}{19.0pt}
 \part{Resúmenes}
 
 \newpage
