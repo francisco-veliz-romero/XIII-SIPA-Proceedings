@@ -22,7 +22,7 @@ Universidad Autónoma Agraria Antonio Narro (UAAAN)
 
 Postgrado en Ciencias en Producción Agropecuaria
 
-## Conference
+## Congress
 
 XIII Semana Internacional en Producción Agropecuaria
 
