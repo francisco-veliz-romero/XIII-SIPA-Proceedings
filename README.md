@@ -1,7 +1,5 @@
 # Proceedings of the XIII International Week on Agricultural Production [XIII SIPA]
 
-P from the Master's  the , México.
-
 LaTeX source code for the composition and generation of the proceedings of the XIII <b>International Week on Agricultural Production</b> (*Semana Internacional en Producción Agropecuaria* [SIPA]), organized within the <b>Science in Agricultural Production</b> postgraduate program (programa de postgrado en *Ciencias en Producción Agropecuaria*) at the <b>Antonio Narro Autonomus Agrarian University</b> (*Universidad Autónoma Agraria Antonio Narro* [UAAAN]).
 
 ## Description
