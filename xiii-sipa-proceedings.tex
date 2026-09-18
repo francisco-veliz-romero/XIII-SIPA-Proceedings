@@ -1,4 +1,4 @@
-\documentclass{sipa}
+\documentclass{clase/sipa}
 
 %===========================================================
 %  External packages
@@ -6,18 +6,18 @@
 \usepackage[version=4]{mhchem}
 
 %===========================================================
-%  Number and authors
+%  Congress Number and Name, and proceedings' authors
 %===========================================================
 
-\number{13}
-\date{del 7 al 11 de septiembre de 2026}
+\numero{13}
+\nombre{Semana Internacional en Producción Agropecuaria}
+\fecha{del 7 al 11 de septiembre de 2026}
 
 % Name between {} to avoid problems with the code, and orcid ID
 % The code is structured to work regardless of whether you include an Orcid ID or not
-\autores{
-  {Navarrete Molina, Calletano},0000-0001-7867-2745;
-  {Véliz Romero, Francisco},0000-0002-3456-7890;
+\authors{
   {e.g. This name doesn't have an Orcid},;
+  {Véliz Romero, Francisco},0000-0002-3456-7890;
 }
 
 %===========================================================
@@ -70,58 +70,69 @@
 %  Post table of contents section
 %===============================================================================================
 
+%=================================================
+%  Keynote lectures section
+%=================================================
+
 \newpage
 \pagestyle{posindex}
 \pagenumbering{arabic}
 
-% This function is key to the proceedings
+% This function is key to the proceedings header
 % "no" allows you to place the Author's name in the header
 % "yes" leaves a blanc spaceto write the section custom title
 \pagenblanc{no}
 
-% Master Lectures title
 \part{Conferencias magistrales}
-
-% Master Lectures tex files
 \newpage
 \input{contenido/conferencias_magistrales_d7}
+
+%=================================================
+%  Abstracts section
+%=================================================
 
 % Abstracts sections
 \newpage
 \pagenblanc{yes}
-% This function cleans all the header's names
+% This function clears the previous stablished header's name
 \nombsec{}
-\part{Resúmenes}
-
-\newpage
-\layout
-
-\newpage
-
-\addtocontents{toc}{%
-  \protect\setlength{\cftsubsecindent}{3em}%
-}
+\part{Resúmenes de carteles}
 
 \input{contenido/resumenes}
 
+% Although unused, this function changed the indentation of the TOC content
+%\addtocontents{toc}{%
+%  \protect\setlength{\cftsubsecindent}{3em}%
+%}
+
+%=================================================
+%  Courses/Seminars section
+%=================================================
 \newpage
 \pagenblanc{yes}
 \nombsec{}
 \part{Cursos teórico-prácticos}
-
+\newpage
 \input{contenido/cursos}
+
+%=================================================
+%  Discussion Forum section
+%=================================================
 
 \newpage
 \pagenblanc{yes}
 \nombsec{}
 \part{Conversatorio}
-
 \newpage
 \input{contenido/conversatorio}
 
+%=================================================
+%  Discussion Forum section
+%=================================================
 \newpage
+\pagenblanc{yes}
+\nombsec{}
 \part{Galería fotográfica}
-
 \newpage
 \input{contenido/galeria}
 
