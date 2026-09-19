@@ -1,0 +1,126 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-cover-general}[2026/09/19 SIPA General/Main Cover]
+
+% ===============================================================================================
+%  Main Cover
+% ===============================================================================================
+
+\newcommand{\makecover}{%
+\thispagestyle{empty}%
+\clearpage%
+\thispagestyle{empty}%
+\noindent%
+\begin{tikzpicture}[
+	line cap=butt,
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+]%
+\clip (current page.south west) rectangle (current page.north east);
+
+% ===========================
+%	Upper part of the page
+% ===========================
+
+\fill[white] (0,0) rectangle (210,296);
+\fill[lightgreen] (0,276) rectangle (210,280);
+\fill[midgreen] (0,280) rectangle (210,285);
+\fill[covergreen] (0,284) rectangle (210,297);
+\draw[black, line width = 1.5pt] (0,276) -- (210,276);
+
+% School logo
+\node[anchor=center] at (25,256) {%
+  \includegraphics[width = 40mm, height = 40mm, keepaspectratio]{portada/logo uaaan}%
+};
+
+% Postgraduate program logo
+\node[anchor=center] at (187,252) {%
+  \includegraphics[width = 40mm, height = 40mm, keepaspectratio]{portada/logo posgrado}%
+};
+
+% ===========================
+%	Title
+% ===========================
+
+\node[anchor = center, text = covergreen, font=\bfseries\fontsize{43}{43}\selectfont]
+at (105,218) {MEMORIAS};
+
+\node[anchor=center] at (105,182.5) {%
+  \includegraphics[width = 132mm, height = 57mm, keepaspectratio]{portada/semana 13}%
+};
+
+\node[anchor = center, text = covergreen, font=\bfseries\fontsize{15}{15}\selectfont]
+at (105,147) {Resúmenes, conferencias magistrales, cursos y conversatorio};
+
+% ===========================
+%	Event's date and place
+% ===========================
+
+\node[anchor=east, align=center, text=covergreen, font=\bfseries\fontsize{13}{12}\selectfont]
+at (190,110) {\eventdate\\[2mm] en Torreón, Coahuila};
+
+% ===========================
+%	Divulgacion y no se que mas
+% ===========================
+
+\node[anchor=center, align=center, text=covergreen, font=\bfseries\fontsize{14}{12}\selectfont]
+at (52,73) {Evento para la divulgación\\[2mm] científica};
+
+
+% ===========================
+%		Logos abajo
+% ===========================
+
+\node[anchor=center] at (144,30) {%
+	\includegraphics[width=26mm, height=26mm, keepaspectratio]{portada/logo uaaan ul 46}%
+};
+
+\node[anchor=center] at (170,40) {%
+	\includegraphics[width=27mm, height=27mm, keepaspectratio]{portada/logo posgrado uaaan 55}%
+};
+
+\node[anchor=center] at (193,57) {%
+	\includegraphics[width=32mm, height=32mm, keepaspectratio]{portada/logo posgrado ul 30}%
+};
+
+% ==========================
+%	Portada -- abajo
+% ==========================
+
+\begin{scope}[xscale=-1,shift={(-210,0)}]
+	
+	\fill[lightgreen]
+		(0,43)
+		.. controls (35,9) and (70,11) .. (105,18)
+		.. controls (140,27) and (175,45) .. (210,18)
+		-- (210,0)
+		-- (0,0)
+		-- cycle;
+	
+	\fill[midgreen]
+		(0,35)
+		.. controls (35,12.67) and (70,8) .. (105,14.5)
+		.. controls (140,23) and (175,33) .. (210,14.5)
+		-- (210,0)
+		-- (0,0)
+		-- cycle;
+	
+	\fill[darkgreen]
+		(0,25)
+		.. controls (25,13.5) and (70,4) .. (105,10)
+		.. controls (145,18) and (180,20) .. (210,11.33)
+		-- (210,0)
+		-- (0,0)
+		-- cycle;
+	
+	\draw[black, line width = 1.5pt]
+		(0,43)
+		.. controls (35,9) and (70,11) .. (105,18)
+		.. controls (140,27) and (175,45) .. (210,18);
+	
+\end{scope}
+
+\end{tikzpicture}%
+\clearpage%
+}
