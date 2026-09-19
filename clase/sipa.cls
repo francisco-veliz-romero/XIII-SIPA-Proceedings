@@ -79,13 +79,13 @@
 \RequirePackage{clase/sipa-headers}
 \RequirePackage{clase/sipa-footers}
 \RequirePackage{clase/sipa-page-formats}
-\RequirePackage{clase/sipa-conferencistas}
+\RequirePackage{clase/sipa-speakers}
 \RequirePackage{clase/sipa-toc}
-\RequirePackage{clase/sipa-documentos}
-\RequirePackage{clase/sipa-referencias}
+\RequirePackage{clase/sipa-documents}
+\RequirePackage{clase/sipa-references}
 
 % ============================================================
-%							Dimensiones
+% Proceedings cover dimensions
 % ============================================================
 
 \geometry{
@@ -100,6 +100,9 @@
     footskip=0mm
 }
 
+% Environment to hide objects from the document
+% In TexStudio, parts, chapters and sections are still visible in
+% the application viewer,  but hidden in the document
 \newif\ifshow
 \ifshow
     \includecomment{wrap}
@@ -108,111 +111,48 @@
 \fi
 
 \pagestyle{empty}
+% Change text font to Sans
 \renewcommand{\familydefault}{\sfdefault}
 
+% Definition of colors for the document style
 \definecolor{covergreen}{RGB}{54,88,35}
 \definecolor{lightgreen}{RGB}{159,192,150}
 \definecolor{midgreen}{RGB}{78,120,75}
 \definecolor{darkgreen}{RGB}{60,82,58}
 
+% Function to force a change of font in all document
 \renewcommand\normalsize{%
     \@setfontsize\normalsize{12pt}{15pt}%
 }
 
 %====================================================
-%						Custon functions
+% Custon functions
 %====================================================
 
+% Event's number
 \newcommand{\eventnumber}{}
 
 \newcommand{\numero}[1]{%
     \edef\eventnumber{\uppercase\expandafter{\romannumeral #1}}%
 }
 
-\newcommand{\eventdate}
-
-\newcommand{\fecha}[1]{%
-    \renewcommand{\eventdate}{#1}%
-}
-
+% Event's title
 \newcommand{\eventtitle}
 
 \newcommand{\titulo}[1]{%
     \renewcommand{\eventtitle}{#1}%
 }
 
-\defbibheading{misubseccion}[\bibname]{%
-  \subsection*{#1}%
+% Event's date
+\newcommand{\eventdate}
+
+\newcommand{\fecha}[1]{%
+    \renewcommand{\eventdate}{#1}%
 }
 
-\newcommand{\cientifico}[1]{%
-	\emph{\textit{\MakeSentenceCase{#1}}}%
-}
-
-% ============================================================
-%							Geometria resto del documento
-% ============================================================
-
-\newcommand{\bookbodygeometry}{%
-  \newgeometry{
-    textwidth=185mm,
-    top=0in,
-    bottom=2in,
-    footskip=19pt
-  }%
-  \setlength{\oddsidemargin}{0pt}%
-  \setlength{\evensidemargin}{0pt}%
-  \setlength{\hoffset}{-0.5in}%
-  \setlength{\headheight}{65pt}%
-  \setlength{\headsep}{10pt}%
-  \setlength{\textheight}{720pt}%
-  \setlength{\vsize}{720pt}%
-}
-
-\AtBeginDocument{%
-\noindent%
-\makecover%
-\noindent%
-\subcover
-\newpage
-\bookbodygeometry
-\sansmath
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% Texto titulo centrado negritas largo
-
-%%%%%%%%%%%%%%% Tablas
-
-\DeclareCaptionLabelFormat{figlabel}{Fig.~#2}
-\captionsetup[figure]{
-  name = Tabla,
-  labelformat  = figlabel,
-  labelsep     = period,
-  font         = normalsize,
-  justification= raggedright,
-  position     = below,
-  skip         = 6pt
-}
-\captionsetup[table]{
-  name         = Tabla,
-  labelsep     = period,
-  font         = normalsize,
-  justification= raggedright,
-  position     = above,
-  skip         = 6pt
-}
-
-%%%%%%%%%%%%% Cuerpo inicial resumenes y documentos
-
-\newcommand{\cero}{
-	\setcounter{figure}{0}
-	\setcounter{table}{0}
-}
-
-\setlist[enumerate]{leftmargin=*}
-\setlist[itemize]{leftmargin=*}
-
-\newcommand{\imagenderecha}[5]{%
+% Functions to add images and text side by side
+% Image to the right side and text on the left side
+\newcommand{\rightimage}[5]{%
 %\noindent%
   \begin{tikzpicture}
     \node[anchor=west, inner sep=0pt] at (0,0) {%
@@ -231,7 +171,8 @@
   \end{tikzpicture}%
 }
 
-\newcommand{\imagenizquierda}[5]{%
+% Image to the left  side and text on the right side
+\newcommand{\leftimage}[5]{%
 %\noindent%
   \begin{tikzpicture}
     \node[anchor=west, inner sep=0pt] at (0,0) {%
@@ -251,8 +192,84 @@
   \end{tikzpicture}%
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% No me acuerdo
+\defbibheading{misubseccion}[\bibname]{%
+  \subsection*{#1}%
+}
+
+% Function to force scientific names in title (Opuntia ficus-indica)
+\newcommand{\scientificname}[1]{%
+	\emph{\textit{\MakeSentenceCase{#1}}}%
+}
+
+% ============================================================
+% Proceedings general dimensions
+% ============================================================
+
+\newcommand{\bookbodygeometry}{%
+  \newgeometry{
+    textwidth=185mm,
+    top=0in,
+    bottom=2in,
+    footskip=19pt
+  }%
+  \setlength{\oddsidemargin}{0pt}%
+  \setlength{\evensidemargin}{0pt}%
+  \setlength{\hoffset}{-0.5in}%
+  \setlength{\headheight}{65pt}%
+  \setlength{\headsep}{10pt}%
+  \setlength{\textheight}{720pt}%
+  \setlength{\vsize}{720pt}%
+}
+
+% Paste cover and subcover at the beginning of the document
+% Set the new geometry and text font for the rest of the document
+\AtBeginDocument{%
+\noindent%
+\makecover%
+\noindent%
+\subcover
+\newpage
+\bookbodygeometry
+\sansmath
+}
+
+%%%%%%%%%% Format of tables and images
+\DeclareCaptionLabelFormat{figlabel}{Fig.~#2}
+\captionsetup[figure]{
+  name		   = Figure,
+  labelformat  = figlabel,
+  labelsep     = period,
+  font         = normalsize,
+  justification= raggedright,
+  position     = below,
+  skip         = 6pt
+}
+\captionsetup[table]{
+  name         = Table,
+  labelsep     = period,
+  font         = normalsize,
+  justification= raggedright,
+  position     = above,
+  skip         = 6pt
+}
+
+%%%%%%%%%%%%% Cuerpo inicial resumenes y documentos
+% Function to reset the figures and images counter
+\newcommand{\cero}{
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+}
+
+% Function to remove indentation in lists
+\setlist[enumerate]{leftmargin=*}
+\setlist[itemize]{leftmargin=*}
+
+% Function to force Shortauthor instead of author's when possible in text
 \AtEveryCitekey{\ifnameundef{shortauthor}{}{\def\cbx@apa@ifnamesaved{\@firstoftwo}}}
 
+% Change in the bibliography's title
+% The function stops the bibliography title from appearing in TOC
 \renewenvironment{thebibliography}[1]
   {\section*{\refname}%
    \list{\@biblabel{\@arabic\c@enumiv}}%
