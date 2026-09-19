@@ -1,10 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sipa}[2026/09/18 XIII SIPA Cover Class]
+\ProvidesClass{sipa}[2026/09/19 SIPA Cover Class]
 
 \LoadClass[twoside,a4paper,12pt,openany]{book}
 
 % ============================================================
-%								Paquetes
+% Packages
 % ============================================================
 
 \RequirePackage[spanish]{babel}
@@ -28,7 +28,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{adjustbox}
 
-\RequirePackage[showframe=true]{geometry}
+\RequirePackage[showframe=false]{geometry}
 \RequirePackage{layout}
 \RequirePackage{setspace}
 
@@ -59,7 +59,7 @@
 \RequirePackage{hyperref}
 
 \RequirePackage[style=apa,dashed=true,isbn=true,sorting=nty,refsection=section]{biblatex}
-\addbibresource{referencias_sipa_xiii.bib}	
+\addbibresource{referencias_sipa_xiii.bib}
 
 \hypersetup{
     colorlinks=true,
@@ -70,10 +70,10 @@
 }
 
 %========================
-%			 modulos
+% .sty files
 %========================
 
-\RequirePackage{clase/sipa-autores}
+\RequirePackage{clase/sipa-authors}
 \RequirePackage{clase/sipa-cover-general}
 \RequirePackage{clase/sipa-cover-sub}
 \RequirePackage{clase/sipa-headers}
@@ -212,36 +212,39 @@
 \setlist[enumerate]{leftmargin=*}
 \setlist[itemize]{leftmargin=*}
 
-\newcommand{\imagenderecha}[3]{%
+\newcommand{\imagenderecha}[5]{%
+%\noindent%
   \begin{tikzpicture}
     \node[anchor=west, inner sep=0pt] at (0,0) {%
       \begin{minipage}{0.95\textwidth}
-        \begin{minipage}[c]{0.55\textwidth}
+      \centering
+        \begin{minipage}[c]{#1 \textwidth}
           \centering
-          \includegraphics[height = #3 cm, keepaspectratio]{#1}%width=\linewidth, 
+          \includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
         \end{minipage}%
-        \hfill
-        \begin{minipage}[c]{0.35\textwidth}
+        \begin{minipage}[c]{#4 \textwidth}
         \centering
-        #2
+        #5
         \end{minipage}%
       \end{minipage}
     };
   \end{tikzpicture}%
 }
 
-\newcommand{\imagenizquierda}[3]{%
+\newcommand{\imagenizquierda}[5]{%
+%\noindent%
   \begin{tikzpicture}
     \node[anchor=west, inner sep=0pt] at (0,0) {%
       \begin{minipage}[c]{0.95\textwidth}
-        \begin{minipage}[c]{0.35\textwidth}
+      \centering
+        \begin{minipage}[c]{#4 \textwidth}
         \centering
-        #2
+        #5
         \end{minipage}%
-        \hfill
-        \begin{minipage}[c]{0.55\textwidth}
-          \centering
-          \includegraphics[height = #3 cm, keepaspectratio]{#1}%width=\linewidth, 
+        \begin{minipage}[c]{#1 \textwidth}
+          \begin{center}
+          \includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
+          \end{center}
         \end{minipage}%
       \end{minipage}
     };
