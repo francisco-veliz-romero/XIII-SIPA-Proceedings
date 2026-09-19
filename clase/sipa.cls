@@ -105,9 +105,9 @@
 % the application viewer,  but hidden in the document
 \newif\ifshow
 \ifshow
-    \includecomment{wrap}
+	\includecomment{wrap}
 \else
-    \excludecomment{wrap}
+	\excludecomment{wrap}
 \fi
 
 \pagestyle{empty}
@@ -122,7 +122,7 @@
 
 % Function to force a change of font in all document
 \renewcommand\normalsize{%
-    \@setfontsize\normalsize{12pt}{15pt}%
+	\@setfontsize\normalsize{12pt}{15pt}%
 }
 
 %====================================================
@@ -133,21 +133,21 @@
 \newcommand{\eventnumber}{}
 
 \newcommand{\numero}[1]{%
-    \edef\eventnumber{\uppercase\expandafter{\romannumeral #1}}%
+	\edef\eventnumber{\uppercase\expandafter{\romannumeral #1}}%
 }
 
 % Event's title
 \newcommand{\eventtitle}
 
 \newcommand{\titulo}[1]{%
-    \renewcommand{\eventtitle}{#1}%
+	\renewcommand{\eventtitle}{#1}%
 }
 
 % Event's date
 \newcommand{\eventdate}
 
 \newcommand{\fecha}[1]{%
-    \renewcommand{\eventdate}{#1}%
+	\renewcommand{\eventdate}{#1}%
 }
 
 % Functions to add images and text side by side
@@ -192,7 +192,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% No me acuerdo
 \defbibheading{misubseccion}[\bibname]{%
-  \subsection*{#1}%
+	\subsection*{#1}%
 }
 
 % Function to force scientific names in title (Opuntia ficus-indica)
