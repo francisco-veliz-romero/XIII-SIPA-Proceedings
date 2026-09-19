@@ -1,0 +1,80 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-authors}[2026/09/19 SIPA Authors]
+
+% ===============================================================================================
+% Authors
+% ===============================================================================================
+
+% Function to write the author's name and Orcid ID
+% The code it's designed to work even when author's don't have an Orcid ID
+\ExplSyntaxOn
+
+\seq_new:N \l__autores_list_seq
+\seq_new:N \l__autores_pair_seq
+\tl_new:N  \l__autores_name_tl
+\tl_new:N  \l__autores_orcid_tl
+\tl_new:N  \g__autores_data_tl
+
+\NewDocumentCommand{\authors}{m}{
+	\tl_gset:Nn \g__autores_data_tl {#1}
+}
+
+\NewDocumentCommand{\printauthors}{}{
+	\begin{tabular}{@{}l@{}}
+		% Author's separator
+		\seq_set_split:NnV
+			\l__autores_list_seq
+			{ ; }
+			\g__autores_data_tl
+
+		\seq_map_inline:Nn
+			\l__autores_list_seq {
+				\seq_set_split:Nnn
+					\l__autores_pair_seq
+					{ , }
+					{ ##1 }
+				
+				% Select the names
+				\tl_set:Nx
+				\l__autores_name_tl {
+					\seq_item:Nn
+					\l__autores_pair_seq
+					{ 1 }
+				}
+				
+				\tl_trim_spaces:N
+					\l__autores_name_tl
+				
+				\tl_use:N
+					\l__autores_name_tl
+				
+				% ORCID ID
+				\int_compare:nNnT
+					{ \seq_count:N \l__autores_pair_seq }
+					> { 1 } {
+						\tl_set:Nx
+						\l__autores_orcid_tl {
+							\seq_item:Nn
+							\l__autores_pair_seq
+							{ 2 }
+						}
+						
+						\tl_trim_spaces:N
+						\l__autores_orcid_tl
+						
+						% If no Orcid =  blanc, if Orcid = image
+						\tl_if_empty:NF
+						\l__autores_orcid_tl {
+							% Places a space / line between the name and Orcid's icon
+							\space %--\space
+							\exp_args:NV
+							\orcidlink
+							\l__autores_orcid_tl
+						}
+					}
+			\\
+			}
+	\end{tabular}
+}
+
+\ExplSyntaxOff
