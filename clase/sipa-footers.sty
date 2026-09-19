@@ -1,0 +1,194 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-footers}[2026/08/30 SIPA Footers]
+
+% ===============================================================================================
+% Footers
+% ===============================================================================================
+
+% ===============================================
+%	Right numbered footer
+% ===============================================
+
+\newcommand{\sipafooterright}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\begin{scope}
+	\setlength{\hoffset}{0in}
+	\path (current page.south west) coordinate (paperSW);
+	
+	\begin{scope}[shift={(paperSW)}]
+		
+		\fill[lightgreen]
+			(0,26)
+			.. controls (35,-1) and (70,1) .. (105,9)
+			.. controls (140,15) and (175,17) .. (210,8)
+			-- (210,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[midgreen]
+			(0,22)
+			.. controls (35,2.67) and (70,1.5) .. (105,8)
+			.. controls (140,13) and (175,15) .. (210,4.5)
+			-- (210,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[darkgreen]
+			(0,18)
+			.. controls (25,3.5) and (70,0.5) .. (105,5)
+			.. controls (145,10.5) and (180,14.67) .. (210,1.33)
+			-- (210,0)
+			-- (0,0)
+			-- cycle;
+
+		% Footer logo
+		\node[anchor=center] at (6.9,6.9) {%
+			\includegraphics[width=13mm, height=13mm, keepaspectratio]{portada/sipa pin}%
+		};
+
+		% Page number
+		\node[anchor=center, text=white, font=\bfseries\fontsize{9}{9}\selectfont]
+		at (6.85,7.8) {\thepage};
+		
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}%
+}
+
+% ===============================================
+%	Left numbered footer
+% ===============================================
+
+\newcommand{\sipafooterleft}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\setlength{\hoffset}{0in}
+\path (current page.south west) coordinate (paperSW);
+
+\begin{scope}[shift={(paperSW)}]
+	
+	\begin{scope}[xscale=-1,shift={(-210,0)}]
+		
+		\fill[lightgreen]
+			(0,26)
+			.. controls (35,-1) and (70,1) .. (105,9)
+			.. controls (140,15) and (175,17) .. (210,8)
+			-- (210,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[midgreen]
+			(0,22)
+			.. controls (35,2.67) and (70,1.5) .. (105,8)
+			.. controls (140,13) and (175,15) .. (210,4.5)
+			-- (210,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[darkgreen]
+			(0,18)
+			.. controls (25,3.5) and (70,0.5) .. (105,5)
+			.. controls (145,10.5) and (180,14.67) .. (210,1.33)
+			-- (210,0)
+			-- (0,0)
+			-- cycle;
+
+		% Footer logo
+		\node[anchor=center] at (6.9,6.9) {%
+			\includegraphics[width=13mm, height=13mm, keepaspectratio]{portada/sipa pin}%
+		};
+
+		% Page number
+		\node[anchor=center, text=white, font=\bfseries\fontsize{9}{9}\selectfont]
+		at (6.85,7.8) {\thepage};
+		
+	\end{scope}
+	
+\end{scope}
+\end{tikzpicture}%
+}
+
+% ===============================================
+%	Plain / section footer with pages
+% ===============================================
+
+\newcommand{\footerpages}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\begin{scope}
+	\setlength{\hoffset}{0in}
+	\path (current page.south west) coordinate (paperSW);
+	
+	\begin{scope}[shift={(paperSW)}]
+		
+		\fill[lightgreen] (0,0) rectangle (210,14);
+		\fill[midgreen] (0,0) rectangle (210,12);
+		\fill[darkgreen] (0,0) rectangle (210,10);
+
+		% Centered footer logo
+		\node[anchor=center] at (105,5) {%
+			\includegraphics[width=9mm, height=9mm, keepaspectratio]{portada/sipa pin}%
+		};
+
+		% Centered page number
+		\node[anchor=center, text=white, font=\bfseries\fontsize{8}{9}\selectfont]
+		at (105,5.8) {\thepage};
+		
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}%
+}
+
+% ===============================================
+%	Plain / section footer with no pages
+% ===============================================
+
+\newcommand{\footernopages}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+	]
+	
+	\begin{scope}
+		\setlength{\hoffset}{0in}
+		\path (current page.south west) coordinate (paperSW);
+		
+		\begin{scope}[shift={(paperSW)}]
+			
+			\fill[lightgreen] (0,0) rectangle (210,32);
+			\fill[midgreen] (0,0) rectangle (210,28);
+			\fill[darkgreen] (0,0) rectangle (210,24);
+			
+		\end{scope}
+	\end{scope}
+	
+\end{tikzpicture}%
+}
