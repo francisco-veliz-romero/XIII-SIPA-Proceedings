@@ -1,0 +1,164 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-references}[2026/08/30 SIPA References]
+
+% ===============================================================================================
+% APA-7 customized references
+% ===============================================================================================
+
+\AtBeginDocument{
+	\renewbibmacro*{name:bookauthor}{%
+		\ifnameundef{bookauthor}
+		{}
+		{\printnames{bookauthor}\addcomma\space}
+	}
+}
+
+\newbibmacro{transedvolnumpages}{%
+	\def\prevprinted{0}%
+	% Translator
+	\ifnameundef{translator}
+	{}
+	{%
+		\printnames{translator}\addcomma\space Trad.%
+		\def\prevprinted{1}%
+	}%
+	% Edition
+	\iffieldundef{edition}
+	{}
+	{%
+		\ifnum\prevprinted=1 \addcomma\space \fi
+		\printfield{edition}%
+		\def\prevprinted{1}%
+	}%
+	% Volume
+	\iffieldundef{volume}
+	{}
+	{%
+		\ifnum\prevprinted=1 \addcomma\space \fi
+		\printfield{volume}%
+		\def\prevprinted{1}%
+	}%
+	% Number
+	\iffieldundef{number}
+	{}
+	{%
+		\ifnum\prevprinted=1 \addcomma\space \fi
+		\printfield{number}%
+		\def\prevprinted{1}%
+	}%
+	% Pages
+	\iffieldundef{pages}
+	{}
+	{%
+		\ifnum\prevprinted=1 \addcomma\space \fi
+		\printfield{pages}%
+	}%
+}
+
+\DeclareBibliographyDriver{inbook}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\printnames{author}%
+	\addspace%
+	\mkbibparens{\printlabeldateextra}%
+	\newunit\newblock
+	\printfield{title}%
+	.\space%
+	% Sole editor or author entry
+	\ifnameundef{editor}
+	{En: }
+	{%
+		\printtext{En:\space}%
+		\printnames{editor}%
+		\addspace
+		\mkbibparens{%
+			\ifboolexpr{ test {\ifnumequal{\value{editor}}{1}} }
+			{Ed.}
+			{Eds.}%
+		}%
+	}%
+	% Connector for both editor and author entries
+	\ifboolexpr{
+		not test {\ifnameundef{editor}}
+		and
+		not test {\ifnameundef{bookauthor}}
+	}
+		{\addspace \rotatebox[origin=c]{180}{\&}\addspace}
+		{}
+	% Bookauthor entry
+	\ifnameundef{bookauthor}
+		{}
+		{%
+			\printnames{bookauthor}%
+			\newunit\newblock
+		}%
+	\printfield{booktitle}%
+	\iffieldundef{booksubtitle}
+		{}
+		{\textit{%
+			\setunit{\subtitlepunct}%
+			\printfield{booksubtitle}}%
+		}%
+	\addspace%
+	% Translator, edition, and number
+	\mkbibparens{\usebibmacro{transedvolnumpages}}%
+	\newunit\newblock
+	\printlist{location}%
+		\iflistundef{location}
+		{}
+		{\setunit{\addcolon\space}}%
+	\printlist{publisher}%
+	\newunit\newblock
+	\printfield{url}%
+	\usebibmacro{finentry}%
+}
+
+\renewbibmacro*{editorstrg}{%
+	\mkbibparens{\usebibmacro{editorstrg@apa}}%
+}
+
+\DeclareFieldFormat{volume}{%
+	\ifentrytype{book}
+		{%
+			Vol.~#1%
+			\iffieldundef{number}
+			{}
+			{,\addspace No.~\emph{\printfield{number}}}%
+			\iffieldundef{pages}
+			{}
+			{,\addspace\printfield{pages}}%
+		}
+		{#1}%
+}
+
+\xpatchbibdriver{book}
+	{\printlist{publisher}}{%
+		\printlist{location}%
+		\setunit{\addcolon\space}%
+		\printlist{publisher}%
+		}
+		{}
+		{}
+
+\xpatchbibdriver{thesis}
+	{\printlist{publisher}}
+	{\printlist{publisher}:\space%
+	\printlist{location}}
+	{}
+	{}
+
+\DeclareFieldFormat{date}{%
+	\iffieldundef{year}{}{%
+		\thefield{year}%
+		\iffieldundef{month}{}{~\mkbibmonth{\thefield{month}}}%
+		\iffieldundef{day}{}{~\thefield{day}}%
+	}%
+}
+
+\renewbibmacro*{date}{%
+	\printfield{date}%
+}
+
+\DeclareFieldFormat{pages}{\mkpageprefix[bookpagination]{#1}}
+\DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{volume}{Vol.\addnbspace#1}
+\DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{number}{No.\addnbspace\emph{#1}}
