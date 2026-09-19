@@ -62,11 +62,11 @@
 \addbibresource{referencias_sipa_xiii.bib}
 
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    urlcolor=blue,
-    linktocpage
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=blue,
+	urlcolor=blue,
+	linktocpage
 }
 
 %========================
@@ -89,15 +89,15 @@
 % ============================================================
 
 \geometry{
-    paperwidth=210mm,
-    paperheight=297mm,
-    left=0mm,
-    right=0mm,
-    top=0mm,
-    bottom=0mm,
-    headheight=0mm,
-    headsep=0mm,
-    footskip=0mm
+	paperwidth=210mm,
+	paperheight=297mm,
+	left=0mm,
+	right=0mm,
+	top=0mm,
+	bottom=0mm,
+	headheight=0mm,
+	headsep=0mm,
+	footskip=0mm
 }
 
 % Environment to hide objects from the document
@@ -153,43 +153,41 @@
 % Functions to add images and text side by side
 % Image to the right side and text on the left side
 \newcommand{\rightimage}[5]{%
-%\noindent%
-  \begin{tikzpicture}
-    \node[anchor=west, inner sep=0pt] at (0,0) {%
-      \begin{minipage}{0.95\textwidth}
-      \centering
-        \begin{minipage}[c]{#1 \textwidth}
-          \centering
-          \includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
-        \end{minipage}%
-        \begin{minipage}[c]{#4 \textwidth}
-        \centering
-        #5
-        \end{minipage}%
-      \end{minipage}
-    };
-  \end{tikzpicture}%
+	\begin{tikzpicture}
+	\node[anchor=west, inner sep=0pt] at (0,0) {%
+		\begin{minipage}{0.95\textwidth}
+			\centering
+			\begin{minipage}[c]{#1 \textwidth}
+				\centering
+				\includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
+			\end{minipage}%
+			\begin{minipage}[c]{#4 \textwidth}
+				\centering
+				#5
+			\end{minipage}%
+		\end{minipage}
+	};
+	\end{tikzpicture}%
 }
 
 % Image to the left  side and text on the right side
 \newcommand{\leftimage}[5]{%
-%\noindent%
-  \begin{tikzpicture}
-    \node[anchor=west, inner sep=0pt] at (0,0) {%
-      \begin{minipage}[c]{0.95\textwidth}
-      \centering
-        \begin{minipage}[c]{#4 \textwidth}
-        \centering
-        #5
-        \end{minipage}%
-        \begin{minipage}[c]{#1 \textwidth}
-          \begin{center}
-          \includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
-          \end{center}
-        \end{minipage}%
-      \end{minipage}
-    };
-  \end{tikzpicture}%
+	\begin{tikzpicture}
+	\node[anchor=west, inner sep=0pt] at (0,0) {%
+		\begin{minipage}[c]{0.95\textwidth}
+			\centering
+			\begin{minipage}[c]{#4 \textwidth}
+				\centering
+				#5
+			\end{minipage}%
+			\begin{minipage}[c]{#1 \textwidth}
+				\begin{center}
+					\includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
+				\end{center}
+			\end{minipage}%
+		\end{minipage}
+	};
+	\end{tikzpicture}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% No me acuerdo
@@ -207,51 +205,51 @@
 % ============================================================
 
 \newcommand{\bookbodygeometry}{%
-  \newgeometry{
-    textwidth=185mm,
-    top=0in,
-    bottom=2in,
-    footskip=19pt
-  }%
-  \setlength{\oddsidemargin}{0pt}%
-  \setlength{\evensidemargin}{0pt}%
-  \setlength{\hoffset}{-0.5in}%
-  \setlength{\headheight}{65pt}%
-  \setlength{\headsep}{10pt}%
-  \setlength{\textheight}{720pt}%
-  \setlength{\vsize}{720pt}%
+	\newgeometry{
+		textwidth=185mm,
+		top=0in,
+		bottom=2in,
+		footskip=19pt
+	}%
+	\setlength{\oddsidemargin}{0pt}%
+	\setlength{\evensidemargin}{0pt}%
+	\setlength{\hoffset}{-0.5in}%
+	\setlength{\headheight}{65pt}%
+	\setlength{\headsep}{10pt}%
+	\setlength{\textheight}{720pt}%
+	\setlength{\vsize}{720pt}%
 }
 
 % Paste cover and subcover at the beginning of the document
 % Set the new geometry and text font for the rest of the document
 \AtBeginDocument{%
-\noindent%
-\makecover%
-\noindent%
-\subcover
-\newpage
-\bookbodygeometry
-\sansmath
+	\noindent%
+	\makecover%
+	\noindent%
+	\subcover
+	\newpage
+	\bookbodygeometry
+	\sansmath
 }
 
 %%%%%%%%%% Format of tables and images
 \DeclareCaptionLabelFormat{figlabel}{Fig.~#2}
 \captionsetup[figure]{
-  name		   = Figure,
-  labelformat  = figlabel,
-  labelsep     = period,
-  font         = normalsize,
-  justification= raggedright,
-  position     = below,
-  skip         = 6pt
+	name		   = Figure,
+	labelformat  = figlabel,
+	labelsep     = period,
+	font         = normalsize,
+	justification= raggedright,
+	position     = below,
+	skip         = 6pt
 }
 \captionsetup[table]{
-  name         = Table,
-  labelsep     = period,
-  font         = normalsize,
-  justification= raggedright,
-  position     = above,
-  skip         = 6pt
+	name         = Table,
+	labelsep     = period,
+	font         = normalsize,
+	justification= raggedright,
+	position     = above,
+	skip         = 6pt
 }
 
 %%%%%%%%%%%%% Cuerpo inicial resumenes y documentos
@@ -271,13 +269,13 @@
 % Change in the bibliography's title
 % The function stops the bibliography title from appearing in TOC
 \renewenvironment{thebibliography}[1]
-  {\section*{\refname}%
-   \list{\@biblabel{\@arabic\c@enumiv}}%
-        {\settowidth\labelwidth{\@biblabel{#1}}%
-         \leftmargin\labelwidth
-         \advance\leftmargin\labelsep
-         \usecounter{enumiv}}%
-   \sloppy}
-  {\endlist}
+	{\section*{\refname}%
+	\list{\@biblabel{\@arabic\c@enumiv}}%
+		{\settowidth\labelwidth{\@biblabel{#1}}%
+		\leftmargin\labelwidth
+		\advance\leftmargin\labelsep
+		\usecounter{enumiv}}%
+	\sloppy}
+	{\endlist}
 
 \endinput
