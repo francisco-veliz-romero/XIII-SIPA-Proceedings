@@ -32,9 +32,7 @@ This repository documents the typesetting and code development work used to prod
 
 ## Notes
 
-The document requires a LaTeX distribution compatible with the packages used by the project.
-
-Refer to the main project file and configuration files for information about dependencies and the compilation process.
+The document requires a LaTeX distribution compatible with the packages used by the project. Specifically, this document was compiled using the TeXworks program.
 
 This repository is intended to document and preserve the code used for the composition of the proceedings of the XIII International Week on Agricultural Production, as well as to facilitate its maintenance and potential reuse in similar academic typesetting projects.
 
