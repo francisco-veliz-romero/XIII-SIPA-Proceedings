@@ -9,7 +9,7 @@
 % Main header
 % =========================================
 
-\newcommand{\mainheader}{%
+\newcommand{\headermain}{%
 \begin{tikzpicture}[
 	x=1mm,
 	y=1mm,
@@ -27,7 +27,7 @@
 	\begin{scope}[yscale=-1, yshift=-2mm]
 		
 		%=====================
-		% 	Coordenadas
+		% Coordinates
 		%=====================
 		
 		\coordinate (A)  at (0.00,32.00);
@@ -92,7 +92,7 @@
 		\coordinate (AD2) at (170.75,11.50);
 		
 		%=====================
-		% 	Figuras
+		% Image
 		%=====================
 		
 		\fill[lightgreen]
@@ -150,15 +150,17 @@
 		\fill[darkgreen] (30,0) rectangle (180,10.7);
 		
 		%==================
-		% 	Logos
+		% Logos
 		%==================
-		
+
+		% Left school logo
 		\fill[white] (12,12.5) circle[radius=9mm];
 		
 		\node[anchor=center] at (12,12.5) {%
 			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo uaaan}%
 		};
-		
+
+		% Right postgraduate program logo
 		\fill[white] (198,12.5) circle[radius=9mm];
 		
 		\node[anchor=center] at (198,13) {%
@@ -173,10 +175,10 @@
 }
 
 % =========================================
-%	Index & text header
+% TOC header
 % =========================================
 
-\newcommand{\headerindex}{%
+\newcommand{\headertoc}{%
 \begin{tikzpicture}[
 	x=1mm,
 	y=1mm,
@@ -194,21 +196,17 @@
 	\begin{scope}[yscale=-1, yshift=-2mm]
 		
 		\fill[lightgreen] (0,0) rectangle (210, 28);
-		
 		\fill[midgreen] (0,0) rectangle (210, 25);
-		
 		\fill[darkgreen] (0,0) rectangle (210, 22);
 		
-		%========================================
-		% Logos
-		%========================================
-		
+		% Left school logo
 		\fill[white] (16,12) circle[radius=9mm];
 		
 		\node[anchor=center] at (16,12) {%
 			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo uaaan}%
 		};
-		
+
+		% Right posrgraduate program logo
 		\fill[white] (194,12) circle[radius=9mm];
 		
 		\node[anchor=center] at (194,12.5) {%
@@ -223,7 +221,7 @@
 }
 
 % =========================================
-%	Sections header
+% Plain / Sections header
 % =========================================
 
 \newcommand{\headerplain}{%
@@ -244,21 +242,21 @@
 	\begin{scope}[yscale=-1, yshift=-2mm]
 		
 		\fill[lightgreen] (0,0) rectangle (210, 34);
-		
 		\fill[midgreen] (0,0) rectangle (210, 30);
-		
 		\fill[darkgreen] (0,0) rectangle (210, 26);
 		
 		%========================================
 		% Logos
 		%========================================
-		
+
+		% Left school logo
 		\fill[white] (16,14) circle[radius=9mm];
 		
 		\node[anchor=center] at (16,14) {%
 			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo uaaan}%
 		};
-		
+
+		% Right postgraduate program logo
 		\fill[white] (194,14) circle[radius=9mm];
 		
 		\node[anchor=center] at (194,14.5) {%
@@ -272,10 +270,8 @@
 \end{tikzpicture}%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % =========================================
-%	Other Header
+% Unused Header
 % =========================================
 
 \newcommand{\secondheader}{%
@@ -321,13 +317,15 @@
 				-- cycle;
 			
 		\end{scope}
-		
+
+		% Left school logo
 		\fill[white] (196,13) circle[radius=10mm];
 		
 		\node[anchor=center] at (196,13) {%
 			\includegraphics[width=20mm, height=20mm, keepaspectratio]{portada/logo uaaan}%
 		};
-		
+
+		% Right postgraduate program logo
 		\fill[white] (14,13) circle[radius=10mm];
 		
 		\node[anchor=center] at (14,13) {%
