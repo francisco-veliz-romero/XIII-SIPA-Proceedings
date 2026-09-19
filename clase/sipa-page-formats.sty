@@ -1,0 +1,88 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-page-formats}[2026/09/19 SIPA Page formats]
+
+% ===============================================================================================
+% Page formats
+% ===============================================================================================
+
+%============================
+% Sections
+%============================
+
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	
+	\fancyhead[C]{%
+		\makebox[0pt][c]{\headerplain}%
+		\fontsize{18}{16}\selectfont%
+		\textcolor{white}{\eventnumber\ SIPA --- Memorias}\\[5pt]
+	}
+	
+	\fancyfoot[L]{%
+		\makebox[210mm][c]{\footernopages}%
+	}
+
+	% Removes header and footer rules
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+%============================
+%	Pre TOC header
+%============================
+
+\fancypagestyle{preindex}{%
+	\fancyhf{}
+	
+	\fancyhead[C]{%
+		\makebox[0pt][c]{\headertoc}%
+		\fontsize{18}{16}\selectfont
+		\textcolor{white}{\eventnumber\ SIPA --- Memorias}\\[5pt]
+	}
+	
+	\fancyfoot[L]{%
+		\makebox[210mm][c]{\footerpages}%
+	}
+	
+	% Removes header and footer rules
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+%============================
+%		Texto normal
+%============================
+
+\fancypagestyle{posindex}{%
+	\fancyhf{}
+	
+	\fancyhead[C]{%
+		\headermain
+		\vspace{-2.5mm}
+		\begin{minipage}[t][\headheight][t]{\textwidth}
+			\centering\color{black}
+			{\fontsize{14}{20}\selectfont
+			\textcolor{white}{\eventnumber\ SIPA --- Memorias}\\[1.2mm]
+			\textbf{\parttitle}\\[0.7mm]
+			% Adds Author abbreviated name or custom section name to header
+			\ifx\@pagenblanc\@yes
+			    \@nombsec
+			\else\ifx\@pagenblanc\@no
+			    \@abbrevnombs
+			\fi\fi
+			}
+		\end{minipage}%
+	}
+	
+	\fancyfoot[LE]{%
+		\makebox[210mm][c]{\sipafooterright}%
+	}
+	
+	\fancyfoot[RO]{%
+		\makebox[210mm][c]{\sipafooterleft}%
+	}
+	
+	% Removes header and footer rules
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
