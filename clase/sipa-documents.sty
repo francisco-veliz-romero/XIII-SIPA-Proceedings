@@ -1,0 +1,166 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-documents}[2026/09/a9 SIPA Proceedings' inner documents format]
+
+%===============================================================================================
+% Document's format
+%===============================================================================================
+
+%=========================================================
+% Functions to introduce data
+%=========================================================
+
+%==============================
+% Functions to abbreviate names
+%==============================
+
+\newcommand{\processsurname}[2]{%
+	\begingroup
+	\StrBefore{#1}{-}[\sa]%
+	\StrBehind{#1}{-}[\sb]%
+	\IfStrEq{\sb}{}{%
+		\StrLeft{#1}{1}[\si]%
+		\xdef#2{\si.}%
+	}{%
+		\StrLeft{\sa}{1}[\si]%
+		\StrLeft{\sb}{1}[\sj]%
+		\xdef#2{\si.-\sj.}%
+	}%
+	\endgroup
+}
+
+\newcommand{\abbrevnombs}[4]{%
+	\begingroup
+	\def\given{#1}%
+
+  % First surname
+	\processsurname{#2}{\outA}%
+	
+	\def\temp{\given, \outA}%
+	% Second surname (optional)
+	\IfStrEq{#3}{}{}{%
+		\processsurname{#3}{\outB}%
+		\edef\temp{\temp\space\outB}%
+	}%
+	% Third surname (optional)
+	\IfStrEq{#4}{}{}{%
+		\processsurname{#4}{\outC}%
+		\edef\temp{\temp\space\outC}%
+	}%
+	
+	\xdef\@abbrevnombs{\temp}
+	\endgroup
+}
+
+%==============================
+%	Other data functions
+%==============================
+
+% Defines if the header should write the main document author abbreviated name
+% "no" allows you to place the Author's name in the header
+% "yes" leaves a blanc spaceto write the section's custom title
+\newcommand{\@pagenblanc}{}
+\newcommand{\pagenblanc}[1]{\renewcommand{\@pagenblanc}{#1}}
+\def\@yes{yes}
+\def\@no{no}
+
+% Section's custom title
+\newcommand{\@nombsec}{}
+\newcommand{\nombsec}[1]{\renewcommand{\@nombsec}{#1}}
+
+% Name printed in TOC
+\newcommand{\@ijshortauthor}{}
+\newcommand{\ijshortauthor}[1]{\renewcommand{\@ijshortauthor}{#1}}
+
+% Author's afiliation
+\newcommand{\@affiliations}{}
+\newcommand{\ijaffiliation}[1]{\renewcommand{\@affiliations}{#1}}
+
+% Functions to add the corresponding author's mail
+\newcommand{\@correspondingtext}{}
+\newcommand{\@correspondingmail}{}
+
+\newcommand{\corresponding}[2]{%
+	\renewcommand{\@correspondingtext}{#1}%
+	\renewcommand{\@correspondingmail}{#2}%
+}
+
+% Functions to add the Author's name to TOC
+\newcommand{\l@titlewithoutpage}[2]{%
+  \par\noindent
+  \hspace{0.5cm}#1\par
+  \vspace{-6pt}%
+}
+
+\newcommand{\l@chapterwithsub}[2]{%
+  \@dottedtocline{1}{0.5cm}{1.5cm}{\fontsize{10}{14}\selectfont#1}{#2}%
+}
+
+%=========================================================
+% Document's title body
+%=========================================================
+
+\renewcommand{\maketitle}{%
+\begin{center}%
+	% Prints the title
+	{\section*{\MakeUppercase{\@title}}}%
+
+	% Adds the title to TOC in capital letters
+	\addtocontents{toc}{%
+		\protect\contentsline{titlewithoutpage}{\MakeUppercase{\@title}}{}{}%
+	}%
+	{\fontsize{12}{14}\selectfont\itshape\@author\par}%
+	
+	% Adds the author's name and page number under the title
+	\ifx\chaptersubtitle\@empty\else
+		\phantomsection
+		\addcontentsline{toc}{chapterwithsub}{%
+			\textit{\@ijshortauthor}%
+		}%
+	\fi
+	% If no afiliation leaves space in blanc
+	\vspace{-0.1cm}%
+	\ifx\@affiliations\empty\else
+		{\fontsize{12}{14}\selectfont\@affiliations\par}%
+		\vspace{-0.25cm}%
+	\fi
+	% If no corresponding mail leaves space in blanc
+	% It can also add custom text before the email
+	\ifx\@correspondingmail\empty
+		\else
+		\ifx\@correspondingtext\empty
+			{\href{mailto:\@correspondingmail}{\nolinkurl{\@correspondingmail}}\par}%
+		\else
+			{\@correspondingtext\ \href{mailto:\@correspondingmail}{\nolinkurl{\@correspondingmail}}\par}%
+		\fi
+		\vspace{5pt}%
+	\fi
+\end{center}%
+}
+
+%==============================
+% Keywords
+%==============================
+
+\newcommand{\keywords}[1]{%
+	\vspace{-0.8cm}
+	\begin{center}
+	\textit{\fontsize{10}{10}\selectfont\noindent\emph{Palabras clave:}~#1}
+	\vspace{12pt}\par
+	\end{center}
+}
+
+%==============================
+%	Abstract
+%==============================
+
+\newenvironment{resumen}{%
+	\setlength{\parindent}{0pt}%
+	\vspace{-1cm}
+	\begin{center}
+	{\fontsize{14}{14}\selectfont\textbf{RESUMEN}}
+	\vspace{-0.5cm}
+	\end{center}
+	\justify
+}{%
+	\par\vspace{6pt}%
+}
