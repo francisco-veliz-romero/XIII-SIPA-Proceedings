@@ -1,0 +1,342 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-headers}[2026/08/30 SIPA Headers]
+
+% ===============================================================================================
+% Headers
+% ===============================================================================================
+
+% =========================================
+% Main header
+% =========================================
+
+\newcommand{\mainheader}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\setlength{\hoffset}{0in}
+\path (current page.north west) coordinate (paperNW);
+
+\begin{scope}[shift={(paperNW)}]
+	
+	\begin{scope}[yscale=-1, yshift=-2mm]
+		
+		%=====================
+		% 	Coordenadas
+		%=====================
+		
+		\coordinate (A)  at (0.00,32.00);
+		\coordinate (B)  at (11.78,22.84);
+		\coordinate (C)  at (2.76,29.12);
+		\coordinate (D)  at (4.44,25.02);
+		\coordinate (F)  at (45.39,8.72);
+		\coordinate (G)  at (56.20,11.56);
+		\coordinate (E)  at (75.00,10.5);
+		\coordinate (H)  at (31.93,14.39);
+		\coordinate (K)  at (26.16,20.09);
+		\coordinate (L)  at (21.95,18.29);
+		
+		\coordinate (I)  at (0.00,38);
+		\coordinate (J)  at (12.05,23.64);
+		\coordinate (M)  at (26.75,16.87);
+		\coordinate (P)  at (3.00,31.00);
+		\coordinate (Q)  at (6.50,26.25);
+		\coordinate (T)  at (17.25,22.50);
+		\coordinate (U)  at (22.25,21.00);
+		
+		\coordinate (O)  at (0,45);
+		\coordinate (R)  at (10.99,26.22);
+		\coordinate (S)  at (28.50,17.69);
+		\coordinate (X)  at (3.09,33.71);
+		\coordinate (Y)  at (6.49,27.81);
+		\coordinate (Z)  at (18.75,24.50);
+		\coordinate (AA) at (22.75,21.75);
+		\coordinate (V)  at (45.00,10.84);
+		\coordinate (AC) at (32.50,15.00);
+		\coordinate (AD) at (39.25,11.50);
+		
+		% Mirrored coordinates
+		\coordinate (A2)  at (210.00,32.00);
+		\coordinate (B2)  at (198.22,22.84);
+		\coordinate (C2)  at (207.24,29.12);
+		\coordinate (D2)  at (205.56,25.02);
+		\coordinate (F2)  at (164.61,8.72);
+		\coordinate (G2)  at (153.80,11.56);
+		\coordinate (E2)  at (135.00,10.5);
+		\coordinate (H2)  at (178.07,14.39);
+		\coordinate (K2)  at (183.84,20.09);
+		\coordinate (L2)  at (188.05,18.29);
+		
+		\coordinate (I2)  at (210.00,38.00);
+		\coordinate (J2)  at (197.95,23.64);
+		\coordinate (M2)  at (183.25,16.87);
+		\coordinate (P2)  at (207.00,31.00);
+		\coordinate (Q2)  at (203.50,26.25);
+		\coordinate (T2)  at (192.75,22.50);
+		\coordinate (U2)  at (187.75,21.00);
+		
+		\coordinate (O2)  at (210.00,45.00);
+		\coordinate (R2)  at (199.01,26.22);
+		\coordinate (S2)  at (181.50,17.69);
+		\coordinate (X2)  at (206.91,33.71);
+		\coordinate (Y2)  at (203.51,27.81);
+		\coordinate (Z2)  at (191.25,24.50);
+		\coordinate (AA2) at (187.25,21.75);
+		\coordinate (V2)  at (165.00,10.84);
+		\coordinate (AC2) at (177.50,15.00);
+		\coordinate (AD2) at (170.75,11.50);
+		
+		%=====================
+		% 	Figuras
+		%=====================
+		
+		\fill[lightgreen]
+			(O)
+			.. controls (X) and (Y) .. (R)
+			.. controls (Z) and (AA) .. (S)
+			.. controls (AC) and (AD) .. (V)
+			-- (45,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[lightgreen]
+			(V2)
+			.. controls (AD2) and (AC2) .. (S2)
+			.. controls (AA2) and (Z2) .. (R2)
+			.. controls (Y2) and (X2) .. (O2)
+			-- (210,0)
+			-- (165,0)
+			-- cycle;
+		
+		\fill[midgreen]
+			(I)
+			.. controls (P) and (Q) .. (J)
+			.. controls (T) and (U) .. (M)
+			-- (34.50,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[midgreen]
+			(M2)
+			.. controls (U2) and (T2) .. (J2)
+			.. controls (Q2) and (P2) .. (I2)
+			-- (210,0)
+			-- (175.5,0)
+			-- cycle;
+		
+		\fill[darkgreen]
+			(A)
+			.. controls (C) and (D) .. (B)
+			.. controls (K) and (L) .. (H)
+			.. controls (F) and (G) .. (E)
+			-- (75,0)
+			-- (0,0)
+			-- cycle;
+		
+		\fill[darkgreen]
+			(E2)
+			.. controls (G2) and (F2) .. (H2)
+			.. controls (L2) and (K2) .. (B2)
+			.. controls (D2) and (C2) .. (A2)
+			-- (210,0)
+			-- (135,0)
+			-- cycle;
+		
+		\fill[darkgreen] (30,0) rectangle (180,10.7);
+		
+		%==================
+		% 	Logos
+		%==================
+		
+		\fill[white] (12,12.5) circle[radius=9mm];
+		
+		\node[anchor=center] at (12,12.5) {%
+			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo uaaan}%
+		};
+		
+		\fill[white] (198,12.5) circle[radius=9mm];
+		
+		\node[anchor=center] at (198,13) {%
+			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo posgrado}%
+		};
+		
+	\end{scope}
+	
+\end{scope}
+
+\end{tikzpicture}%
+}
+
+% =========================================
+%	Index & text header
+% =========================================
+
+\newcommand{\headerindex}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\setlength{\hoffset}{0in}
+\path (current page.north west) coordinate (paperNW);
+
+\begin{scope}[shift={(paperNW)}]
+	
+	\begin{scope}[yscale=-1, yshift=-2mm]
+		
+		\fill[lightgreen] (0,0) rectangle (210, 28);
+		
+		\fill[midgreen] (0,0) rectangle (210, 25);
+		
+		\fill[darkgreen] (0,0) rectangle (210, 22);
+		
+		%========================================
+		% Logos
+		%========================================
+		
+		\fill[white] (16,12) circle[radius=9mm];
+		
+		\node[anchor=center] at (16,12) {%
+			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo uaaan}%
+		};
+		
+		\fill[white] (194,12) circle[radius=9mm];
+		
+		\node[anchor=center] at (194,12.5) {%
+			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo posgrado}%
+		};
+		
+		\end{scope}
+	
+\end{scope}
+
+\end{tikzpicture}%
+}
+
+% =========================================
+%	Sections header
+% =========================================
+
+\newcommand{\headerplain}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\setlength{\hoffset}{0in}
+\path (current page.north west) coordinate (paperNW);
+
+\begin{scope}[shift={(paperNW)}]
+	
+	\begin{scope}[yscale=-1, yshift=-2mm]
+		
+		\fill[lightgreen] (0,0) rectangle (210, 34);
+		
+		\fill[midgreen] (0,0) rectangle (210, 30);
+		
+		\fill[darkgreen] (0,0) rectangle (210, 26);
+		
+		%========================================
+		% Logos
+		%========================================
+		
+		\fill[white] (16,14) circle[radius=9mm];
+		
+		\node[anchor=center] at (16,14) {%
+			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo uaaan}%
+		};
+		
+		\fill[white] (194,14) circle[radius=9mm];
+		
+		\node[anchor=center] at (194,14.5) {%
+			\includegraphics[width=18mm, height=18mm, keepaspectratio]{portada/logo posgrado}%
+		};
+		
+		\end{scope}
+	
+\end{scope}
+
+\end{tikzpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% =========================================
+%	Other Header
+% =========================================
+
+\newcommand{\secondheader}{%
+\begin{tikzpicture}[
+	x=1mm,
+	y=1mm,
+	inner sep=0pt,
+	outer sep=0pt,
+	remember picture,
+	overlay
+]
+
+\begin{scope}
+	\setlength{\hoffset}{0in}
+	\path (current page.north west) coordinate (paperNW);
+	
+	\begin{scope}[shift={(paperNW)}]
+		
+		\begin{scope}[yscale=-1, yshift=10mm]
+			
+			\fill[lightgreen]
+				(0,32)
+				.. controls (25,6.5) and (70,2.5) .. (105,2)
+				.. controls (145,2.5) and (180,6.5) .. (210,32)
+				-- (210,0)
+				-- (0,0)
+				-- cycle;
+			
+			\fill[midgreen]
+				(0,26)
+				.. controls (25,6) and (70,4) .. (105,2)
+				.. controls (145,4) and (180,6) .. (210,26)
+				-- (210,0)
+				-- (0,0)
+				-- cycle;
+			
+			\fill[darkgreen]
+				(0,18)
+				.. controls (25,5.5) and (70,3.5) .. (105,3)
+				.. controls (145,3.5) and (180,5.5) .. (210,18)
+				-- (210,0)
+				-- (0,0)
+				-- cycle;
+			
+		\end{scope}
+		
+		\fill[white] (196,13) circle[radius=10mm];
+		
+		\node[anchor=center] at (196,13) {%
+			\includegraphics[width=20mm, height=20mm, keepaspectratio]{portada/logo uaaan}%
+		};
+		
+		\fill[white] (14,13) circle[radius=10mm];
+		
+		\node[anchor=center] at (14,13) {%
+			\includegraphics[width=20mm, height=20mm, keepaspectratio]{portada/logo posgrado}%
+		};
+		
+	\end{scope}
+	
+\end{scope}
+
+\end{tikzpicture}%
+}
