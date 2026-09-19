@@ -7,7 +7,7 @@
 % Packages
 % ============================================================
 
-\RequirePackage[spanish]{babel}
+\RequirePackage[english]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{helvet}
 \RequirePackage{sansmath}
