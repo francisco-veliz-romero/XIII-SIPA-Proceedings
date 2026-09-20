@@ -1,0 +1,58 @@
+\subseccion{National Speakers}
+
+\bandera{}
+\confname{Lic. Francisco Gerardo Véliz Romero}
+\confsch{Universidad Autónoma Agraria, Unidad Laguna}
+\conffac{}
+\confjob{Estudiante de Maestría \href{https://orcid.org/0009-0008-5154-9067}{\aiOrcid}}
+\confimgone{imagenes/conferencistas/Lic. Francisco Gerardo Véliz Romero}
+\confimgtwo{imagenes/conferencistas/logo uaaan}
+\conftext{3}{4}{1}{%
+	\bindtext.
+}
+
+\conference
+
+\bandera{NG}
+\confname{Dr. Abiodum Eunice Adefemisoye}
+\confsch{Universidad Autónoma Agraria Antonio Narro, Unidad Laguna}
+\conffac{Departamento de Producción Agropecuaria}
+\confjob{Estudiante de Doctorado \href{https://www.researchgate.net/profile/Abiodun-Eunice-Adefemisoye-2}{\aiResearchGate}}
+\confimgone{imagenes/conferencistas/Dr. Abiodum Eunice Adefemisoye}
+\confimgtwo{imagenes/portada/logo posgrado}
+\conftext{3}{4}{1}{%
+	In fact, the way this block it's constructed allows you to customize the text in a broader way. For example, you can write the keynote's lecture title and date\\
+	{\large\textbf{Impacto de técnicas de cocción en bioaccesibilidad de fenoles totales en jalapeños meidante digestión gastrointestinal \textit{in vitro}}}\\
+	September 11, 2026
+}
+
+\conference
+
+\bandera{MX}
+\confname{Lic. Francisco Gerardo Véliz Romero}
+\confsch{Universidad Autónoma Agraria Antonio Narro, Unidad Laguna}
+\conffac{Departamento de Postgrado en Ciencias en Producción Agropecuaria}
+\confjob{Estudiante de Maestría \href{https://scholar.google.com/citations?user=9EwJ9GkAAAAJ&hl=es&oi=ao}{\aiGoogleScholar}}
+\confimgone{imagenes/conferencistas/Lic. Francisco Gerardo Véliz Romero}
+\confimgtwo{imagenes/portada/logo posgrado ul 30}
+\conftext{3}{4}{1}{%
+	Now, this block was created for the proceeding book, but at the end it was decided that a more minimalist design fitted better the proceeding
+}
+
+\conferenceone
+
+\bandera{MX}
+\confname{Lic. Francisco Gerardo Véliz Romero}
+\confsch{Universidad Autónoma Agraria Antonio Narro, Unidad Laguna}
+\conffac{Departamento de Postgrado en Ciencias en Producción Agropecuaria}
+\confjob{Estudiante de Maestría en Ciencias en Producción Agropecuaria}
+\conftitl{This block in specific, allows you to print the block even whith missing data}
+\confimgone{imagenes/conferencistas/Lic. Francisco Gerardo Véliz Romero}
+\confimgtwo{imagenes/portada/logo posgrado ul 30}
+
+\conferencetwo
+
+% Codes to print the link and logos for Google Scholar, ResearchGate and Orcid
+%\href{https://scholar.google.com/citations?user=}{\aiGoogleScholar}
+%\href{https://www.researchgate.net/profile/}{\aiResearchGate}
+%\href{https://orcid.org/}{\aiOrcid}
