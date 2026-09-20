@@ -1,0 +1,146 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-toc}[2026/09/19 SIPA Table of content]
+
+%===============================================================================================
+% Table of content
+%===============================================================================================
+
+%=========================================================
+% Indentation and other measures
+%=========================================================
+
+\setlength{\cftsecindent}{1.5em}
+%\setlength{\cftsubsecindent}{3em}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{6pt}
+\singlespacing
+
+%=========================================================
+% TOC's Sections formats
+%=========================================================
+
+%==============================
+% Parts
+%==============================
+
+\renewcommand{\part}{%
+	\if@openright
+	\cleardoublepage
+	\else
+	\clearpage
+	\fi
+	\thispagestyle{plain}%
+	\secdef\@part\@spart
+}
+
+% 1. Font style, 2. Part number, 3. Space between number and title, 4. Other text formats and actions
+\titleformat{\part}[display]
+	{\centering\fontfamily{qcr}\fontsize{28}{28}\selectfont\bfseries\itshape}
+	{\vspace{2cm}Parte \thepart}
+	{1em}
+	{\parbox{0.95\textwidth}{\centering}}
+
+%==============================
+% Chapters
+%==============================
+
+% 1. Indentation, 2. Separation before text, 3. Separation after text
+\titlespacing*{\chapter}
+	{0pt}
+	{\fill}
+	{\fill}
+
+% 1. Font style, 2. Part number, 3. Space between number and title, 4. Other text formats and actions
+\titleformat{\chapter}[display]
+	{\centering\fontfamily{qcr}\fontsize{28}{28}\selectfont\bfseries\itshape}
+	{}
+	{-6em}
+	{\vspace{-2cm}\parbox{0.95\textwidth}{\centering}}
+
+%==============================
+% Sections
+%==============================
+
+% 1. Font style, 2. Part number, 3. Space between number and title, 4. Other text formats and actions
+\titleformat{\section}
+	{\centering\fontsize{14}{18}\selectfont\bfseries}
+	{}
+	{0pt}
+	{}
+
+% 1. Indentation, 2. Separation before text, 3. Separation after text
+\titlespacing*{\section}{0pt}{0pt}{-2pt}
+
+%==============================
+% Subsections
+%==============================
+
+% 1. Font style, 2. Part number, 3. Space between number and title, 4. Other text formats and actions
+\titleformat{\subsection}
+	{\normalfont\large\bfseries\raggedright}
+	{}
+	{0pt}
+	{}
+
+%=========================================================
+% Custom commands
+%=========================================================
+
+\newcommand{\mychapter}[1]{%
+	\chapter*{#1}%
+	\addcontentsline{toc}{chapter}{#1}%
+	\newpage
+}
+
+\newcommand{\mychaptertwo}[2]{%
+	\chapter*{#2}%
+	\addcontentsline{toc}{chapter}{#1}%
+	\newpage
+}
+
+% Custom title for page
+\newcommand{\subseccion}[1]{%
+\par\noindent\vspace{0.05cm}
+\begin{center}
+	\begin{minipage}{\textwidth}
+		\centering
+		\sloppy
+		\rule{\textwidth}{1.5pt}\par
+		\vspace{0.1cm}
+		{\fontfamily{qcr}\fontsize{24}{28}\selectfont\bfseries\MakeUppercase{#1}\par}
+		\vspace{-0.2cm}
+		\rule{\textwidth}{1.5pt}
+	\end{minipage}
+\end{center}
+\par
+}
+
+% Custom title for page in 2 columns
+\newcommand{\subtitulos}[1]{%
+\par\noindent
+\begin{center}
+	\begin{minipage}{90mm}
+		\centering
+		\sloppy
+		\rule{\textwidth}{1pt}\par
+		\vspace{0.2cm}
+		{\fontfamily{qcr}\fontsize{14}{14}\selectfont\bfseries\MakeUppercase{#1}\par}
+		\vspace{-0.2cm}
+		\rule{\textwidth}{1pt}
+	\end{minipage}
+\end{center}
+\par
+}
+
+% Number of part
+\newcommand{\parttitle}{}
+\let\originalpart\part
+\renewcommand{\part}[2][]{%
+	\gdef\parttitle{#2}%
+	\if\relax\detokenize{#1}\relax
+	\originalpart{#2}%
+	\else
+	\originalpart[#1]{#2}%
+	\fi
+}
