@@ -1,0 +1,319 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-speakers}[2026/08/30 SIPA Speakers]
+
+%===============================================================================================
+% Speaker and Semblance blocks
+%===============================================================================================
+
+%=========================================================
+% Function to print multiple parshape
+%=========================================================
+
+% Special thanks to David Carlisle & Pieter van Oostrum for this hell of a code
+% https://tex.stackexchange.com/questions/127504/more-condensed-version-of-parshape
+\def\newparshape{\parshape\@npshape0{}}
+\def\@npshape#1#2#3{\ifx\\#3\expandafter\@@@npshape\else\expandafter\@@npshape\fi
+{#1}{#2}{#3}}
+\def\@@npshape#1#2#3#4#5{%
+\ifnum#3>\z@\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
+{\expandafter\@@npshape\expandafter{\the\numexpr#1+1\relax}{#2 #4 #5}{\numexpr#3-1\relax}{#4}{#5}}%
+{\@npshape{#1}{#2}}}
+\def\@@@npshape#1#2#3{#1 #2 }
+
+%=========================================================
+% Functions to introcudce data
+%=========================================================
+
+% Saves flags
+\newcommand{\confFlag}{}
+\newcommand{\confFlagTwo}{}
+
+% Specific if for Flag
+\newif\ifhasflag
+\hasflagfalse
+
+\newcommand{\bandera}[1]{%
+    \if\relax\detokenize{#1}\relax
+        \hasflagfalse
+    \else
+        \hasflagtrue
+        \gdef\confFlag{\worldflag[width=8mm, length=16mm]{#1}}%
+        \gdef\confFlagTwo{\hfill\raisebox{-3mm}{\worldflag[width=8mm, length=16mm]{#1}}}%
+    \fi
+}
+
+% Speaker's name
+\newcommand{\confname}[1]{%
+	\gdef\confName{#1}%
+}
+
+% Speaker's school or workplace name
+\newcommand{\confsch}[1]{%
+	\gdef\confSchool{#1}%
+}
+
+% Speaker's specific faculty or workplace name
+\newcommand{\conffac}[1]{%
+	\gdef\confFaculty{#1}%
+}
+
+% Speaker's job
+\newcommand{\confjob}[1]{%
+	\gdef\confJob{#1}%
+}
+
+% Speaker's conference title
+\newcommand{\conftit}[1]{%
+	\gdef\confTitle{#1}%
+}
+
+% Speaker's photo
+\newcommand{\confimgone}[1]{%
+	\gdef\confImageOne{#1}%
+}
+
+% Speaker's school / faculty / workplace photo
+\newcommand{\confimgtwo}[1]{%
+	\gdef\confImageTwo{#1}%
+}
+
+% Command to automatically add nested nodes
+\newcommand{\conf@addnode}[3]{%
+	\ifx#3\empty\else
+		\node[anchor=north west, inner sep=0pt, text width=0.6\textwidth,
+			align=left, font=\sffamily] (#1) at ([xshift=0mm,yshift=-2mm]\conf@prevnode.south west) {%
+			{\fontsize{#2}{#2}\selectfont #3\par}%
+		};
+		\xdef\conf@prevnode{#1}%
+	\fi
+}
+
+% Speaker's bibliography or custom text (For Keynote lectures)
+\newcommand{\confText}{}
+\newcommand{\conftext}[4]{%
+    \gdef\confText{%
+        \begin{justify}
+            \newparshape
+                {#1}{0.17\textwidth}{0.70\textwidth}
+                {#2}{0.17\textwidth}{0.83\textwidth}
+                {#3}{0\textwidth}{1\textwidth}\\%
+            \vspace{-0.2cm}%
+            \noindent
+            #4%
+        \end{justify}%
+    }%
+}
+
+% Speaker's semblance or custom text (for semblances block)
+\newcommand{\confTextSemblance}{}
+\newcommand{\conftextsemblance}[3]{%
+    \gdef\confTextSemblance{%
+        \begin{justify}
+            \newparshape
+                {#1}{0.17\textwidth}{0.83\textwidth}
+                {#2}{0\textwidth}{1\textwidth}\\%
+            \vspace{-0.2cm}%
+            \noindent
+            #3%
+        \end{justify}%
+    }%
+}
+
+%=========================================================
+%	Speaker's blocks (in use)
+%=========================================================
+
+\newcommand{\conference}{%
+\parshape 0
+\ifhasbandera
+	{\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
+\else
+	{\fontsize{16}{18}\selectfont \subsection*{\confName}}
+\fi
+\vspace{-3.5mm}
+{\fontsize{14}{20}\selectfont\noindent \confSchool}\\
+\ifx\confFacultad\empty
+	{\fontsize{14}{15}\selectfont\noindent\itshape \confTitle}\\[-3mm]
+\else
+	{\fontsize{14}{15}\selectfont\noindent\itshape \confFaculty}\\
+	{\fontsize{14}{15}\selectfont\noindent\itshape \confTitle}\\[-3mm]
+\fi
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+	
+	% Left Speaker Image
+	\node[anchor=north west] at (0,0) {%
+		\includegraphics[width=0.15\textwidth]{\confImageOne}%
+	};
+
+	% Right School / Faculty / workplace logo
+	\node[anchor=north east] at (\textwidth,0) {%
+		\includegraphics[width=20mm, height=20mm, keepaspectratio]{\confImageTwo}%
+	};
+\end{tikzpicture}
+
+\confText
+
+\par\vspace{1mm}%
+}
+
+%=========================================================
+%	Semblance block (in use)
+%=========================================================
+
+\newcommand{\semblance}{%
+\parshape 0
+\ifhasbandera
+    {\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
+\else
+    {\fontsize{16}{18}\selectfont \subsection*{\confName}}
+\fi
+\vspace{-3.5mm}
+{\fontsize{14}{15}\selectfont\noindent \confSchool}\\
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+	% Semblance's person image
+	\node[anchor=north west] at (0,0) {%
+		\includegraphics[width=0.15\textwidth]{\confImageOne}%
+	};
+\end{tikzpicture}
+
+\confTextSemblance
+
+\par\vspace{1mm}%
+}
+
+%===============================================================================================
+% Other blocks not used in the final version of the XIII SIPA proceedings
+%===============================================================================================
+
+%=========================================================
+% Speakers block (v. 1)
+%=========================================================
+
+\newcommand{\conferenceone}{%
+\noindent
+\begin{tikzpicture}[baseline=(current bounding box.north)]
+	
+	\def\confancho{\textwidth}
+	\def\confalto{10mm}
+	
+	\path[use as bounding box] (0,0) rectangle (\textwidth,-60mm);
+	
+	\node[anchor=north west, inner sep=0pt,
+	minimum width=\confancho, minimum height=\confalto] (marco) at (0,0) {};
+	
+	%============================
+	% Header
+	%============================
+	
+	\node[anchor=north, align=center, text width=\textwidth,
+		font=\sffamily\bfseries\fontsize{20}{28}\selectfont]
+	(name) at (\confancho/2,-1) {\confName};
+
+	\ifx\bandera\empty\else
+		% Left flag
+		\node[anchor=west,inner sep=0pt] at ([xshift=5mm, yshift=1mm]name.west) {\confFlag};
+
+		% Right flag
+		\node[anchor=east,inner sep=0pt] at ([xshift=-5mm, yshift=1mm]name.east) {\confFlag};
+	\fi
+
+	% Divisor rectangles
+	\node[anchor=north, minimum width=\textwidth,
+	minimum height=5pt,fill=darkgreen, inner sep = 0pt]
+	at ([xshift=0,yshift=10mm]name.center) {};
+	
+	\node[anchor=north, minimum width=\textwidth,
+	minimum height=5pt,fill=darkgreen, inner sep = 0pt] (regla)
+	at ([xshift=0,yshift=-7mm]name.center) {};
+	
+	% Left Speaker's image
+	\node[anchor=north west,inner sep=0pt] at ([xshift=2.6mm,yshift=-4mm]name.south west){%
+		\includegraphics[width=28mm, keepaspectratio]{\confImageUno}%
+	};
+
+	% Right School / Faculty / workplace image
+	\node[anchor=north east,inner sep=0pt] at ([xshift=-1.5mm,yshift=-5mm]name.south east){%
+		\includegraphics[width=0.1\textwidth, height=0.1\textwidth, keepaspectratio]{\confImageTwo}%
+	};
+	
+	%============================
+	% Body
+	%============================
+	
+	\confText
+
+	\par\vspace{1mm}%
+\end{tikzpicture}%
+\par\vspace{1mm}%
+}
+
+%=========================================================
+% Speakers block (v. 2)
+%=========================================================
+
+\newcommand{\conferencetwo}{%
+\noindent
+\begin{tikzpicture}[baseline=(current bounding box.north)]
+	
+	\def\confancho{\textwidth}
+	\def\confalto{30mm}
+	
+	\path[use as bounding box] (0,0) rectangle (\textwidth,-60mm);
+	
+	\node[anchor=north west, inner sep=0pt,
+	minimum width=\confancho, minimum height=\confalto] (marco) at (0,0) {};
+	
+	%============================
+	%	Header
+	%============================
+	
+	\node[anchor=north, align=center, text width=\textwidth,
+		font=\sffamily\bfseries\fontsize{20}{28}\selectfont]
+	(name) at (\confancho/2,-1) {\confName};
+
+	\ifx\bandera\empty\else
+		% Left flag
+		\node[anchor=west,inner sep=0pt] at ([xshift=5mm, yshift=1mm]name.west) {\confFlag};
+
+		% Right flag
+		\node[anchor=east,inner sep=0pt] at ([xshift=-5mm, yshift=1mm]name.east) {\confFlag};
+	\fi
+	
+	\node[anchor=north, minimum width=\textwidth,
+	minimum height=5pt,fill=darkgreen, inner sep = 0pt]
+	at ([xshift=0,yshift=10mm]name.center) {};
+	
+	\node[anchor=north, minimum width=\textwidth,
+	minimum height=5pt,fill=darkgreen, inner sep = 0pt] (rule)
+	at ([xshift=0,yshift=-7mm]name.center) {};
+
+	%============================
+	%	Body
+	%============================
+
+	\node[anchor=north west,inner sep=0pt,text width=0.8\textwidth, 
+	align=left, font=\sffamily] (school) at ([xshift=35mm,yshift=-2.5mm]rule.south west) {%
+		{\fontsize{18}{20}\selectfont \confSchool \par}
+	};
+	
+	\def\conf@prevnode{school}
+	
+	\conf@addnode{faculty}{15}{\confFaculty}
+	\conf@addnode{job}{15}{\confJob}
+	\conf@addnode{title}{15}{\confTitle}
+	
+	% Left speaker's image
+	\node[anchor=center,inner sep=0pt,] at (17mm,-48.5mm) {%
+		\includegraphics[width=30mm, height=100mm, keepaspectratio]{\confImageOne}%
+	};
+	
+	%	Right School / Faculty / workplace image
+	\node[anchor=north east,inner sep=0pt] at ([xshift=0mm,yshift=-1mm]school.south east){%
+		\includegraphics[width=30mm, height=30mm, keepaspectratio]{\confImageTwo}%
+	};
+	
+\end{tikzpicture}%
+\par\vspace{5mm}%
+}
