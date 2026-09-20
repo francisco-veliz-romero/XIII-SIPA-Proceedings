@@ -33,13 +33,13 @@
 \hasflagfalse
 
 \newcommand{\bandera}[1]{%
-    \if\relax\detokenize{#1}\relax
-        \hasflagfalse
-    \else
-        \hasflagtrue
-        \gdef\confFlag{\worldflag[width=8mm, length=16mm]{#1}}%
-        \gdef\confFlagTwo{\hfill\raisebox{-3mm}{\worldflag[width=8mm, length=16mm]{#1}}}%
-    \fi
+	\if\relax\detokenize{#1}\relax
+		\hasflagfalse
+	\else
+		\hasflagtrue
+		\gdef\confFlag{\worldflag[width=8mm, length=16mm]{#1}}%
+		\gdef\confFlagTwo{\hfill\raisebox{-3mm}{\worldflag[width=8mm, length=16mm]{#1}}}%
+	\fi
 }
 
 % Speaker's name
@@ -91,32 +91,32 @@
 % Speaker's bibliography or custom text (For Keynote lectures)
 \newcommand{\confText}{}
 \newcommand{\conftext}[4]{%
-    \gdef\confText{%
-        \begin{justify}
-            \newparshape
-                {#1}{0.17\textwidth}{0.70\textwidth}
-                {#2}{0.17\textwidth}{0.83\textwidth}
-                {#3}{0\textwidth}{1\textwidth}\\%
-            \vspace{-0.2cm}%
-            \noindent
-            #4%
-        \end{justify}%
-    }%
+	\gdef\confText{%
+		\begin{justify}
+			\newparshape
+				{#1}{0.17\textwidth}{0.70\textwidth}
+				{#2}{0.17\textwidth}{0.83\textwidth}
+				{#3}{0\textwidth}{1\textwidth}\\%
+			\vspace{-0.2cm}%
+			\noindent
+			#4%
+		\end{justify}%
+	}%
 }
 
 % Speaker's semblance or custom text (for semblances block)
 \newcommand{\confTextSemblance}{}
 \newcommand{\conftextsemblance}[3]{%
-    \gdef\confTextSemblance{%
-        \begin{justify}
-            \newparshape
-                {#1}{0.17\textwidth}{0.83\textwidth}
-                {#2}{0\textwidth}{1\textwidth}\\%
-            \vspace{-0.2cm}%
-            \noindent
-            #3%
-        \end{justify}%
-    }%
+	\gdef\confTextSemblance{%
+		\begin{justify}
+		\newparshape
+				{#1}{0.17\textwidth}{0.83\textwidth}
+				{#2}{0\textwidth}{1\textwidth}\\%
+			\vspace{-0.2cm}%
+			\noindent
+			#3%
+		\end{justify}%
+	}%
 }
 
 %=========================================================
@@ -164,9 +164,9 @@
 \newcommand{\semblance}{%
 \parshape 0
 \ifhasbandera
-    {\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
+	{\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
 \else
-    {\fontsize{16}{18}\selectfont \subsection*{\confName}}
+	{\fontsize{16}{18}\selectfont \subsection*{\confName}}
 \fi
 \vspace{-3.5mm}
 {\fontsize{14}{15}\selectfont\noindent \confSchool}\\
