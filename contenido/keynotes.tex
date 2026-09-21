@@ -1,0 +1,61 @@
+\begin{wrap}
+	\chapter{Francisco Véliz}
+  % If you're using TexStudio, this line helps you to identify the keynote/document/course in the editor's TOC
+\end{wrap}
+\cero
+\abbrevnombs{Véliz Romero}{Francisco}{Francisco-Gerardo}{Gerardo}
+\ijshortauthor{Véliz-Romero Francisco Gerardo}% This function adds the name in the TOC
+\author{%
+	López López Enrique
+}
+\ijaffiliation{%
+	Asociación Mexicana de Productores de Carne AMEG, A. C.
+}
+% In the first {} you can add any text, and the second {} the email
+% The function adds automatically an space between both items
+\corresponding{Este es un ejemplo:}{exaple@gmail.com}
+\title{Keynote's title}
+
+\maketitle
+
+\vspace{.5cm}
+\begin{resumen}
+	\blindtext
+	\blindtext
+	\blindtext
+\end{resumen}
+
+\keywords{i'll say, maximum four, keynotes, but, it doesn't, have, limits}
+
+% I personally dont need the subsection's title in TOC, so i used the *
+\subsection*{The subsection: Of the keynote}
+
+\blindtext[5] parencite{example}. \blindtext[5]
+
+\blindtext[7]
+
+\subsection*{Other subsection}
+
+\blindtext[1] \parencite{example-2}.
+
+\blindtext[1] \textcite{example-1,example-2} \blindtext[2]
+
+\subsection*{More sections?}
+
+\blindtext[8]
+
+\begin{itemize}
+	\item[a.] \blindtext[2]
+	\item[b.] \blindtext[2]
+	\item[c.] \blindtext[2]
+	\item[d.] \blindtext[2]
+\end{itemize}
+
+Altough i used itemize, it sould also support ennumerate environment too, though i havent checked it.
+
+% Adding references that are not printed in the text don't break the document ;)
+\nocite{example-3,example-4}
+
+% if you dont want the bibliography title appearing in the toc, you can use "misubseccion"
+% If you want the bibliography title appearing in the toc, change it to "subbibintoc"
+\printbibliography[heading=misubseccion]
