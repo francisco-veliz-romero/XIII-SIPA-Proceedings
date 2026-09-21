@@ -1,9 +1,33 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-references}[2026/08/30 SIPA References]
+\ProvidesPackage{sipa-references}[2026/09/19 SIPA References]
 
 % ===============================================================================================
 % APA-7 customized references
 % ===============================================================================================
+
+% Forces the name - year title in the references
+\DeclareSortingTemplate{editor-year-title}{%
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \name{editor}
+    \name{author}
+    \name{translator}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+    \field{month}
+    \field{day}
+  }
+  \sort{
+    \field{title}
+  }
+}
 
 \AtBeginDocument{
 	\renewbibmacro*{name:bookauthor}{%
@@ -13,44 +37,46 @@
 	}
 }
 
+\newtoggle{prevprinted}
+
 \newbibmacro{transedvolnumpages}{%
-	\def\prevprinted{0}%
+	\togglefalse{prevprinted}%
 	% Translator
 	\ifnameundef{translator}
 	{}
 	{%
 		\printnames{translator}\addcomma\space Trad.%
-		\def\prevprinted{1}%
+		\toggletrue{prevprinted}%
 	}%
 	% Edition
 	\iffieldundef{edition}
 	{}
 	{%
-		\ifnum\prevprinted=1 \addcomma\space \fi
+		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{edition}%
-		\def\prevprinted{1}%
+		\toggletrue{prevprinted}%
 	}%
 	% Volume
 	\iffieldundef{volume}
 	{}
 	{%
-		\ifnum\prevprinted=1 \addcomma\space \fi
+		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{volume}%
-		\def\prevprinted{1}%
+		\toggletrue{prevprinted}%
 	}%
 	% Number
 	\iffieldundef{number}
 	{}
 	{%
-		\ifnum\prevprinted=1 \addcomma\space \fi
+		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{number}%
-		\def\prevprinted{1}%
+		\toggletrue{prevprinted}%
 	}%
 	% Pages
 	\iffieldundef{pages}
 	{}
 	{%
-		\ifnum\prevprinted=1 \addcomma\space \fi
+		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{pages}%
 	}%
 }
@@ -72,7 +98,7 @@
 		\printnames{editor}%
 		\addspace
 		\mkbibparens{%
-			\ifboolexpr{ test {\ifnumequal{\value{editor}}{1}} }
+			\ifmorenames
 			{Ed.}
 			{Eds.}%
 		}%
@@ -117,28 +143,54 @@
 	\mkbibparens{\usebibmacro{editorstrg@apa}}%
 }
 
-\DeclareFieldFormat{volume}{%
-	\ifentrytype{book}
-		{%
-			Vol.~#1%
-			\iffieldundef{number}
-			{}
-			{,\addspace No.~\emph{\printfield{number}}}%
-			\iffieldundef{pages}
-			{}
-			{,\addspace\printfield{pages}}%
-		}
-		{#1}%
+\DeclareBibliographyDriver{book}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	% Editor
+	\ifnameundef{editor}{%
+		% Print author if no editor
+		\printnames{author}%
+	}{%
+		% Print Editor first
+		\printnames{editor}%
+		\addspace%
+		\mkbibparens{%
+			\ifmorenames
+				{Eds.}
+				{Ed.}%
+		}%
+		% If Author also exist
+		\ifnameundef{author}{}{%
+				\addspace \rotatebox[origin=c]{180}{\&} \addspace%
+				\printnames{author}%
+			}%
+	}%
+	% Year
+	\addspace%
+	\mkbibparens{\printlabeldateextra}%
+	\newunit\newblock
+	%
+	% Title
+	\printfield{title}%
+	\addspace%
+	%
+	% Translator, edition, volume, number, pages
+	\mkbibparens{\usebibmacro{transedvolnumpages}}%
+	\newunit\newblock
+	%
+	% Location : Publisher
+	\printlist{location}%
+	\iflistundef{location}
+		{}
+		{\setunit{\addcolon\space}}%
+	\printlist{publisher}%
+	\newunit\newblock
+	%
+	% URL
+	\printfield{url}%
+	%
+	\usebibmacro{finentry}%
 }
-
-\xpatchbibdriver{book}
-	{\printlist{publisher}}{%
-		\printlist{location}%
-		\setunit{\addcolon\space}%
-		\printlist{publisher}%
-		}
-		{}
-		{}
 
 \xpatchbibdriver{thesis}
 	{\printlist{publisher}}
