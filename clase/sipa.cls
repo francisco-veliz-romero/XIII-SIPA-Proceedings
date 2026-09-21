@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sipa}[2026/09/20 SIPA Cover Class]
+\ProvidesClass{sipa}[2026/09/21 SIPA Cover Class]
 
 \LoadClass[twoside,a4paper,12pt,openany]{book}
 
