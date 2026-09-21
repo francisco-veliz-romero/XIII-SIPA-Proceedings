@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-speakers}[2026/09/19 SIPA Speakers]
+\ProvidesPackage{sipa-speakers}[2026/09/20 SIPA Speakers]
 
 %===============================================================================================
 % Speaker and Semblance blocks
@@ -91,31 +91,31 @@
 % Speaker's bibliography or custom text (For Keynote lectures)
 \newcommand{\confText}{}
 \newcommand{\conftext}[4]{%
-	\gdef\confText{%
-		\begin{justify}
-			\newparshape
-				{#1}{0.17\textwidth}{0.70\textwidth}
-				{#2}{0.17\textwidth}{0.83\textwidth}
-				{#3}{0\textwidth}{1\textwidth}\\%
-			\vspace{-0.2cm}%
-			\noindent
-			#4%
-		\end{justify}%
+\gdef\confText{%
+	\begin{justify}
+	\newparshape
+		{#1}{0.17\textwidth}{0.70\textwidth}
+		{#2}{0.17\textwidth}{0.83\textwidth}
+		{#3}{0\textwidth}{1\textwidth}\\%
+	\vspace{-0.2cm}%
+	\noindent
+	#4%
+	\end{justify}%
 	}%
 }
 
 % Speaker's semblance or custom text (for semblances block)
 \newcommand{\confTextSemblance}{}
 \newcommand{\conftextsemblance}[3]{%
-	\gdef\confTextSemblance{%
-		\begin{justify}
-		\newparshape
-				{#1}{0.17\textwidth}{0.83\textwidth}
-				{#2}{0\textwidth}{1\textwidth}\\%
-			\vspace{-0.2cm}%
-			\noindent
-			#3%
-		\end{justify}%
+\gdef\confTextSemblance{%
+    	\begin{justify}
+	\newparshape
+		{#1}{0.17\textwidth}{0.83\textwidth}
+		{#2}{0\textwidth}{1\textwidth}\\%
+		\vspace{-0.2cm}%
+		\noindent
+		#3%
+	\end{justify}%
 	}%
 }
 
@@ -125,20 +125,27 @@
 
 \newcommand{\conference}{%
 \parshape 0
-\ifhasbandera
+\ifhasflag
 	{\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
 \else
 	{\fontsize{16}{18}\selectfont \subsection*{\confName}}
 \fi
 \vspace{-3.5mm}
+\leftskip=0pt
+\rightskip=0pt
+\raggedright
 {\fontsize{14}{20}\selectfont\noindent \confSchool}\\
-\ifx\confFacultad\empty
-	{\fontsize{14}{15}\selectfont\noindent\itshape \confTitle}\\[-3mm]
+\ifx\confFaculty\empty
+	{\fontsize{14}{15}\selectfont\noindent\itshape \confJob}\\[-3mm]
 \else
 	{\fontsize{14}{15}\selectfont\noindent\itshape \confFaculty}\\
-	{\fontsize{14}{15}\selectfont\noindent\itshape \confTitle}\\[-3mm]
+	{\fontsize{14}{15}\selectfont\noindent\itshape \confJob}\\[-3mm]
 \fi
 \noindent
+\leftskip=0pt
+\rightskip=0pt
+% if the speaker picture appears at the right text margin, add the following to fix it:
+% xshift=\textwidth]
 \begin{tikzpicture}[remember picture, overlay]
 	
 	% Left Speaker Image
@@ -147,7 +154,7 @@
 	};
 
 	% Right School / Faculty / workplace logo
-	\node[anchor=north east] at (\textwidth,0) {%
+	\node[anchor=north east, inner sep=0pt] at (\textwidth,0) {%
 		\includegraphics[width=20mm, height=20mm, keepaspectratio]{\confImageTwo}%
 	};
 \end{tikzpicture}
@@ -163,7 +170,7 @@
 
 \newcommand{\semblance}{%
 \parshape 0
-\ifhasbandera
+\ifhasflag
 	{\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
 \else
 	{\fontsize{16}{18}\selectfont \subsection*{\confName}}
@@ -198,8 +205,6 @@
 	\def\confancho{\textwidth}
 	\def\confalto{10mm}
 	
-	\path[use as bounding box] (0,0) rectangle (\textwidth,-60mm);
-	
 	\node[anchor=north west, inner sep=0pt,
 	minimum width=\confancho, minimum height=\confalto] (marco) at (0,0) {};
 	
@@ -211,30 +216,30 @@
 		font=\sffamily\bfseries\fontsize{20}{28}\selectfont]
 	(name) at (\confancho/2,-1) {\confName};
 
-	\ifx\bandera\empty\else
+	\ifhasflag
 		% Left flag
-		\node[anchor=west,inner sep=0pt] at ([xshift=5mm, yshift=1mm]name.west) {\confFlag};
+		\node[anchor=west,inner sep=0pt] at ([xshift=5mm, yshift=1mm]name.west) {\raisebox{-1.5mm}{\confFlag}};
 
 		% Right flag
-		\node[anchor=east,inner sep=0pt] at ([xshift=-5mm, yshift=1mm]name.east) {\confFlag};
+		\node[anchor=east,inner sep=0pt] at ([xshift=-5mm, yshift=1mm]name.east) {\raisebox{-1.5mm}{\confFlag}};
 	\fi
 
 	% Divisor rectangles
 	\node[anchor=north, minimum width=\textwidth,
 	minimum height=5pt,fill=darkgreen, inner sep = 0pt]
-	at ([xshift=0,yshift=10mm]name.center) {};
+	at ([xshift=0,yshift=9mm]name.center) {};
 	
 	\node[anchor=north, minimum width=\textwidth,
-	minimum height=5pt,fill=darkgreen, inner sep = 0pt] (regla)
+	minimum height=5pt,fill=darkgreen, inner sep = 0pt]
 	at ([xshift=0,yshift=-7mm]name.center) {};
 	
 	% Left Speaker's image
-	\node[anchor=north west,inner sep=0pt] at ([xshift=2.6mm,yshift=-4mm]name.south west){%
-		\includegraphics[width=28mm, keepaspectratio]{\confImageUno}%
+	\node[anchor=north west,inner sep=0pt] (image) at ([xshift=2.6mm,yshift=-7mm]name.south west){%
+		\includegraphics[width=28mm, keepaspectratio]{\confImageOne}%
 	};
 
 	% Right School / Faculty / workplace image
-	\node[anchor=north east,inner sep=0pt] at ([xshift=-1.5mm,yshift=-5mm]name.south east){%
+	\node[anchor=north east,inner sep=0pt] at ([xshift=-1.5mm,yshift=-7mm]name.south east){%
 		\includegraphics[width=0.1\textwidth, height=0.1\textwidth, keepaspectratio]{\confImageTwo}%
 	};
 	
@@ -242,9 +247,12 @@
 	% Body
 	%============================
 	
-	\confText
+	\node[anchor=north west] at ([xshift=-2.6mm,yshift=-1.5mm]image.north west){%
+		\begin{minipage}{\textwidth}
+			\confText
+		\end{minipage}
+	};
 
-	\par\vspace{1mm}%
 \end{tikzpicture}%
 \par\vspace{1mm}%
 }
@@ -259,9 +267,7 @@
 	
 	\def\confancho{\textwidth}
 	\def\confalto{30mm}
-	
-	\path[use as bounding box] (0,0) rectangle (\textwidth,-60mm);
-	
+		
 	\node[anchor=north west, inner sep=0pt,
 	minimum width=\confancho, minimum height=\confalto] (marco) at (0,0) {};
 	
@@ -273,17 +279,18 @@
 		font=\sffamily\bfseries\fontsize{20}{28}\selectfont]
 	(name) at (\confancho/2,-1) {\confName};
 
-	\ifx\bandera\empty\else
+	\ifhasflag
 		% Left flag
-		\node[anchor=west,inner sep=0pt] at ([xshift=5mm, yshift=1mm]name.west) {\confFlag};
+		\node[anchor=west,inner sep=0pt] at ([xshift=5mm, yshift=1mm]name.west) {\raisebox{-1.5mm}{\confFlag}};
 
 		% Right flag
-		\node[anchor=east,inner sep=0pt] at ([xshift=-5mm, yshift=1mm]name.east) {\confFlag};
+		\node[anchor=east,inner sep=0pt] at ([xshift=-5mm, yshift=1mm]name.east) {\raisebox{-1.5mm}{\confFlag}};
 	\fi
-	
+
+	% Divisor rectangles
 	\node[anchor=north, minimum width=\textwidth,
 	minimum height=5pt,fill=darkgreen, inner sep = 0pt]
-	at ([xshift=0,yshift=10mm]name.center) {};
+	at ([xshift=0,yshift=9mm]name.center) {};
 	
 	\node[anchor=north, minimum width=\textwidth,
 	minimum height=5pt,fill=darkgreen, inner sep = 0pt] (rule)
@@ -295,14 +302,16 @@
 
 	\node[anchor=north west,inner sep=0pt,text width=0.8\textwidth, 
 	align=left, font=\sffamily] (school) at ([xshift=35mm,yshift=-2.5mm]rule.south west) {%
-		{\fontsize{18}{20}\selectfont \confSchool \par}
+		{\fontsize{16}{20}\selectfont \confSchool \par}
 	};
 	
 	\def\conf@prevnode{school}
 	
-	\conf@addnode{faculty}{15}{\confFaculty}
-	\conf@addnode{job}{15}{\confJob}
-	\conf@addnode{title}{15}{\confTitle}
+	% The faculty / job and title are the names for the node (it allows the nodes to be placed without leaving blanc lines
+	% The number indicates the fontsize and spacing
+	\conf@addnode{faculty}{14}{\confFaculty}
+	\conf@addnode{job}{14}{\confJob}
+	\conf@addnode{title}{14}{\confTitle}
 	
 	% Left speaker's image
 	\node[anchor=center,inner sep=0pt,] at (17mm,-48.5mm) {%
@@ -315,5 +324,5 @@
 	};
 	
 \end{tikzpicture}%
-\par\vspace{5mm}%
+\par\vspace{1mm}%
 }
