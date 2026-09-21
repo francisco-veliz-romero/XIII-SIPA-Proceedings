@@ -1,0 +1,133 @@
+\newpage
+%===============================================================================================
+% Event's programs, information or other content
+%===============================================================================================
+
+% It's important to include "\hoffset=0pt"
+% before including PDF's or other additional files, as the "\setlength{\hoffset}{-0.5in}"
+% in the .cls moves all the included files to the left
+{\hoffset=0pt
+\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii programa.pdf}
+}
+
+{\hoffset=0pt
+\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii curso 1.pdf}
+}
+
+{\hoffset=0pt
+\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii infografias.pdf}
+}
+
+{\hoffset=0pt
+	\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii conversatorio.pdf}
+}
+
+%======================
+% Geometry
+%======================
+
+% Sets new geometry
+\bookbodygeometry
+
+% Set roman page numbering, custom page format and page number
+\pagenumbering{roman}
+\pagestyle{preindex}
+% Sets the new page counter, as the included content above wont be classified as pages
+\setcounter{page}{9}
+
+%===============================================================================================
+% Event's ntroduction
+%===============================================================================================
+
+\subseccion{Introduction}
+
+\blindtext
+
+\raggedleft
+Lic. Francisco Gerardo Véliz Romero\\[1mm]
+\textit{Estudiante de Maestría en ciencias en Producción Agropecuaria}\\[1.5mm]
+\small{Adidtional info you could add?}
+
+\raggedright
+
+%===============================================================================================
+% Event's organizational chart
+%===============================================================================================
+
+\newpage
+\subseccion{Event's directory}
+% vspace to center content in the middle of the page
+\vspace*{\fill}
+\begin{center}
+	\fontsize{13}{16}\selectfont
+	
+	\textbf{Rector}
+	
+	X\\[1.8cm]
+	
+	\textbf{Director Regional}
+	
+	X\\[1.8cm]
+	
+	\textbf{Subdirector de Postgrado}
+	
+	X\\[1.8cm]
+	
+	\textbf{Jefe del Departamento de Postgrado}
+	
+	x\\[1.8cm]
+	
+	\textbf{Jefe del Programa de Maestría}
+	
+	x\\[1.8cm]
+	
+	\textbf{Jefe del Programa de Doctorado}
+	
+	X\\[1.8cm]
+	
+\end{center}
+% vspace to center content in the middle of the page
+\vspace*{\fill}
+\newpage
+
+%===============================================================================================
+% Organizing committees
+%===============================================================================================
+
+\begin{multicols}{2}
+[\subseccion{Comités}]
+\centering
+\subtitulos{Presidente organizador}
+X
+
+\subtitulos{Comité organizador}
+X
+
+\subtitulos{Comité técnico}
+X
+
+\subtitulos{Comité organizador de memorias}
+X
+
+X
+
+X
+
+\subtitulos{Comié evaluador de carteles}
+X
+
+\subtitulos{Comité de registro}
+X
+
+\subtitulos{Moderadores}
+X
+
+\subtitulos{Comité de apoyo logístico}
+X
+
+\subtitulos{Colaboradores}
+Alumnos de Maestría
+
+Alumnos de Doctorado
+
+\end{multicols}
