@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-documents}[2026/09/a9 SIPA Proceedings' inner documents format]
+\ProvidesPackage{sipa-documents}[2026/09/20 SIPA Proceedings' inner documents format]
 
 %===============================================================================================
 % Document's format
@@ -15,15 +15,17 @@
 
 \newcommand{\processsurname}[2]{%
 	\begingroup
-	\StrBefore{#1}{-}[\sa]%
-	\StrBehind{#1}{-}[\sb]%
-	\IfStrEq{\sb}{}{%
-		\StrLeft{#1}{1}[\si]%
-		\xdef#2{\si.}%
-	}{%
+	\IfSubStr{#1}{-}{%
+		% Hyphenated surname: name-name
+		\StrBefore{#1}{-}[\sa]%
+		\StrBehind{#1}{-}[\sb]%
 		\StrLeft{\sa}{1}[\si]%
 		\StrLeft{\sb}{1}[\sj]%
 		\xdef#2{\si.-\sj.}%
+	}{%
+		% Non-hyphenated surname: name
+		\StrLeft{#1}{1}[\si]%
+		\xdef#2{\si.}%
 	}%
 	\endgroup
 }
@@ -31,8 +33,8 @@
 \newcommand{\abbrevnombs}[4]{%
 	\begingroup
 	\def\given{#1}%
-
-  % First surname
+	
+	  % First surname
 	\processsurname{#2}{\outA}%
 	
 	\def\temp{\given, \outA}%
