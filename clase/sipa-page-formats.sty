@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-page-formats}[2026/09/19 SIPA Page formats]
+\ProvidesPackage{sipa-page-formats}[2026/09/21 SIPA Page formats]
 
 % ===============================================================================================
 % Page formats
@@ -22,7 +22,7 @@
 		\makebox[210mm][c]{\footernopages}%
 	}
 
-	% Removes header and footer rules
+	% Removes header and footer rules globally
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
@@ -44,13 +44,13 @@
 		\makebox[210mm][c]{\footerpages}%
 	}
 	
-	% Removes header and footer rules
+	% Removes header and footer rules globally
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
 
 %============================
-%		Texto normal
+% Post TOC content
 %============================
 
 \fancypagestyle{posindex}{%
@@ -70,6 +70,9 @@
 			\else\ifx\@pagenblanc\@no
 			    \@abbrevnombs
 			\fi\fi
+			\par
+			\vspace{-2.2mm}
+			\rule{0.95\textwidth}{2pt}%
 			}
 		\end{minipage}%
 	}
@@ -82,7 +85,7 @@
 		\makebox[210mm][c]{\sipafooterleft}%
 	}
 	
-	% Removes header and footer rules
+	% Removes header and footer rules globally
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
