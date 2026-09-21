@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-references}[2026/09/19 SIPA References]
+\ProvidesPackage{sipa-references}[2026/09/20 SIPA References]
 
 % ===============================================================================================
 % APA-7 customized references
@@ -29,6 +29,7 @@
   }
 }
 
+% Acknowledeges bookauthor as an entry for references
 \AtBeginDocument{
 	\renewbibmacro*{name:bookauthor}{%
 		\ifnameundef{bookauthor}
@@ -37,50 +38,42 @@
 	}
 }
 
+% Allows cycling through the options without leaving uggly empty spaces
 \newtoggle{prevprinted}
 
 \newbibmacro{transedvolnumpages}{%
 	\togglefalse{prevprinted}%
 	% Translator
-	\ifnameundef{translator}
-	{}
-	{%
+	\ifnameundef{translator}{}{%
 		\printnames{translator}\addcomma\space Trad.%
 		\toggletrue{prevprinted}%
 	}%
 	% Edition
-	\iffieldundef{edition}
-	{}
-	{%
+	\iffieldundef{edition}{}{%
 		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{edition}%
 		\toggletrue{prevprinted}%
 	}%
 	% Volume
-	\iffieldundef{volume}
-	{}
-	{%
+	\iffieldundef{volume}{}{%
 		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{volume}%
 		\toggletrue{prevprinted}%
 	}%
 	% Number
-	\iffieldundef{number}
-	{}
-	{%
+	\iffieldundef{number}{}{%
 		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{number}%
 		\toggletrue{prevprinted}%
 	}%
 	% Pages
-	\iffieldundef{pages}
-	{}
-	{%
+	\iffieldundef{pages}{}{%
 		\iftoggle{prevprinted}{\addcomma\space}{}%
 		\printfield{pages}%
 	}%
 }
 
+% Rework of inbook entry
 \DeclareBibliographyDriver{inbook}{%
 	\usebibmacro{bibindex}%
 	\usebibmacro{begentry}%
@@ -91,9 +84,7 @@
 	\printfield{title}%
 	.\space%
 	% Sole editor or author entry
-	\ifnameundef{editor}
-	{En: }
-	{%
+	\ifnameundef{editor}{En: }{%
 		\printtext{En:\space}%
 		\printnames{editor}%
 		\addspace
@@ -112,27 +103,26 @@
 		{\addspace \rotatebox[origin=c]{180}{\&}\addspace}
 		{}
 	% Bookauthor entry
-	\ifnameundef{bookauthor}
-		{}
-		{%
+	\ifnameundef{bookauthor}{}{%
 			\printnames{bookauthor}%
 			\newunit\newblock
-		}%
+	}%
 	\printfield{booktitle}%
-	\iffieldundef{booksubtitle}
-		{}
-		{\textit{%
+	\iffieldundef{booksubtitle}{}{%
+		\textit{%
 			\setunit{\subtitlepunct}%
-			\printfield{booksubtitle}}%
+			\printfield{booksubtitle}
 		}%
+	}%
 	\addspace%
-	% Translator, edition, and number
+	% Translator, edition, volume, number and pages. Cause' it looks cool as hell (and it's informative)
 	\mkbibparens{\usebibmacro{transedvolnumpages}}%
 	\newunit\newblock
+	% Location / address & publisher
 	\printlist{location}%
-		\iflistundef{location}
-		{}
-		{\setunit{\addcolon\space}}%
+		\iflistundef{location}{}{%
+			\setunit{\addcolon\space}
+		}%
 	\printlist{publisher}%
 	\newunit\newblock
 	\printfield{url}%
@@ -159,39 +149,36 @@
 				{Eds.}
 				{Ed.}%
 		}%
-		% If Author also exist
+		% If Author also exists
 		\ifnameundef{author}{}{%
-				\addspace \rotatebox[origin=c]{180}{\&} \addspace%
-				\printnames{author}%
-			}%
+			\addspace \rotatebox[origin=c]{180}{\&} \addspace%
+			\printnames{author}%
+		}%
 	}%
 	% Year
 	\addspace%
 	\mkbibparens{\printlabeldateextra}%
 	\newunit\newblock
-	%
 	% Title
 	\printfield{title}%
 	\addspace%
-	%
-	% Translator, edition, volume, number, pages
+	% Translator, edition, volume, number and pages. Cause', as I said before, looks cool as hell (and it's informative)
 	\mkbibparens{\usebibmacro{transedvolnumpages}}%
 	\newunit\newblock
-	%
-	% Location : Publisher
+	% Location / address & publisher
 	\printlist{location}%
 	\iflistundef{location}
 		{}
 		{\setunit{\addcolon\space}}%
 	\printlist{publisher}%
 	\newunit\newblock
-	%
 	% URL
 	\printfield{url}%
 	%
 	\usebibmacro{finentry}%
 }
 
+% Location and publisher for Theses
 \xpatchbibdriver{thesis}
 	{\printlist{publisher}}
 	{\printlist{publisher}:\space%
@@ -199,6 +186,7 @@
 	{}
 	{}
 
+% Add Day, Month and Year (though it seems to be broken)
 \DeclareFieldFormat{date}{%
 	\iffieldundef{year}{}{%
 		\thefield{year}%
@@ -211,6 +199,7 @@
 	\printfield{date}%
 }
 
+% Fores p. and pp. for pages, Vol. for volume, and No. for number
 \DeclareFieldFormat{pages}{\mkpageprefix[bookpagination]{#1}}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{volume}{Vol.\addnbspace#1}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{number}{No.\addnbspace\emph{#1}}
