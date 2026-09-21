@@ -1,16 +1,16 @@
 \documentclass{clase/sipa}
 
 %===========================================================
-%  External packages
+% External packages
 %===========================================================
 \usepackage[version=4]{mhchem}
 
 %===========================================================
-%  Congress Number, Name and Date; and proceedings' authors
+% Congress Number, Name and Date; and proceedings' authors
 %===========================================================
 
 \numero{13}
-\nombre{Semana Internacional en Producción Agropecuaria}
+\titulo{Semana Internacional en Producción Agropecuaria}
 \fecha{del 7 al 11 de septiembre de 2026}
 
 % Name between {} to avoid problems with the code, and orcid ID
@@ -21,17 +21,17 @@
 }
 
 %===========================================================
-%  Pagestyle and other stuff
+% Pagestyle and other stuff
 %===========================================================
 
 % Forces a pagestyle in all TOC
 \tocloftpagestyle{preindex}
-\raggedbottom
+%\raggedbottom
 
 \begin{document}
 
 %===============================================================================================
-%  Pre table of contents section
+% Pre table of contents section
 %===============================================================================================
 
 % Additional content in the proceedings, including information about the committees
@@ -42,7 +42,7 @@
 \input{content/speakers}
 
 %===============================================================================================
-%  Table of contents
+% Table of contents
 %===============================================================================================
 
 % For some reason, the TOC didnt allow me to change the title's format
@@ -67,11 +67,11 @@
 \endgroup
 
 %===============================================================================================
-%  Post table of contents section
+% Post table of contents section
 %===============================================================================================
 
 %=================================================
-%  Keynote lectures section
+% Keynote lectures section
 %=================================================
 
 \newpage
@@ -82,23 +82,25 @@
 % "no" allows you to place the Author's name in the header
 % "yes" leaves a blanc spaceto write the section custom title
 \pagenblanc{no}
+% Forces justified text without extreme white spaces, though some ugly spacing still appears
+\sloppy
 
-\part{Conferencias magistrales}
+\part{Keynote lectures}
 \newpage
-\input{contenido/conferencias_magistrales_d7}
+\input{contenido/keynotes}
 
 %=================================================
-%  Abstracts section
+% Abstracts section
 %=================================================
 
 % Abstracts sections
 \newpage
 \pagenblanc{yes}
-% This function clears the previous stablished header's name
+% This function clears the previously stablished header's name
 \nombsec{}
-\part{Resúmenes de carteles}
+\part{Posters' Abstracts or other content}
 
-\input{contenido/resumenes}
+\input{contenido/abstracts}
 
 % Although unused, this function changed the indentation of the TOC content
 %\addtocontents{toc}{%
@@ -106,34 +108,34 @@
 %}
 
 %=================================================
-%  Courses/Seminars section
+% Courses/Seminars section
 %=================================================
 \newpage
 \pagenblanc{yes}
 \nombsec{}
-\part{Cursos teórico-prácticos}
+\part{Courses/seminars or other content}
 \newpage
-\input{contenido/cursos}
+\input{contenido/courses}
 
 %=================================================
-%  Discussion Forum section
+% Discussion Forum section
 %=================================================
 
 \newpage
 \pagenblanc{yes}
 \nombsec{}
-\part{Conversatorio}
+\part{Discussion}
 \newpage
-\input{contenido/conversatorio}
+\input{contenido/discussion}
 
 %=================================================
-%  Discussion Forum section
+% Gallery
 %=================================================
 \newpage
 \pagenblanc{yes}
 \nombsec{}
-\part{Galería fotográfica}
+\part{Photographic gallery}
 \newpage
-\input{contenido/galeria}
+\input{contenido/galery}
 
 \end{document}
