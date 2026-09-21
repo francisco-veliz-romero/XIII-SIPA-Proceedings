@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sipa}[2026/09/19 SIPA Cover Class]
+\ProvidesClass{sipa}[2026/09/20 SIPA Cover Class]
 
 \LoadClass[twoside,a4paper,12pt,openany]{book}
 
@@ -58,7 +58,7 @@
 
 \RequirePackage{hyperref}
 
-\RequirePackage[style=apa,dashed=true,isbn=true,sorting=nty,refsection=section]{biblatex}
+\RequirePackage[style=apa, dashed=true, isbn=true, sorting=editor-year-title, refsection=section]{biblatex}
 \addbibresource{referencias_sipa_xiii.bib}
 
 \hypersetup{
