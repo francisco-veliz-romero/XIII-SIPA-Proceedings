@@ -1,0 +1,11 @@
+\mychapter{This is a custom chapter}
+
+% Remember to add \newpage  after every \part and \mychapter, or TOC will send you to the previous page
+\newpage
+\input{contenido/others/primero}
+
+\newpage
+\mychapter{This is another custom chapter}
+
+\newpage
+\input{contenido/others/segundo}
