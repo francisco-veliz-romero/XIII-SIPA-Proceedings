@@ -190,7 +190,7 @@
 	\end{tikzpicture}%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% No me acuerdo
+% Specific code to omit the bibliography title in TOC
 \defbibheading{misubseccion}[\bibname]{%
 	\subsection*{#1}%
 }
