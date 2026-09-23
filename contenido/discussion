@@ -103,13 +103,13 @@ Un conversatorio es un espacio de diálogo e intercambio de experiencias en el q
 % There seems to be a bug only in the first block under a section. this can be solved adding additional lines and rising the space between the text and the image
 % Be careful, if you dont add the \\ & \newline, the text will be raised, but the initial paragraph will stay in it's original place
 \bandera{}
-\confname{Ing. Romeo Velasco Santiago}
+\confname{Lic. Francisco Gerardo Véliz Romero}
 \confsch{Estudiante de la Maestría Profesional en Tecnología de Granos y Semillas}
-\confimgone{imagenes/semblanza/sipa xiii semblanza 1-1}
+\confimgone{imagenes/semblanza/sipa xiii semblanza 1}
 \semblancetext{8}{1}{%
 	\vspace{-14mm}%
 	\raisebox{-6.5mm}{\\}\newline
-	El Ing. Romeo Velasco Santiago, originario del estado de Chiapas, es egresado de la carrera de Ingeniero Agrónomo en Producción, en la Universidad Autónoma Agraria Antonio Narro. Su interés en la producción y mejoramiento de cultivos básicos lo llevó a cursar actualmente la Maestría Profesional en Tecnología de Granos y Semillas en la misma institución. Como parte de su especialización, realizó una estancia internacional en la \textbf{Universidad Federal de Pelotas, en Cap\~ao do Le\~ao, Brasil, Brasil}. Su trabajo actual se centra en la tecnología de semillas y el mejoramiento genético  decultivos resilientes, como girasol y sorgo, orientando sus esfuerzos hacia la seguridad alimentaria y la sostenibilidad agrícola, y cuenta con al menos un artículo publicado sobre el comportamiento agronómico de poblaciones de girasol con alto contenido oleico en el sureste de Coahuila, México.%
+	\blindtext%
 }
 
 \semblance
@@ -117,11 +117,11 @@ Un conversatorio es un espacio de diálogo e intercambio de experiencias en el q
 % Moreover, if the semblance block its in the end of the page, you need to add a \newpage to avoid conflicts with the first block
 \newpage
 \bandera{CO}
-\confname{MVZ. Katherin Castañeda Moreno}
+\confname{Lic. Francisco Gerardo Véliz Romero}
 \confsch{Estudiante de la Maestría en Ciencias en Producción Agropecuaria}
-\confimgone{imagenes/semblanza/sipa xiii semblanza 2}
+\confimgone{imagenes/semblanza/sipa xiii semblanza 1}
 \semblancetext{8}{1}{%
-	Katherin Castañeda Moreno es Técnica en Contabilización de Operaciones comerciales y Financieras, Técnica Auxiliar Clínica Veterinaria, Tecnóloga en Producción Ganadera y Médica Veterinaria y Zootecnista, egresada de la \textbf{Universidad Tecnológica de Pereira, Colombia}. Participó en grupos de investigación sobre biodiversidad y conservación, y fue beneficiaria de una peca parcial del Programa de Intercambio Académico Latinoamericano (PILA) en 2023. Ha participado en simponsios y congresos internacionales. Actualmente cursa la Maestría en Ciencias en Producción Agropecuaria en la Universidad Autónoma Agraria Antonio Narro. Sus intereses se enfocan en nutrición y producción caprina, fortaleciendo su formación científica mediante la investigación y el intercambio académico entre Colombia y México.%
+	\blidntext%
 }
 
 \semblance
