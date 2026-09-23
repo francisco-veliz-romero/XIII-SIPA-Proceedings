@@ -1,0 +1,127 @@
+% Command to set a chapter's name different in TOC and document
+% The first {} is for the chatper's name in TOC
+% The second {} is for the chapter's name in the document
+\mychaptertwo{1er Conversatorio}{1er Conversatorio\\[1cm] Experiencias que trascienden fronteras}
+
+% Command to add a section name, without numbering and dots line in chapter style
+% The cirst line edits the indentation of the TOC text
+% The second command moves the line to the left, blacknes the text and shortens the distance from the text under it
+% The last command restores the indentation of the TOC text
+\cftsetindents{section}{0.5cm}{2cm}
+\phantomsection
+\cftaddtitleline{toc}{section*}{%
+	\hspace{0.49cm}\textbf{Experiencias que trascienden fronteras: Internacionalización en el posgrado}\vspace{-2.5mm}%
+}{}
+\cftsetindents{section}{1.5cm}{2cm}
+
+\newpage
+\begin{wrap}
+	\chapter{introduccion}
+	% If you're using TexStudio, this line helps you to identify the keynote/document/course in the editor's TOC
+\end{wrap}
+
+% Adds a section name without printing it in TOC
+\section*{\MakeUppercase{Experiencias que trascienden fronteras: Internacionalización en el posgrado}}
+
+\vspace{-0.2cm}
+% Name of the section in header
+\nombsec{Experiencias que  trascienden: Internacionalización en el posgrado}
+% This function adds the name in the TOC
+\ijshortauthor{Ma. Guadalupe Calderón Leyva}
+\author{%
+	Ma. Guadalupe Calderón Leyva
+}
+\ijaffiliation{%
+	Jefa del postgrado en Ciencias en Producción Agropecuaria
+}
+\corresponding{}{}
+% As no title is placed in this \maketitle, the space is reduced to avoid blanc lines in TOC
+\title{\vspace{-5mm}}
+
+\maketitle
+
+Un conversatorio es un espacio de diálogo e intercambio de experiencias en el que los participantes comparten experiencias, conocimientos, opiniones y reflexiones sobre un tema en común, generalmente a partir de preguntas orientadoras y con interacción con el público. En ese sentido, este conversatorio tiene como objetivo generar un espacio de diálogo e intercambio de experiencias sobre estancias académicas internacionales, que permita los estudiantes, tanto internos como externos, conocer de primera mano las oportunidades, aprendizajes y retos de la movilidad internacional, promoviendo una visión global y motivándolos a explorar nuevas oportunidades de formación y colaboración académica.
+
+\begin{wrap}
+	\chapter{Bienvenida}
+	% If you're using TexStudio, this line helps you to identify the keynote/document/course in the editor's TOC
+\end{wrap}
+\cero
+% Name of the section in header.
+% Given that a fixed name was established for this part of the document, the function can be omited to avoid more changes
+%\nombsec{}
+% This function adds the name in the TOC
+\ijshortauthor{Dr. Antonio Flores Naveda}
+\author{%
+	Dr. Antonio Flores Naveda
+}
+\ijaffiliation{%
+	Subdirector de Postgrado -- Universidad Autónoma Agraria Antonio Narro
+}
+\corresponding{}{}
+\title{Bienvenida}
+
+\maketitle
+
+\blindtext[3]
+
+\begin{wrap}
+	\chapter{Ponencia}
+	% If you're using TexStudio, this line helps you to identify the keynote/document/course in the editor's TOC
+\end{wrap}
+\cero
+% Name of the section in header.
+% Given that a fixed name was established for this part of the document, the function can be omited to avoid more changes
+%\nombsec{}
+% This function adds the name in the TOC
+\ijshortauthor{M. C. Alexis Gabriel Pivaral Chávez}
+\author{%
+	M. C. Alexis Gabriel Pivaral Chávez
+}
+\ijaffiliation{%
+	Estudiante de Doctorado en Ciencias en Producción Agropecuaria
+}
+\corresponding{}{}
+\title{Conoce el Posgrado de la UAAAN: Formación, investigación y oportunidades profesionales}
+
+\maketitle
+
+\blindtext[5]
+
+\begin{wrap}
+	\chapter{Semblanza}
+	% If you're using TexStudio, this line helps you to identify the keynote/document/course in the editor's TOC
+\end{wrap}
+
+% Adds a section name without printing it in TOC
+\section*{SEMBLANZAS DEL 1ER CONVERSATORIO}
+% Adds the section name in toc without printing the section number
+\addcontentsline{toc}{section}{\hspace{-0.1cm}SEMBLANZAS DE LOS PARTICIPANTES}
+
+% Semblance of the discussion participants
+% The main difference between the semblance and the conference blocks, it's that the semblance block only allows the display of the person's own image
+% There seems to be a bug only in the first block under a section. this can be solved adding additional lines and rising the space between the text and the image
+% Be careful, if you dont add the \\ & \newline, the text will be raised, but the initial paragraph will stay in it's original place
+\bandera{}
+\confname{Ing. Romeo Velasco Santiago}
+\confsch{Estudiante de la Maestría Profesional en Tecnología de Granos y Semillas}
+\confimgone{imagenes/semblanza/sipa xiii semblanza 1-1}
+\semblancetext{8}{1}{%
+	\vspace{-14mm}%
+	\raisebox{-6.5mm}{\\}\newline
+	El Ing. Romeo Velasco Santiago, originario del estado de Chiapas, es egresado de la carrera de Ingeniero Agrónomo en Producción, en la Universidad Autónoma Agraria Antonio Narro. Su interés en la producción y mejoramiento de cultivos básicos lo llevó a cursar actualmente la Maestría Profesional en Tecnología de Granos y Semillas en la misma institución. Como parte de su especialización, realizó una estancia internacional en la \textbf{Universidad Federal de Pelotas, en Cap\~ao do Le\~ao, Brasil, Brasil}. Su trabajo actual se centra en la tecnología de semillas y el mejoramiento genético  decultivos resilientes, como girasol y sorgo, orientando sus esfuerzos hacia la seguridad alimentaria y la sostenibilidad agrícola, y cuenta con al menos un artículo publicado sobre el comportamiento agronómico de poblaciones de girasol con alto contenido oleico en el sureste de Coahuila, México.%
+}
+
+\semblance
+
+% Moreover, if the semblance block its in the end of the page, you need to add a \newpage to avoid conflicts with the first block
+\newpage
+\bandera{CO}
+\confname{MVZ. Katherin Castañeda Moreno}
+\confsch{Estudiante de la Maestría en Ciencias en Producción Agropecuaria}
+\confimgone{imagenes/semblanza/sipa xiii semblanza 2}
+\semblancetext{8}{1}{%
+	Katherin Castañeda Moreno es Técnica en Contabilización de Operaciones comerciales y Financieras, Técnica Auxiliar Clínica Veterinaria, Tecnóloga en Producción Ganadera y Médica Veterinaria y Zootecnista, egresada de la \textbf{Universidad Tecnológica de Pereira, Colombia}. Participó en grupos de investigación sobre biodiversidad y conservación, y fue beneficiaria de una peca parcial del Programa de Intercambio Académico Latinoamericano (PILA) en 2023. Ha participado en simponsios y congresos internacionales. Actualmente cursa la Maestría en Ciencias en Producción Agropecuaria en la Universidad Autónoma Agraria Antonio Narro. Sus intereses se enfocan en nutrición y producción caprina, fortaleciendo su formación científica mediante la investigación y el intercambio académico entre Colombia y México.%
+}
+
+\semblance
