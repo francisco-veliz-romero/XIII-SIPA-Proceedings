@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sipa}[2026/09/21 SIPA Cover Class]
+\ProvidesClass{sipa}[2026/09/24 SIPA Cover Class]
 
 \LoadClass[twoside,a4paper,12pt,openany]{book}
 
@@ -152,18 +152,24 @@
 
 % Functions to add images and text side by side
 % Image to the right side and text on the left side
-\newcommand{\rightimage}[5]{%
+\newcommand{\rightimage}[6]{%
 	\begin{tikzpicture}
 	\node[anchor=west, inner sep=0pt] at (0,0) {%
-		\begin{minipage}{0.95\textwidth}
+		\begin{minipage}{1\textwidth}
+			\noindent
 			\centering
+			\hspace{-1.5cm}
 			\begin{minipage}[c]{#1 \textwidth}
-				\centering
-				\includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
+				\noindent
+				\begin{center}
+					\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
+				\end{center}
 			\end{minipage}%
-			\begin{minipage}[c]{#4 \textwidth}
-				\centering
-				#5
+			\hspace{0.05cm}%
+			\begin{minipage}[c]{#5 \textwidth}
+				\begin{center}
+				#6
+				\end{center}
 			\end{minipage}%
 		\end{minipage}
 	};
@@ -171,20 +177,70 @@
 }
 
 % Image to the left  side and text on the right side
-\newcommand{\leftimage}[5]{%
+\newcommand{\leftimage}[6]{%
 	\begin{tikzpicture}
 	\node[anchor=west, inner sep=0pt] at (0,0) {%
-		\begin{minipage}[c]{0.95\textwidth}
+		\begin{minipage}[c]{1\textwidth}
+			\noindent
 			\centering
-			\begin{minipage}[c]{#4 \textwidth}
-				\centering
-				#5
-			\end{minipage}%
-			\begin{minipage}[c]{#1 \textwidth}
+			\hspace{-1.5cm}
+			\begin{minipage}[c]{#5 \textwidth}
 				\begin{center}
-					\includegraphics[height = #3 cm, keepaspectratio]{#2}%width=\linewidth, 
+				#6
 				\end{center}
 			\end{minipage}%
+			\hspace{0.05cm}%
+			\begin{minipage}[c]{#1 \textwidth}
+				\noindent
+				\begin{center}
+					\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
+				\end{center}
+			\end{minipage}%
+		\end{minipage}
+	};
+	\end{tikzpicture}%
+}
+
+% Two images
+\newcommand{\images}[8]{%
+	\begin{tikzpicture}
+	\node[anchor=west, inner sep=0pt] at (0,0) {%
+		\begin{minipage}[c]{1\textwidth}
+			\noindent
+			\centering
+			\hspace{-1.5cm}
+			\begin{minipage}[c]{#1 \textwidth}
+				\noindent
+				\begin{center}
+					\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
+				\end{center}
+			\end{minipage}%
+			\hfil%
+			\begin{minipage}[c]{#5 \textwidth}
+				\noindent
+				\begin{center}
+					\includegraphics[height = #7 cm, width=#8 \linewidth]{#6}
+				\end{center}
+			\end{minipage}%
+		\end{minipage}
+	};
+	\end{tikzpicture}%
+}
+
+% Big image
+\newcommand{\bigimage}[3]{%
+	\begin{tikzpicture}
+	\node[anchor=west, inner sep=0pt] at (0,0) {%
+		\begin{minipage}[c]{1\textwidth}
+			\noindent
+			\centering
+			\hspace{-1.5cm}
+			\begin{minipage}[c]{1\textwidth}
+				\noindent
+				\begin{center}
+					\includegraphics[height = #2 cm, width=#3 \linewidth]{#1}
+				\end{center}
+			\end{minipage}
 		\end{minipage}
 	};
 	\end{tikzpicture}%
