@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-speakers}[2026/09/20 SIPA Speakers]
+\ProvidesPackage{sipa-speakers}[2026/09/24 SIPA Speakers]
 
 %===============================================================================================
 % Speaker and Semblance blocks
@@ -105,9 +105,9 @@
 }
 
 % Speaker's semblance or custom text (for semblances block)
-\newcommand{\confTextSemblance}{}
-\newcommand{\conftextsemblance}[3]{%
-\gdef\confTextSemblance{%
+\newcommand{\semblanceText}{}
+\newcommand{\semblancetext}[3]{%
+\gdef\semblanceText{%
     	\begin{justify}
 	\newparshape
 		{#1}{0.17\textwidth}{0.83\textwidth}
@@ -170,22 +170,26 @@
 
 \newcommand{\semblance}{%
 \parshape 0
+\par
 \ifhasflag
 	{\fontsize{16}{18}\selectfont \subsection*{\confName \confFlagTwo}}
 \else
 	{\fontsize{16}{18}\selectfont \subsection*{\confName}}
 \fi
 \vspace{-3.5mm}
-{\fontsize{14}{15}\selectfont\noindent \confSchool}\\
+{\fontsize{14}{15}\selectfont\noindent \confSchool\par}
 \noindent
+\leftskip=0pt
+\rightskip=0pt
+\vspace{-3.5mm}
 \begin{tikzpicture}[remember picture, overlay]
 	% Semblance's person image
-	\node[anchor=north west] at (0,0) {%
+	\node[anchor=north west] at (-1mm,3mm) {%
 		\includegraphics[width=0.15\textwidth]{\confImageOne}%
 	};
 \end{tikzpicture}
 
-\confTextSemblance
+\semblanceText
 
 \par\vspace{1mm}%
 }
