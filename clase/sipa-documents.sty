@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-documents}[2026/09/20 SIPA Proceedings' inner documents format]
+\ProvidesPackage{sipa-documents}[2026/09/30 SIPA Proceedings' inner documents format]
 
 %===============================================================================================
 % Document's format
@@ -60,10 +60,15 @@
 % Defines if the header should write the main document author abbreviated name
 % "no" allows you to place the Author's name in the header
 % "yes" leaves a blanc spaceto write the section's custom title
+% "alone" removes the line and makes the header title be in the middle of the text area
 \newcommand{\@pagenblanc}{}
-\newcommand{\pagenblanc}[1]{\renewcommand{\@pagenblanc}{#1}}
-\def\@yes{yes}
-\def\@no{no}
+\newcommand{\pagenblanc}[1]{%
+	\ifstrequal{#1}{yes}{\renewcommand{\@pagenblanc}{0}}{%
+		\ifstrequal{#1}{no}{\renewcommand{\@pagenblanc}{1}}{%
+			\ifstrequal{#1}{alone}{\renewcommand{\@pagenblanc}{2}}{}
+		}%
+	}%
+}
 
 % Section's custom title
 \newcommand{\@nombsec}{}
@@ -75,7 +80,9 @@
 
 % Author's afiliation
 \newcommand{\@affiliations}{}
-\newcommand{\ijaffiliation}[1]{\renewcommand{\@affiliations}{#1}}
+\newcommand{\ijaffiliation}[1]{%
+	\renewcommand{\@affiliations}{#1}%
+}
 
 % Functions to add the corresponding author's mail
 % The first function prints text before the mai
@@ -90,14 +97,18 @@
 
 % Functions to add the Author's name to TOC
 \newcommand{\l@titlewithoutpage}[2]{%
-  \par\noindent
-  \hspace{0.5cm}#1\par
-  \vspace{-6pt}%
+	\par\noindent
+	\hspace{0.5cm}#1\par
+	\vspace{-6pt}%
 }
 
 \newcommand{\l@chapterwithsub}[2]{%
-  \@dottedtocline{1}{0.5cm}{1.5cm}{\fontsize{10}{14}\selectfont#1}{#2}%
+	\@dottedtocline{1}{0.5cm}{1.5cm}{\fontsize{10}{14}\selectfont#1}{#2}%
 }
+
+% Specific command to disable author's name in viewer TOC and Bookmark
+\newif\ifijauthorbookmark
+\ijauthorbookmarktrue
 
 %=========================================================
 % Document's title body
@@ -106,8 +117,8 @@
 \renewcommand{\maketitle}{%
 \begin{center}%
 	% Prints the title
-	{\section*{\MakeUppercase{\@title}}}%
-
+	{\section*{\MakeUppercase{\@title}}\par}%
+	
 	% Adds the title to TOC in capital letters
 	\addtocontents{toc}{%
 		\protect\contentsline{titlewithoutpage}{\MakeUppercase{\@title}}{}{}%
@@ -117,35 +128,83 @@
 	% Adds the author's name and page number under the title
 	\ifx\chaptersubtitle\@empty\else
 		\phantomsection
-		\addcontentsline{toc}{chapterwithsub}{%
-			\textit{\@ijshortauthor}%
-		}%
+		\ifijauthorbookmark
+			% Authors name in document and viewer TOC, but makes the title be in the bookmark
+			\addcontentsline{toc}{chapterwithsub}{%
+				\texorpdfstring{\textit{\@ijshortauthor}}{\MakeUppercase{\@title}}%
+			}%
+		\else
+			% completely removes the author's name or title be in the bookmark
+			\begingroup
+			\let\Hy@writebookmark\@gobblefive
+			\addcontentsline{toc}{chapterwithsub}{%
+				\textit{\@ijshortauthor}%
+			}%
+			\endgroup
+		\fi
 	\fi
+
 	% If no afiliation leaves space in blanc
-	\vspace{-0.1cm}%
+	\vspace{-0.01cm}%
 	\ifx\@affiliations\empty\else
-		{\fontsize{12}{14}\selectfont\@affiliations\par}%
-		\vspace{-0.25cm}%
+		\par
+		{\fontsize{12}{14}\selectfont
+			\parbox{\textwidth}{%
+				\centering
+				\@affiliations
+			}%
+		}%
+		\par
 	\fi
 	% If no corresponding mail leaves space in blanc
 	% It can also add custom text before the email
 	\ifx\@correspondingmail\empty
+		\vspace*{-0.5cm}
 		\else
 		\ifx\@correspondingtext\empty
+			\vspace{0.1cm}%
 			{\href{mailto:\@correspondingmail}{\nolinkurl{\@correspondingmail}}\par}%
 		\else
+			\vspace{0.1cm}%
 			{\@correspondingtext\ \href{mailto:\@correspondingmail}{\nolinkurl{\@correspondingmail}}\par}%
 		\fi
-		\vspace{5pt}%
+		\par
 	\fi
 \end{center}%
+%\par
+\aftergroup\leavevmode
+\par
+\normalfont
 }
 
 %==============================
-% Keywords
+% Abstract (spanish)
 %==============================
 
-\newcommand{\keywords}[1]{%
+\newenvironment{resumen}{%
+	\aftergroup\leavevmode
+	\begingroup
+	\par
+	\@afterheading
+	\@nobreakfalse
+	\setlength{\parindent}{0pt}%
+	\vspace{-0.7cm}
+	\begin{center}
+	{\fontsize{14}{14}\selectfont\textbf{RESUMEN}}
+	\vspace{-0.5cm}
+	\end{center}
+	\justify
+}{%
+	\par\vspace{6pt}%
+	\endgroup
+	\vspace{-.5cm}
+}
+
+%==============================
+% Keywords (spanish)
+%==============================
+
+\newcommand{\pclave}[1]{%
 	\vspace{-0.8cm}
 	\begin{center}
 	\textit{\fontsize{10}{10}\selectfont\noindent\emph{Palabras clave:}~#1}
@@ -157,14 +216,29 @@
 % Abstract
 %==============================
 
-\newenvironment{resumen}{%
+\newenvironment{abstract}{%
+	\par
+	\@afterheading
+	\@nobreakfalse
 	\setlength{\parindent}{0pt}%
 	\vspace{-1cm}
 	\begin{center}
-	{\fontsize{14}{14}\selectfont\textbf{RESUMEN}}
+	{\fontsize{14}{14}\selectfont\textbf{ABSTRACT}}
 	\vspace{-0.5cm}
 	\end{center}
 	\justify
 }{%
 	\par\vspace{6pt}%
+}
+
+%==============================
+% Keywords
+%==============================
+
+\newcommand{\keywords}[1]{%
+	\vspace{-0.8cm}
+	\begin{center}
+	\textit{\fontsize{10}{10}\selectfont\noindent\emph{Keywords:}~#1}
+	\vspace{12pt}\par
+	\end{center}
 }
