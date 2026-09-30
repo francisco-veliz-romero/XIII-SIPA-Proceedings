@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-speakers}[2026/09/24 SIPA Speakers]
+\ProvidesPackage{sipa-speakers}[2026/09/30 SIPA Speakers]
 
 %===============================================================================================
 % Speaker and Semblance blocks
@@ -38,7 +38,7 @@
 	\else
 		\hasflagtrue
 		\gdef\confFlag{\worldflag[width=8mm, length=16mm]{#1}}%
-		\gdef\confFlagTwo{\hfill\raisebox{-3mm}{\worldflag[width=8mm, length=16mm]{#1}}}%
+		\gdef\confFlagTwo{\hfill\raisebox{-2mm}{\worldflag[width=8mm, length=16mm]{#1}}}%
 	\fi
 }
 
@@ -139,7 +139,7 @@
 	{\fontsize{14}{15}\selectfont\noindent\itshape \confJob}\\[-3mm]
 \else
 	{\fontsize{14}{15}\selectfont\noindent\itshape \confFaculty}\\
-	{\fontsize{14}{15}\selectfont\noindent\itshape \confJob}\\[-3mm]
+	{\fontsize{12}{13}\selectfont\noindent\itshape \confJob}\\[-3mm]
 \fi
 \noindent
 \leftskip=0pt
@@ -176,12 +176,14 @@
 \else
 	{\fontsize{16}{18}\selectfont \subsection*{\confName}}
 \fi
-\vspace{-3.5mm}
+\vspace{-2.5mm}
 {\fontsize{14}{15}\selectfont\noindent \confSchool\par}
 \noindent
 \leftskip=0pt
 \rightskip=0pt
 \vspace{-3.5mm}
+% If images are placed at the right margin, place the following part to tikz
+% xshift=\textwidth]
 \begin{tikzpicture}[remember picture, overlay]
 	% Semblance's person image
 	\node[anchor=north west] at (-1mm,3mm) {%
