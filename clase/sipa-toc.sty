@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-toc}[2026/09/19 SIPA Table of content]
+\ProvidesPackage{sipa-toc}[2026/09/30 SIPA Table of content]
 
 %===============================================================================================
 % Table of content
@@ -83,6 +83,16 @@
 	{0pt}
 	{}
 
+\titlespacing*{\subsection}
+	{0pt}    % left
+	{0.1cm}    % space before
+	{0cm}  % space after
+
+\titlespacing*{\subsubsection}
+	{0pt}    % left
+	{0.1cm}  % space before
+	{0cm}  % space after
+
 %=========================================================
 % Custom commands
 %=========================================================
@@ -107,9 +117,10 @@
 		\centering
 		\sloppy
 		\rule{\textwidth}{1.5pt}\par
-		\vspace{0.1cm}
+		\vspace{-0.15cm}
 		{\fontfamily{qcr}\fontsize{24}{28}\selectfont\bfseries\MakeUppercase{#1}\par}
-		\vspace{-0.2cm}
+		\vspace{-0.1cm}
+		\noindent
 		\rule{\textwidth}{1.5pt}
 	\end{minipage}
 \end{center}
@@ -120,11 +131,11 @@
 \newcommand{\subtitulos}[1]{%
 \par\noindent
 \begin{center}
-	\begin{minipage}{90mm}
+	\begin{minipage}{\textwidth/2}
 		\centering
 		\sloppy
 		\rule{\textwidth}{1pt}\par
-		\vspace{0.2cm}
+		\vspace{0.05cm}
 		{\fontfamily{qcr}\fontsize{14}{14}\selectfont\bfseries\MakeUppercase{#1}\par}
 		\vspace{-0.2cm}
 		\rule{\textwidth}{1pt}
