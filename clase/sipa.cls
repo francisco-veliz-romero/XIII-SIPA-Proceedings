@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sipa}[2026/09/24 SIPA Cover Class]
+\ProvidesClass{sipa}[2026/09/30 SIPA Cover Class]
 
 \LoadClass[twoside,a4paper,12pt,openany]{book}
 
@@ -7,10 +7,11 @@
 % Packages
 % ============================================================
 
-\RequirePackage[english]{babel}
+\RequirePackage[spanish]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{helvet}
 \RequirePackage{sansmath}
+\RequirePackage{twemojis}
 
 \RequirePackage{expl3}
 \RequirePackage{xpatch}
@@ -23,6 +24,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{gensymb}
 \RequirePackage{academicons}
+\RequirePackage{fontawesome}
 \RequirePackage{worldflags}
 \RequirePackage{wrapstuff}
 \RequirePackage{graphicx}
@@ -32,14 +34,19 @@
 \RequirePackage{layout}
 \RequirePackage{setspace}
 
+\RequirePackage{array}
+\RequirePackage[normalem]{ulem}
 \RequirePackage{tikz}
 \RequirePackage{float}
+\RequirePackage{newfloat}
 \RequirePackage{booktabs}
+\RequirePackage{tabularx}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
 \RequirePackage{enumitem}
 
 \RequirePackage{caption}
+\RequirePackage{subcaption}
 \RequirePackage{titlesec}
 \RequirePackage{tocloft}
 
@@ -56,7 +63,9 @@
 \RequirePackage{textcomp}
 \RequirePackage{fancyhdr}
 
+\RequirePackage{xurl}
 \RequirePackage{hyperref}
+\RequirePackage{bookmark}
 
 \RequirePackage[style=apa, dashed=true, isbn=true, sorting=editor-year-title, refsection=section]{biblatex}
 \addbibresource{referencias_sipa_xiii.bib}
@@ -66,7 +75,7 @@
 	linkcolor=blue,
 	citecolor=blue,
 	urlcolor=blue,
-	linktocpage
+	linktocpage,
 }
 
 %========================
@@ -83,6 +92,7 @@
 \RequirePackage{clase/sipa-toc}
 \RequirePackage{clase/sipa-documents}
 \RequirePackage{clase/sipa-references}
+\RequirePackage{clase/sipa-captions}
 
 % ============================================================
 % Proceedings cover dimensions
@@ -133,14 +143,28 @@
 \newcommand{\eventnumber}{}
 
 \newcommand{\numero}[1]{%
-	\edef\eventnumber{\uppercase\expandafter{\romannumeral #1}}%
+    \edef\eventnumber{\romannumeral #1}%
+    \expandafter\uppercase\expandafter{\expandafter\def\expandafter\eventnumber\expandafter{\eventnumber}}%
 }
 
 % Event's title
-\newcommand{\eventtitle}
+\newcommand{\eventtitle}{}
 
 \newcommand{\titulo}[1]{%
 	\renewcommand{\eventtitle}{#1}%
+}
+
+\newcommand{\eventshorttitle}{}
+
+\newcommand{\titulocorto}[1]{%
+	\renewcommand{\eventshorttitle}{#1}%
+}
+
+\newcommand{\eventsubtitle}{}
+
+% Event's subtitle
+\newcommand{\titulodos}[1]{%
+	\renewcommand{\eventsubtitle}{#1}%
 }
 
 % Event's date
@@ -153,107 +177,89 @@
 % Functions to add images and text side by side
 % Image to the right side and text on the left side
 \newcommand{\rightimage}[6]{%
-	\begin{tikzpicture}
-	\node[anchor=west, inner sep=0pt] at (0,0) {%
-		\begin{minipage}{1\textwidth}
-			\noindent
+	\noindent
+	\hbox to \textwidth{%
+	\hfill
+%	\fbox{%
+%		\fbox{%
+		\begin{minipage}[c]{#1 \textwidth}
 			\centering
-			\hspace{-1.5cm}
-			\begin{minipage}[c]{#1 \textwidth}
-				\noindent
-				\begin{center}
-					\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
-				\end{center}
-			\end{minipage}%
-			\hspace{0.05cm}%
-			\begin{minipage}[c]{#5 \textwidth}
-				\begin{center}
-				#6
-				\end{center}
-			\end{minipage}%
-		\end{minipage}
-	};
-	\end{tikzpicture}%
+			\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
+		\end{minipage}%
+%		}%
+%		\fbox{%
+		\begin{minipage}[c]{#5 \textwidth}
+			\centering
+			#6
+		\end{minipage}%
+%		}%
+%		}%
+	\hfill
+	}
 }
 
 % Image to the left  side and text on the right side
 \newcommand{\leftimage}[6]{%
-	\begin{tikzpicture}
-	\node[anchor=west, inner sep=0pt] at (0,0) {%
-		\begin{minipage}[c]{1\textwidth}
-			\noindent
+	\noindent
+	\hbox to \textwidth{%
+	\hfill
+%	\fbox{%
+%		\fbox{%
+		\begin{minipage}[c]{#1 \textwidth}%
 			\centering
-			\hspace{-1.5cm}
-			\begin{minipage}[c]{#5 \textwidth}
-				\begin{center}
-				#6
-				\end{center}
-			\end{minipage}%
-			\hspace{0.05cm}%
-			\begin{minipage}[c]{#1 \textwidth}
-				\noindent
-				\begin{center}
-					\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
-				\end{center}
-			\end{minipage}%
-		\end{minipage}
-	};
-	\end{tikzpicture}%
+			#6
+		\end{minipage}%
+%		}%
+%		\fbox{%
+		\begin{minipage}[c]{#1 \textwidth}%
+			\centering
+			\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
+		\end{minipage}%
+%		}%
+%		}%
+	\hfill
+	}
 }
+
+%pelicula alan - Un milagro para lorenzo
 
 % Two images
 \newcommand{\images}[8]{%
-	\begin{tikzpicture}
-	\node[anchor=west, inner sep=0pt] at (0,0) {%
-		\begin{minipage}[c]{1\textwidth}
-			\noindent
+	\noindent
+	\hbox to \textwidth{%
+	\hfill
+%	\fbox{%
+%		\fbox{%
+		\begin{minipage}[c]{#1 \textwidth}%
 			\centering
-			\hspace{-1.5cm}
-			\begin{minipage}[c]{#1 \textwidth}
-				\noindent
-				\begin{center}
-					\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
-				\end{center}
-			\end{minipage}%
-			\hfil%
-			\begin{minipage}[c]{#5 \textwidth}
-				\noindent
-				\begin{center}
-					\includegraphics[height = #7 cm, width=#8 \linewidth]{#6}
-				\end{center}
-			\end{minipage}%
-		\end{minipage}
-	};
-	\end{tikzpicture}%
+			\includegraphics[height = #3 cm, width=#4 \linewidth]{#2}
+		\end{minipage}%
+%		}%
+%		\fbox{%
+		\begin{minipage}[c]{#5 \textwidth}%
+			\centering
+			\includegraphics[height = #7 cm, width=#8 \linewidth]{#6}
+		\end{minipage}%
+%		}%
+%		}%
+	\hfill
+	}
 }
 
 % Big image
 \newcommand{\bigimage}[3]{%
-	\begin{tikzpicture}
-	\node[anchor=west, inner sep=0pt] at (0,0) {%
-		\begin{minipage}[c]{1\textwidth}
-			\noindent
-			\centering
-			\hspace{-1.5cm}
-			\begin{minipage}[c]{1\textwidth}
-				\noindent
-				\begin{center}
-					\includegraphics[height = #2 cm, width=#3 \linewidth]{#1}
-				\end{center}
-			\end{minipage}
-		\end{minipage}
-	};
-	\end{tikzpicture}%
+	\begin{center}
+		\begin{tikzpicture}[baseline=(current bounding box.north)]
+		\node[anchor=center, inner sep=0pt] at (0,0) {%
+			\includegraphics[height = #2 cm, width=#3 \linewidth]{#1}%
+		};
+		\end{tikzpicture}%
+	\end{center}
 }
 
 % Specific code to omit the bibliography title in TOC
 \defbibheading{misubseccion}[\bibname]{%
 	\subsection*{#1}%
-}
-
-% Function to force scientific names in title (Opuntia ficus-indica)
-\newcommand{\scientificname}[1]{%
-	\emph{\textit{\MakeSentenceCase{#1}}}%
 }
 
 % ============================================================
@@ -262,14 +268,17 @@
 
 \newcommand{\bookbodygeometry}{%
 	\newgeometry{
-		textwidth=185mm,
+		textwidth=170mm,
+		inner = 20mm,
+		outer = 20mm,
 		top=0in,
 		bottom=2in,
-		footskip=19pt
+		footskip=19pt,
+		hcentering
 	}%
 	\setlength{\oddsidemargin}{0pt}%
 	\setlength{\evensidemargin}{0pt}%
-	\setlength{\hoffset}{-0.5in}%
+	\setlength{\hoffset}{-0.2in}%
 	\setlength{\headheight}{65pt}%
 	\setlength{\headsep}{10pt}%
 	\setlength{\textheight}{720pt}%
@@ -288,38 +297,46 @@
 	\sansmath
 }
 
-%%%%%%%%%% Format of tables and images
-\DeclareCaptionLabelFormat{figlabel}{Fig.~#2}
-\captionsetup[figure]{
-	name		   = Figure,
-	labelformat  = figlabel,
-	labelsep     = period,
-	font         = normalsize,
-	justification= raggedright,
-	position     = below,
-	skip         = 6pt
-}
-\captionsetup[table]{
-	name         = Table,
-	labelsep     = period,
-	font         = normalsize,
-	justification= raggedright,
-	position     = above,
-	skip         = 6pt
+% ============================================================
+% Other custom functions
+% ============================================================
+
+% Function to force scientific names in title (Opuntia ficus-indica)
+\newcommand{\scientificname}[1]{%
+	\emph{\textit{\MakeSentenceCase{#1}}}%
 }
 
-%%%%%%%%%%%%% Cuerpo inicial resumenes y documentos
+% Command to write the registeded circle in the title
+\newcommand{\registered}{%
+    \textsuperscript{\tiny{\circledR}}%
+}
+
+% Allows scientific names and specific symbols appear in the bookmarks
+% Some of the options can be removed, as they dont really have an effect in the bookmarks text
+\pdfstringdefDisableCommands{%
+	\def\textit#1{#1}%
+	\def\textbf#1{#1}%
+	\def\emph#1{#1}%
+	%\def\MakeUppercase#1{#1}%
+	\def\MakeLowercase#1{#1}%
+	\def\ensuremath#1{#1}%
+	\def\textsuperscript#1{#1}%
+	\def\textsubscript#1{#1}%
+	\def\scientificname#1{\NoCaseChange{#1}}%
+	\def\registered{®}%
+}
+
 % Function to reset the figures and images counter
 \newcommand{\cero}{
 	\setcounter{figure}{0}
 	\setcounter{table}{0}
 }
 
-% Function to remove indentation in lists
+% Remotion of indentation in lists
 \setlist[enumerate]{leftmargin=*}
 \setlist[itemize]{leftmargin=*}
 
-% Function to force Shortauthor instead of author's when possible in text
+% Force Shortauthor instead of author's name when possible in citations
 \AtEveryCitekey{\ifnameundef{shortauthor}{}{\def\cbx@apa@ifnamesaved{\@firstoftwo}}}
 
 % Change in the bibliography's title
@@ -333,5 +350,23 @@
 		\usecounter{enumiv}}%
 	\sloppy}
 	{\endlist}
+
+% Code to make Sections be labeled as Subsections only in the document viewer's TOC and internet Browers (Chrome, Edge, Firefox, etc.)
+% Save the original Section
+\let\browserSubsections@oldsection\section
+
+% Define a new Section used only inside the environment
+\newcommand{\browserSubsections@section}{%
+	\bookmarksetupnext{level=2}%
+	\browserSubsections@oldsection
+}
+
+% Environment to make sections appear as subsections in Browers and viewer-TOC
+\newenvironment{browserSubsections}{%
+	\let\browserSubsections@oldsection\section
+	\let\section\browserSubsections@section
+}{%
+	\let\section\browserSubsections@oldsection
+}
 
 \endinput
