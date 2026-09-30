@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sipa-captions}[2026/09/30 SIPA Tables and Figures Captions]
+
+%===============================================================================================
+% Tables and Figures Captions
+%===============================================================================================
+
+% Change table and figure name
+\DeclareCaptionLabelFormat{figlabel}{Figura~#2}
+\captionsetup[table]{name=Tabla}
+
+% Edition of captions and subcaptions in figures
+\captionsetup[figure]{
+	name          = Figura,
+	labelformat   = figlabel,
+	labelsep      = period,
+	font          = normalsize,
+	justification = centering,
+	position      = below,
+	labelfont     = bf,
+	skip          = 6pt
+}
+
+% Edition of captions and subcaptions in tables
+\captionsetup[table]{
+	name          = Tabla,
+	labelsep      = period,
+	font          = normalsize,
+	justification = centering,
+	position      = above,
+	labelfont     = bf,
+	skip          = 6pt
+}
+
+% Creating new environment for figures' name in custom language
+% In this case its English, as babel doesnt allow me to change the name for an specific document
+\DeclareFloatingEnvironment[
+	fileext=lof,
+	listname={List of Figures},
+	name=Figure
+]{englishfigure}
+
+% Edition of captions and subcaptions in custom language
+\captionsetup[englishfigure]{
+	name          = Figure,
+	labelsep      = period,
+	font          = normalsize,
+	justification = centering,
+	position      = below,
+	labelfont     = bf,
+	skip          = 6pt
+}
+
+% New vertically-centerered type of column for tabularx or other tabular environment
+% m is for vertically-centered text cells, and p{#1} to place the text at the top
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
