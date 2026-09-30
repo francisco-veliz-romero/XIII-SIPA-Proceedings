@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-references}[2026/09/20 SIPA References]
+\ProvidesPackage{sipa-references}[2026/09/30 SIPA References]
 
 % ===============================================================================================
 % APA-7 customized references
@@ -7,26 +7,26 @@
 
 % Forces the name - year title in the references
 \DeclareSortingTemplate{editor-year-title}{%
-  \sort{
-    \field{presort}
-  }
-  \sort[final]{
-    \field{sortkey}
-  }
-  \sort{
-    \name{editor}
-    \name{author}
-    \name{translator}
-  }
-  \sort{
-    \field{sortyear}
-    \field{year}
-    \field{month}
-    \field{day}
-  }
-  \sort{
-    \field{title}
-  }
+	\sort{
+		\field{presort}
+	}
+	\sort[final]{
+		\field{sortkey}
+	}
+	\sort{
+		\name{editor}
+		\name{author}
+		\name{translator}
+	}
+	\sort{
+		\field{sortyear}
+		\field{year}
+		\field{month}
+		\field{day}
+	}
+	\sort{
+		\field{title}
+	}
 }
 
 % Acknowledeges bookauthor as an entry for references
@@ -133,6 +133,7 @@
 	\mkbibparens{\usebibmacro{editorstrg@apa}}%
 }
 
+% Rework of book entry
 \DeclareBibliographyDriver{book}{%
 	\usebibmacro{bibindex}%
 	\usebibmacro{begentry}%
@@ -161,6 +162,10 @@
 	\newunit\newblock
 	% Title
 	\printfield{title}%
+	\iffieldundef{subtitle}{}{%
+		\setunit{\subtitlepunct}%
+		\printfield{subtitle}%
+	}%
 	\addspace%
 	% Translator, edition, volume, number and pages. Cause', as I said before, looks cool as hell (and it's informative)
 	\mkbibparens{\usebibmacro{transedvolnumpages}}%
@@ -199,7 +204,28 @@
 	\printfield{date}%
 }
 
+% Option to print a numbered apa-style bibliography
+% add env=numberedbibliography to printbibliography
+\defbibenvironment{numberedbibliography}
+	{\list
+		{\mkbibbrackets{\arabic{enumiv}}}
+		{%
+			\usecounter{enumiv}%
+			\setlength{\labelwidth}{0pt}%
+			\setlength{\labelsep}{0.5em}%
+			\setlength{\leftmargin}{\bibhang}%
+			\setlength{\itemindent}{-\bibhang}%
+			\setlength{\listparindent}{0pt}%
+			\setlength{\itemsep}{\bibitemsep}%
+			\setlength{\parsep}{\bibparsep}%
+			\setlength{\topsep}{0pt}%
+			\setlength{\partopsep}{0pt}%
+		}%
+	}
+	{\endlist}
+	{\item}
+
 % Fores p. and pp. for pages, Vol. for volume, and No. for number
-\DeclareFieldFormat{pages}{\mkpageprefix[bookpagination]{#1}}
+\DeclareFieldFormat[book,inbook]{pages}{\mkpageprefix[bookpagination]{#1}}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{volume}{Vol.\addnbspace#1}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{number}{No.\addnbspace\emph{#1}}
