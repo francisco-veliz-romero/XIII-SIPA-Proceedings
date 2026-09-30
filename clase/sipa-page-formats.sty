@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-page-formats}[2026/09/21 SIPA Page formats]
+\ProvidesPackage{sipa-page-formats}[2026/09/30 SIPA Page formats]
 
 % ===============================================================================================
 % Page formats
@@ -15,7 +15,7 @@
 	\fancyhead[C]{%
 		\makebox[0pt][c]{\headerplain}%
 		\fontsize{18}{16}\selectfont%
-		\textcolor{white}{\eventnumber\ SIPA --- Memorias}\\[5pt]
+		\textcolor{white}{\eventnumber\space\eventshorttitle\space --- Memorias}\\[5pt]
 	}
 	
 	\fancyfoot[L]{%
@@ -37,7 +37,7 @@
 	\fancyhead[C]{%
 		\makebox[0pt][c]{\headertoc}%
 		\fontsize{18}{16}\selectfont
-		\textcolor{white}{\eventnumber\ SIPA --- Memorias}\\[5pt]
+		\textcolor{white}{\eventnumber\space\eventshorttitle\space --- Memorias}\\[5pt]
 	}
 	
 	\fancyfoot[L]{%
@@ -62,17 +62,30 @@
 		\begin{minipage}[t][\headheight][t]{\textwidth}
 			\centering\color{black}
 			{\fontsize{14}{20}\selectfont
-			\textcolor{white}{\eventnumber\ SIPA --- Memorias}\\[1.2mm]
-			\textbf{\parttitle}\\[0.7mm]
-			% Adds Author abbreviated name or custom section name to header
-			\ifx\@pagenblanc\@yes
-			    \@nombsec
-			\else\ifx\@pagenblanc\@no
-			    \@abbrevnombs
-			\fi\fi
-			\par
-			\vspace{-2.2mm}
-			\rule{0.95\textwidth}{2pt}%
+			\textcolor{white}{\eventnumber\space\eventshorttitle\space --- Memorias}\\[1.2mm]
+			% Adds Author abbreviated name, custom section name, or remove this line in header
+			\ifcase\@pagenblanc
+				% yes
+				\textbf{\parttitle}\\[-0.2mm]
+				\@nombsec
+				\par
+				\vspace{-2.2mm}
+				\rule{\textwidth}{2pt}
+			\or
+				% no
+				\textbf{\parttitle}\\[-0.2mm]
+				\@abbrevnombs
+				\par
+				\vspace{-2.2mm}
+				\rule{\textwidth}{2pt}
+			\or
+				% alone
+				\vspace{3mm}
+				\textbf{\parttitle}\\
+				\par
+				\vspace{1.8mm}
+				\rule{\textwidth}{2pt}
+			\fi%
 			}
 		\end{minipage}%
 	}
