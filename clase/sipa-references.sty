@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-references}[2026/09/30 SIPA References]
+\ProvidesPackage{sipa-references}[2026/10/1 SIPA References]
 
 % ===============================================================================================
 % APA-7 customized references
@@ -125,7 +125,9 @@
 		}%
 	\printlist{publisher}%
 	\newunit\newblock
-	\printfield{url}%
+	% DOI y URL
+	\usebibmacro{doi+eprint+url}%
+	%
 	\usebibmacro{finentry}%
 }
 
@@ -177,8 +179,8 @@
 		{\setunit{\addcolon\space}}%
 	\printlist{publisher}%
 	\newunit\newblock
-	% URL
-	\printfield{url}%
+	% DOI y URL
+	\usebibmacro{doi+eprint+url}%
 	%
 	\usebibmacro{finentry}%
 }
