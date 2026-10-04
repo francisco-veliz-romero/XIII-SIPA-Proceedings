@@ -221,8 +221,6 @@
 	}
 }
 
-%pelicula alan - Un milagro para lorenzo
-
 % Two images
 \newcommand{\images}[8]{%
 	\noindent
