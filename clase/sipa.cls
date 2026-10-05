@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sipa}[2026/09/30 XIII SIPA Class]
+\ProvidesClass{sipa}[2026/10/05 XIII SIPA Class]
 
 \LoadClass[twoside,a4paper,12pt,openany]{book}
 
@@ -23,6 +23,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{gensymb}
+\RequirePackage{eurosym}
 \RequirePackage{academicons}
 \RequirePackage{fontawesome}
 \RequirePackage{worldflags}
@@ -69,6 +70,10 @@
 
 \RequirePackage[style=apa, dashed=true, isbn=true, sorting=editor-year-title, refsection=section]{biblatex}
 \addbibresource{referencias_sipa_xiii.bib}
+
+\DefineBibliographyExtras{spanish}{%
+	\protected\def\bibrangedash{\textendash}%
+}
 
 \hypersetup{
 	colorlinks=true,
@@ -143,8 +148,8 @@
 \newcommand{\eventnumber}{}
 
 \newcommand{\numero}[1]{%
-    \edef\eventnumber{\romannumeral #1}%
-    \expandafter\uppercase\expandafter{\expandafter\def\expandafter\eventnumber\expandafter{\eventnumber}}%
+	\edef\eventnumber{\romannumeral #1}%
+	\expandafter\uppercase\expandafter{\expandafter\def\expandafter\eventnumber\expandafter{\eventnumber}}%
 }
 
 % Event's title
@@ -220,6 +225,8 @@
 	\hfill
 	}
 }
+
+%pelicula alan - Un milagro para lorenzo
 
 % Two images
 \newcommand{\images}[8]{%
@@ -306,7 +313,7 @@
 
 % Command to write the registeded circle in the title
 \newcommand{\registered}{%
-    \textsuperscript{\tiny{\circledR}}%
+	\textsuperscript{\tiny{\circledR}}%
 }
 
 % Allows scientific names and specific symbols appear in the bookmarks
