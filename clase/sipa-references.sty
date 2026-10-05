@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-references}[2026/10/1 SIPA References]
+\ProvidesPackage{sipa-references}[2026/10/01 SIPA References]
 
 % ===============================================================================================
 % APA-7 customized references
@@ -69,7 +69,7 @@
 	% Pages
 	\iffieldundef{pages}{}{%
 		\iftoggle{prevprinted}{\addcomma\space}{}%
-		\printfield{pages}%
+		\printfield[pages]{pages}%%
 	}%
 }
 
@@ -148,7 +148,7 @@
 		\printnames{editor}%
 		\addspace%
 		\mkbibparens{%
-			\ifmorenames
+			\ifnumgreater{\value{editor}}{1}
 				{Eds.}
 				{Ed.}%
 		}%
@@ -228,6 +228,7 @@
 	{\item}
 
 % Fores p. and pp. for pages, Vol. for volume, and No. for number
+\DeclareFieldFormat[article]{pages}{#1}
 \DeclareFieldFormat[book,inbook]{pages}{\mkpageprefix[bookpagination]{#1}}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{volume}{Vol.\addnbspace#1}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{number}{No.\addnbspace\emph{#1}}
