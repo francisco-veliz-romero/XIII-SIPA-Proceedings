@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-documents}[2026/09/30 SIPA Proceedings' inner documents format]
+\ProvidesPackage{sipa-documents}[2026/10/05 SIPA Proceedings' inner documents format]
 
 %===============================================================================================
 % Document's format
@@ -13,37 +13,40 @@
 % Functions to abbreviate names
 %==============================
 
+% Function to abbreviate names (alone or divided by a hyphen)
 \newcommand{\processsurname}[2]{%
 	\begingroup
 	\IfSubStr{#1}{-}{%
-		% Hyphenated surname: name-name
+		% Hyphenated name: nameA-nameB
 		\StrBefore{#1}{-}[\sa]%
 		\StrBehind{#1}{-}[\sb]%
 		\StrLeft{\sa}{1}[\si]%
 		\StrLeft{\sb}{1}[\sj]%
 		\xdef#2{\si.-\sj.}%
 	}{%
-		% Non-hyphenated surname: name
+		% Non-hyphenated name: nameB
 		\StrLeft{#1}{1}[\si]%
 		\xdef#2{\si.}%
 	}%
 	\endgroup
 }
 
+% The three names can be normal or divided by a hypen
+% In that way you dont need to place the hyphenated names in different fields
 \newcommand{\abbrevnombs}[4]{%
 	\begingroup
 	\def\given{#1}%
 	
-	  % First surname
+	% First name
 	\processsurname{#2}{\outA}%
 	
 	\def\temp{\given, \outA}%
-	% Second surname (optional)
+	% Second name (optional)
 	\IfStrEq{#3}{}{}{%
 		\processsurname{#3}{\outB}%
 		\edef\temp{\temp\space\outB}%
 	}%
-	% Third surname (optional)
+	% Third name (optional)
 	\IfStrEq{#4}{}{}{%
 		\processsurname{#4}{\outC}%
 		\edef\temp{\temp\space\outC}%
@@ -72,7 +75,7 @@
 
 % Section's custom title
 \newcommand{\@nombsec}{}
-\newcommand{\nombsec}[1]{\renewcommand{\@nombsec}{#1}}
+\newcommand{\nombsec}[1]{\gdef\@nombsec{#1}}
 
 % Name printed in TOC
 \newcommand{\@ijshortauthor}{}
