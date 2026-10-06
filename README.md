@@ -4,14 +4,13 @@ LaTeX source code for the composition and generation of the proceedings of the X
 
 ## Description
 
-This repository contains the source code, custom commands, templates, and resources used to produce the proceedings of the conference. The project includes tools and configurations specifically designed for the composition of:
+This repository contains the source code, custom commands, templates, and resources used to produce the conference proceedings. The project includes tools and configurations specifically designed for the composition of:
 * conferences and presentations;
 * papers and contributions;
 * author and participant information;
 * graphic and institutional elements;
 * titles and headings;
 * flags and other decorative elements;
-* custom text layout using \parshape;
 * and other elements required for typesetting the proceedings.
 
 ## Institution and program
