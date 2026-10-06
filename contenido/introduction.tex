@@ -7,19 +7,11 @@
 % before including PDF's or other additional files, as the "\setlength{\hoffset}{-0.5in}"
 % in the .cls moves all the included files to the left
 {\hoffset=0pt
-\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii programa.pdf}
+\includepdf[fitpaper=true,pages=-,width=\paperwidth]{images/events/sipa xiii program.pdf}
 }
 
 {\hoffset=0pt
-\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii curso 1.pdf}
-}
-
-{\hoffset=0pt
-\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii infografias.pdf}
-}
-
-{\hoffset=0pt
-	\includepdf[fitpaper=true,pages=-,width=\paperwidth]{imagenes/eventos/sipa xiii conversatorio.pdf}
+\includepdf[fitpaper=true,pages=-,width=\paperwidth]{images/events/sipa xiii infographics.pdf}
 }
 
 %======================
@@ -33,7 +25,7 @@
 \pagenumbering{roman}
 \pagestyle{preindex}
 % Sets the new page counter, as the included content above wont be classified as pages
-\setcounter{page}{9}
+\setcounter{page}{5}
 
 %===============================================================================================
 % Event's ntroduction
@@ -94,40 +86,46 @@ Lic. Francisco Gerardo Véliz Romero\\[1mm]
 %===============================================================================================
 
 \newpage
+
+% Forces columns centering even with inner-column separation
+% Code to remove separation (though you'll have to declare it again to restore it again)
+%\setlength{\columnsep}{0pt}
+\makebox[\textwidth][c]{%
+\begin{minipage}{1.1\textwidth}
 \begin{multicols}{2}
-[\subseccion{Comités}]
+[\subseccion{Comités}\vspace*{1cm}]
 \centering
-\subtitulos{Presidente organizador}
+\vspace*{-.8cm}
+\subtitulos{Organizing Chairman}
 X
-
-\subtitulos{Comité organizador}
+\subtitulos{Organizing Commitee}
 X
-
-\subtitulos{Comité técnico}
+\subtitulos{Technich commitee}
 X
-
-\subtitulos{Comité organizador de memorias}
+\subtitulos{Proceedings edition's commitee}
 X
-
-X
-
-X
-
-\subtitulos{Comié evaluador de carteles}
-X
-
-\subtitulos{Comité de registro}
-X
-
-\subtitulos{Moderadores}
-X
-
-\subtitulos{Comité de apoyo logístico}
-X
-
-\subtitulos{Colaboradores}
-Alumnos de Maestría
-
-Alumnos de Doctorado
-
 \end{multicols}
+\end{minipage}
+}
+
+\newpage
+%\setlength{\columnsep}{3pt}
+\makebox[\textwidth][c]{%
+\begin{minipage}{1.1\textwidth}
+\begin{multicols}{2}
+[\subseccion{Comités}\vspace{.3cm}\subtitulos{Poster's evaluation commitee}\vspace*{.5cm}]
+\centering
+X
+
+X
+
+X
+
+X
+
+X
+
+X
+\end{multicols}
+\end{minipage}
+}
