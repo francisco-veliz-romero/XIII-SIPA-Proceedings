@@ -11,13 +11,28 @@
 
 \numero{13}
 \titulo{Semana Internacional en Producción Agropecuaria}
+\titulocorto{SIPA}
 \fecha{del 7 al 11 de septiembre de 2026}
+\titulodos{Conferencias magistrales, resúmenes, cursos y conversatorio}
 
 % Name between {} to avoid problems with the code, and orcid ID
 % The code is structured to work regardless of whether you include an Orcid ID or not
 \authors{
   {e.g. This name doesn't have an Orcid},;
   {Véliz Romero, Francisco},0000-0002-3456-7890;
+}
+
+% PDF  metadata
+\hypersetup{
+	pdftitle={Memorias de la \eventnumber\space\eventtitle: \eventsubtitle},
+	pdfauthor={Véliz-Romero Francisco Gerardo},
+	pdfproducer={LaTeX with TeXworks},
+	pdfcreator={Véliz-Romero Francisco Gerardo},
+	pdfcreationdate = {D:20261002},
+	pdfmoddate = {D:20260930},
+	pdflang = {es-MX},
+	pdfsubject = {XIII SIPA},
+	pdfkeywords = {XIII; SIPA; memorias}
 }
 
 %===========================================================
@@ -38,9 +53,6 @@
 % established for the event, the congress program and more
 \input{content/introduction}
 
-% Additional content in the proceedings, including information about the speakers
-\input{content/speakers}
-
 %===============================================================================================
 % Table of contents
 %===============================================================================================
@@ -51,6 +63,9 @@
 \begingroup
 
 \makeatletter
+% TOC custom name
+\renewcommand{\contentsname}{Content}
+% Function to force the TOC's name change
 \renewcommand{\tableofcontents}{%
   \if@twocolumn
     \@restonecoltrue\onecolumn
@@ -64,8 +79,10 @@
 \makeatother
 
 % Forces TOC to be sided to the left, as for some reazon, the text was justificatedin my document
-\RaggedRight
+\parshape 0
+\raggedright
 \tableofcontents
+
 \endgroup
 
 %===============================================================================================
@@ -83,11 +100,12 @@
 % This function is key to the proceedings header
 % "no" allows you to place the Author's name in the header
 % "yes" leaves a blanc spaceto write the section custom title
-\pagenblanc{no}
+\pagenblanc{alone}
 % Forces justified text without extreme white spaces, though some ugly spacing still appears
-\sloppy
-
+%\sloppy
+\justifying
 \part{Keynote lectures}
+
 \newpage
 \input{contenido/keynotes}
 
@@ -100,24 +118,15 @@
 \pagenblanc{yes}
 % This function clears the previously stablished header's name
 \nombsec{}
-\part{Posters' Abstracts or other content}
+\part{Posters' abstracts or other content}
 
+\newpage
 \input{contenido/abstracts}
 
 % Although unused, this function changed the indentation of the TOC content
 %\addtocontents{toc}{%
 %  \protect\setlength{\cftsubsecindent}{3em}%
 %}
-
-%=================================================
-% Courses/Seminars section
-%=================================================
-\newpage
-\pagenblanc{yes}
-\nombsec{}
-\part{Courses/seminars or other content}
-\newpage
-\input{contenido/courses}
 
 %=================================================
 % Discussion Forum section
@@ -127,17 +136,85 @@
 \pagenblanc{yes}
 \nombsec{}
 \part{Discussion}
+
 \newpage
 \input{contenido/discussion}
+
+%=================================================
+% Courses/Seminars section
+%=================================================
+\newpage
+\pagenblanc{yes}
+\nombsec{}
+\part{Courses/seminars or other content}
+\sloppy
+
+\newpage
+\input{contenido/courses}
 
 %=================================================
 % Photographic  gallery
 %=================================================
 \newpage
-\pagenblanc{yes}
+\pagenblanc{alone}
 \nombsec{}
 \part{Photographic gallery}
+
 \newpage
 \input{contenido/galery}
+
+% Bibliographic content page
+\newpage
+\pagestyle{plain}
+\vspace*{.2cm}
+\fontsize{10}{11}\selectfont
+\setlength{\parindent}{0pt}
+Original title:
+
+Title: Subtitle\\
+
+1st volume
+
+1$^{\text{st}}$ edition  --- october 12, 2026\\
+
+\textbf{Proceedings' organizing and supervisory committee}
+
+\setlength{\columnsep}{0pt}
+\begin{multicols}{2}
+\centering
+Lic. Francisco Gerardo Véliz Romero
+
+Lic. Francisco Gerardo Véliz Romero
+
+Lic. Francisco Gerardo Véliz Romero
+
+Lic. Francisco Gerardo Véliz Romero
+\end{multicols}
+
+\copyright\, Francisco Gerardo Véliz Romero
+
+\copyright\, Of the texts and images, their respective authors\\
+
+Coder design: Lic. Francisco Gerardo Véliz Romero, based on the VIII Semana Interancional en Producción Agropecuaria's cover
+
+Document design and compilation: Lic. Francisco Gerardo Véliz Romero\\
+
+This publication includes the keynote lectures of the speakers invited to the event, the abstracts of the posters shown by the master's and doctoral students of the Agricultural Production Science Postgraduate Program, as well as the discussion's program and the participants's biographies, and the information about the courses offered during the event
+
+The document's code was elaborated by Lic. Francisco Gerardo Véliz Romero, and the document itself was compiled employing the TeXworks program.
+
+The conference proceedings template can downloaded in: 
+
+\faGithub\, \url{https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings}\\
+
+Disclaimer: The opinions, interpretations, results, and conclusions expressed in the contributions to this volume belong to their respective authors, and do not necessarily represent the opinions of the organizers or participating institutions. The editors and organizers assume no responsibility for any use that may be made of the information presented in this volume\\
+
+Suggested citation format for this book:
+
+Navarrete-Molina, C., \& Véliz-Romero, F. G. (Eds.) (2026). \textit{Proceedings of the XIII International Week on Agricultural Production: Keynote lectures, summaries, courses and discussion forum} (1st ed., Vol. 1, p. 135). Torreón, Coahuila, México. \url{https://www.researchgate.net/publication/415049442_Memorias_de_la_XIII_Semana_Internacional_en_Produccion_Agropecuaria}
+
+Formato de cita sugerida para algún documento incluido en este libro:
+
+\textbf{Author's names} (2026). \textbf{Title}. In: Navarrete-Molina, C., \& Véliz-Romero, F. G. (Eds.) \textit{Proceedings of the XIII International Week on Agricultural Production: Keynote lectures, summaries, courses and discussion forum} (1st ed., Vol. 1, \textbf{page numbers}). Torreón, Coahuila, México. \url{https://www.researchgate.net/publication/415049442_Memorias_de_la_XIII_Semana_Internacional_en_Produccion_Agropecuaria}
 
 \end{document}
