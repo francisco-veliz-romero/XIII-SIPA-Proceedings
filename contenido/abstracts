@@ -1,11 +1,22 @@
+% Make sections behave as subsections in viewer's- TOC or Browsers
+% The first section behaves as the main section
+% and all the subsequent sections are labeled as subsections
+\begin{browserSubsections}
+% Custom section format to make it appear in a sole page
 \mychapter{This is a custom chapter}
 
 % Remember to add \newpage  after every \part and \mychapter, or TOC will send you to the previous page
 \newpage
 \input{contenido/others/primero}
+\end{browserSubsections}
 
-\newpage
+% Make sections behave as subsections in viewer's- TOC or Browsers
+% The first section behaves as the main section
+% and all the subsequent sections are labeled as subsections
+\begin{browserSubsections}
+% Custom section format to make it appear in a sole page
 \mychapter{This is another custom chapter}
 
 \newpage
 \input{contenido/others/segundo}
+\end{browserSubsections}
