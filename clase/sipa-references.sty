@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-references}[2026/10/01 SIPA References]
+\ProvidesPackage{sipa-references}[2026/10/06 SIPA References]
 
 % ===============================================================================================
 % APA-7 customized references
@@ -109,10 +109,8 @@
 	}%
 	\printfield{booktitle}%
 	\iffieldundef{booksubtitle}{}{%
-		\textit{%
-			\setunit{\subtitlepunct}%
-			\printfield{booksubtitle}
-		}%
+		\setunit{\subtitlepunct}%
+		\mkbibemph{\printfield{booksubtitle}}%
 	}%
 	\addspace%
 	% Translator, edition, volume, number and pages. Cause' it looks cool as hell (and it's informative)
@@ -166,7 +164,7 @@
 	\printfield{title}%
 	\iffieldundef{subtitle}{}{%
 		\setunit{\subtitlepunct}%
-		\printfield{subtitle}%
+		\mkbibemph{\printfield{subtitle}}%
 	}%
 	\addspace%
 	% Translator, edition, volume, number and pages. Cause', as I said before, looks cool as hell (and it's informative)
