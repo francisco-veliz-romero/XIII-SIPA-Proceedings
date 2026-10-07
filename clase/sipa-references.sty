@@ -41,11 +41,25 @@
 % Allows cycling through the options without leaving uggly empty spaces
 \newtoggle{prevprinted}
 
+% Translator, Edition, Volume, Number and Pages between parentheses
 \newbibmacro{transedvolnumpages}{%
 	\togglefalse{prevprinted}%
 	% Translator
+	% Translator
 	\ifnameundef{translator}{}{%
-		\printnames{translator}\addcomma\space Trad.%
+		\printnames{translator}\addcomma\space
+		\ifnumgreater{\value{translator}}{1}
+			{Trads.}
+			{Trad.}%
+		\ifboolexpr{
+			not test {\iffieldundef{edition}}
+			or
+			not test {\iffieldundef{volume}}
+			or
+			not test {\iffieldundef{number}}
+			or
+			not test {\iffieldundef{pages}}
+		}{\printtext{,\space}}{}%
 		\toggletrue{prevprinted}%
 	}%
 	% Edition
@@ -229,4 +243,4 @@
 \DeclareFieldFormat[article]{pages}{#1}
 \DeclareFieldFormat[book,inbook]{pages}{\mkpageprefix[bookpagination]{#1}}
 \DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{volume}{Vol.\addnbspace#1}
-\DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{number}{No.\addnbspace\emph{#1}}
+\DeclareFieldFormat[book,inbook,collection,incollection,proceedings,inproceedings]{number}{No.\addnbspace#1}
