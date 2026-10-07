@@ -35,6 +35,10 @@ The document requires a LaTeX distribution compatible with the packages used by 
 
 This repository is intended to document and preserve the code used for the composition of the proceedings of the XIII International Week on Agricultural Production, as well as to facilitate its maintenance and potential reuse in similar academic typesetting projects.
 
+The repository can be accessed via:
+
+https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/
+
 # License
 
 The LaTeX source code developed for this project is distributed under the terms of the MIT License.
