@@ -13,6 +13,8 @@ This repository contains the source code, custom commands, templates, and resour
 * flags and other decorative elements;
 * and other elements required for typesetting the proceedings.
 
+However, given the complexity of some of the proceedings' components, it needs of about three to four compilations before it compiles the document correctly
+
 ## Institution and program
 
 Universidad Autónoma Agraria Antonio Narro (UAAAN)
