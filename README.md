@@ -13,7 +13,11 @@ This repository contains the source code, custom commands, templates, and resour
 * flags and other decorative elements;
 * and other elements required for typesetting the proceedings.
 
-However, given the complexity of some of the proceedings' components, it needs of about three to four compilations before it compiles the document correctly
+However, given the complexity of some of the procedures' components, it's required  to perform from three to four compilations before the document compiles correctly.
+
+On the other hand, due to the customization of the bibliographic entries for "book" and "inbook," using other bibliographic entries such as "proceedings" or "inproceedings" is discouraged, as these will not be subject to the changes performed.
+
+Moreover, it should also be noted that the customization of the bibliographic entries for "book" and "inbook" requires changes to certain specific parts of the code (connectors or abbreviations inside the bibliographic references themselves) that may result in errors when using a language other than Spanish.
 
 ## Institution and program
 
