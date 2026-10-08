@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-documents}[2026/10/05 SIPA Proceedings' inner documents format]
+\ProvidesPackage{sipa-documents}[2026/10/08 SIPA Proceedings' inner documents format]
 
 %===============================================================================================
 % Document's format
@@ -78,8 +78,8 @@
 \newcommand{\nombsec}[1]{\gdef\@nombsec{#1}}
 
 % Name printed in TOC
-\newcommand{\@ijshortauthor}{}
-\newcommand{\ijshortauthor}[1]{\renewcommand{\@ijshortauthor}{#1}}
+\newcommand{\@tocauthor}{}
+\newcommand{\tocauthor}[1]{\renewcommand{\@tocauthor}{#1}}
 
 % Author's afiliation
 \newcommand{\@affiliations}{}
@@ -134,14 +134,14 @@
 		\ifijauthorbookmark
 			% Authors name in document and viewer TOC, but makes the title be in the bookmark
 			\addcontentsline{toc}{chapterwithsub}{%
-				\texorpdfstring{\textit{\@ijshortauthor}}{\MakeUppercase{\@title}}%
+				\texorpdfstring{\textit{\@tocauthor}}{\MakeUppercase{\@title}}%
 			}%
 		\else
 			% completely removes the author's name or title be in the bookmark
 			\begingroup
 			\let\Hy@writebookmark\@gobblefive
 			\addcontentsline{toc}{chapterwithsub}{%
-				\textit{\@ijshortauthor}%
+				\textit{\@tocauthor}%
 			}%
 			\endgroup
 		\fi
