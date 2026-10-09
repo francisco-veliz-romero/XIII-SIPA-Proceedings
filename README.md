@@ -50,3 +50,17 @@ https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/
 The LaTeX source code developed for this project is distributed under the terms of the MIT License.
 
 The license applies to the code developed by the author. The proceedings' texts, photographs, logos, trademarks, manuscripts, figures, and other third-party materials included in the repository may be subject to separate copyright, permissions, or licensing terms and are not automatically covered by the MIT License.
+
+# Acknowledgements
+
+# Citation
+If for some reason you need to cite this repository, you can use the following code:
+``` tex
+@software{github-2,
+	author = {Véliz-Romero, Francisco Gerardo},
+	title = {{LaTeX template for conference proceedings (XIII SIPA ver.)}},
+	year = {2026},
+	publisher = {GitHub repository},
+	url = {},
+}
+```
