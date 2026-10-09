@@ -51,7 +51,17 @@ The LaTeX source code developed for this project is distributed under the terms 
 
 The license applies to the code developed by the author. The proceedings' texts, photographs, logos, trademarks, manuscripts, figures, and other third-party materials included in the repository may be subject to separate copyright, permissions, or licensing terms and are not automatically covered by the MIT License.
 
-# Acknowledgements
+# Acknowledgments
+
+I would like to thank the authors the following latex tempaltes, since these were the works I used as a basis to create this document:
+
+- **Official Leiden Observatory thesis style**
+
+Eyecioğlu, Önder (2026). *LaTeX template for The International Journal of Smart Grid (ijSmartGrid).* Overleaft journal templates. <https://es.overleaf.com/latex/templates/ijsmartgrid-template/wjhztbghfdgb>
+
+- **IJSmartGrid Template**
+
+Van Capelleveen, Richelle F. (2023). *Official Leiden Observatory thesis style.* GitHub repository. <https://github.com/richellevc/observatory_thesis_style>
 
 # Citation
 If for some reason you need to cite this repository, you can use the following code:
@@ -61,6 +71,6 @@ If for some reason you need to cite this repository, you can use the following c
 	title = {{LaTeX template for conference proceedings (XIII SIPA ver.)}},
 	year = {2026},
 	publisher = {GitHub repository},
-	url = {},
+	url = {https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/},
 }
 ```
