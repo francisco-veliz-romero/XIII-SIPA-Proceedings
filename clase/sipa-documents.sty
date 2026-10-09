@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{sipa-documents}[2026/10/08 SIPA Proceedings' inner documents format]
+\ProvidesPackage{sipa-documents}[2026/10/09 SIPA Proceedings' inner documents format]
 
 %===============================================================================================
 % Document's format
@@ -110,8 +110,8 @@
 }
 
 % Specific command to disable author's name in viewer TOC and Bookmark
-\newif\ifijauthorbookmark
-\ijauthorbookmarktrue
+\newif\ifauthorbookmark
+\authorbookmarktrue
 
 %=========================================================
 % Document's title body
@@ -131,7 +131,7 @@
 	% Adds the author's name and page number under the title
 	\ifx\chaptersubtitle\@empty\else
 		\phantomsection
-		\ifijauthorbookmark
+		\ifauthorbookmark
 			% Authors name in document and viewer TOC, but makes the title be in the bookmark
 			\addcontentsline{toc}{chapterwithsub}{%
 				\texorpdfstring{\textit{\@tocauthor}}{\MakeUppercase{\@title}}%
