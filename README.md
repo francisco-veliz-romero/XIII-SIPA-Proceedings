@@ -75,5 +75,6 @@ If for some reason you need to cite this repository, you can use the following c
 	year = {2026},
 	publisher = {GitHub repository},
 	url = {https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/},
+	doi = {10.5281/zenodo.23270784}
 }
 ```
