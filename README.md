@@ -1,4 +1,4 @@
-# LaTeX template for conference proceedings (Proceedings of the XIII International Week on Agricultural Production [XIII SIPA] ver.)
+# LaTeX template for conference proceedings (XIII SIPA ver.)
 
 LaTeX source code for the composition and generation of the proceedings of the XIII <b>International Week on Agricultural Production</b> (*Semana Internacional en Producción Agropecuaria* [SIPA]), organized within the <b>Agricultural Production Science</b> postgraduate program (programa de postgrado en *Ciencias en Producción Agropecuaria*) at the <b>Antonio Narro Autonomus Agrarian University</b> (*Universidad Autónoma Agraria Antonio Narro* [UAAAN]).
 
@@ -17,7 +17,7 @@ However, given the complexity of some of the procedures' components, it's requir
 
 On the other hand, due to the customization of the bibliographic entries for "book" and "inbook," using other bibliographic entries such as "proceedings" or "inproceedings" is discouraged, as these will not be subject to the changes performed.
 
-Moreover, it should also be noted that the customization of the bibliographic entries for "book" and "inbook" requires changes to certain specific parts of the code (connectors or abbreviations inside the bibliographic references themselves) that may result in errors when using a language other than Spanish.
+Moreover, it should also be noted that the customization of the bibliographic entries for "book" and "inbook" requires manual changes to certain specific parts of the code (connectors or abbreviations inside the bibliographic references themselves) that may result in grammatical errors when using a language other than Spanish.
 
 ## Institution and program
 
