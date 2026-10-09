@@ -51,6 +51,9 @@ The LaTeX source code developed for this project is distributed under the terms 
 
 The license applies to the code developed by the author. The proceedings' texts, photographs, logos, trademarks, manuscripts, figures, and other third-party materials included in the repository may be subject to separate copyright, permissions, or licensing terms and are not automatically covered by the MIT License.
 
+# Additional note:
+The references in the sample pdf, excepting the article by Armijo and the Thesis, are completely fictional. They were placed in the document in order to visualize how the references are going to be printed in the document
+
 # Acknowledgments
 
 I would like to thank the authors the following latex tempaltes, since these were the works I used as a basis to create this document:
