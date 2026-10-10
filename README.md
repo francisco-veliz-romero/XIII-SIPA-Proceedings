@@ -60,7 +60,7 @@ I would like to thank the authors of the following latex templates, since these 
 
 - **Official Leiden Observatory thesis style**
 
-Eyecioğlu, Önder (2026). *LaTeX template for The International Journal of Smart Grid (ijSmartGrid).* Overleaf -- journal templates. <https://es.overleaf.com/latex/templates/ijsmartgrid-template/wjhztbghfdgb>
+Eyecioğlu, Önder (2026). *LaTeX template for The International Journal of Smart Grid (ijSmartGrid).* Overleaf &mdash; journal templates. <https://es.overleaf.com/latex/templates/ijsmartgrid-template/wjhztbghfdgb>
 
 - **IJSmartGrid Template**
 
