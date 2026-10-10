@@ -1,6 +1,6 @@
 # LaTeX template for conference proceedings (XIII SIPA ver.)
 
-LaTeX source code for the composition and generation of the proceedings of the XIII <b>International Week on Agricultural Production</b> (*Semana Internacional en Producción Agropecuaria* [SIPA]), organized within the <b>Agricultural Production Science</b> postgraduate program (programa de postgrado en *Ciencias en Producción Agropecuaria*) at the <b>Antonio Narro Autonomus Agrarian University</b> (*Universidad Autónoma Agraria Antonio Narro* [UAAAN]).
+LaTeX source code for the composition and generation of the proceedings of the <b>XIII International Week on Agricultural Production</b> (*Semana Internacional en Producción Agropecuaria* [SIPA]), organized within the <b>Agricultural Production Science</b> postgraduate program (programa de postgrado en *Ciencias en Producción Agropecuaria*) at the <b>Antonio Narro Autonomus Agrarian University</b> (*Universidad Autónoma Agraria Antonio Narro* [UAAAN]).
 
 ## Description
 
@@ -56,11 +56,11 @@ The references in the sample pdf, excepting the article by Armijo and the Thesis
 
 # Acknowledgments
 
-I would like to thank the authors the following latex tempaltes, since these were the works I used as a basis to create this document:
+I would like to thank the authors the following latex templates, since these were the works I used as a basis to create this document:
 
 - **Official Leiden Observatory thesis style**
 
-Eyecioğlu, Önder (2026). *LaTeX template for The International Journal of Smart Grid (ijSmartGrid).* Overleaft journal templates. <https://es.overleaf.com/latex/templates/ijsmartgrid-template/wjhztbghfdgb>
+Eyecioğlu, Önder (2026). *LaTeX template for The International Journal of Smart Grid (ijSmartGrid).* Overleaf -- journal templates. <https://es.overleaf.com/latex/templates/ijsmartgrid-template/wjhztbghfdgb>
 
 - **IJSmartGrid Template**
 
@@ -69,7 +69,7 @@ Van Capelleveen, Richelle F. (2023). *Official Leiden Observatory thesis style.*
 # Citation
 If for some reason you need to cite this repository, you can use the following code:
 ``` tex
-@software{github-2,
+@software{veliz-romero-2026,
 	author = {Véliz-Romero, Francisco Gerardo},
 	title = {{LaTeX template for conference proceedings (XIII SIPA ver.)}},
 	year = {2026},
