@@ -56,7 +56,7 @@ The references in the sample pdf, excepting the article by Armijo and the Thesis
 
 # Acknowledgments
 
-I would like to thank the authors the following latex templates, since these were the works I used as a basis to create this document:
+I would like to thank the authors of the following latex templates, since these were the works I used as a basis to create this work:
 
 - **Official Leiden Observatory thesis style**
 
