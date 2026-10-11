@@ -73,7 +73,7 @@ If for some reason you need to cite this repository, you can use the following c
 	author = {Véliz-Romero, Francisco Gerardo},
 	title = {{LaTeX template for conference proceedings (XIII SIPA ver.)}},
 	year = {2026},
-	publisher = {GitHub repository},
+	publisher = {Zenodo},
 	url = {https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/},
 	doi = {10.5281/zenodo.23270784}
 }
