@@ -7,8 +7,10 @@
 % Packages
 % ============================================================
 
+\RequirePackage[T1]{fontenc}
 \RequirePackage[spanish]{babel}
 \RequirePackage{lmodern}
+\RequirePackage{microtype}
 \RequirePackage{helvet}
 \RequirePackage{sansmath}
 \RequirePackage{twemojis}
