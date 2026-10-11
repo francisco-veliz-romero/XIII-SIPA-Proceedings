@@ -262,11 +262,6 @@
 	\end{center}
 }
 
-% Specific code to omit the bibliography title in TOC
-\defbibheading{misubseccion}[\bibname]{%
-	\subsection*{#1}%
-}
-
 % ============================================================
 % Proceedings general dimensions
 % ============================================================
@@ -346,6 +341,11 @@
 
 % Change in the bibliography's title
 % The function stops the bibliography title from appearing in TOC
+\defbibheading{misubseccion}[\bibname]{%
+	\subsection*{#1}%
+}
+
+% Makes the bibliography being printed in APA-7 format
 \renewenvironment{thebibliography}[1]
 	{\section*{\refname}%
 	\list{\@biblabel{\@arabic\c@enumiv}}%
