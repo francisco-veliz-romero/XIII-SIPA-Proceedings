@@ -19,6 +19,8 @@ On the other hand, due to the customization of the bibliographic entries for "bo
 
 Moreover, it should also be noted that the customization of the bibliographic entries for "book" and "inbook" requires manual changes to certain specific parts of the code (connectors or abbreviations inside the bibliographic references themselves) that may result in grammatical errors when using a language other than Spanish.
 
+***Note:*** If the text copied from the PDF does not retain spaces between words, it is recommended to include the command *\pdfinterwordspaceon* immediately after **\begin{document}** to correct this behavior.
+
 ## Institution and program
 
 Universidad Autónoma Agraria Antonio Narro (UAAAN)
