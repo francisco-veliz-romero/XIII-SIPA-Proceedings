@@ -21,6 +21,8 @@ Moreover, it should also be noted that the customization of the bibliographic en
 
 ***Note:*** If the text copied from the PDF does not retain spaces between words, it is recommended to include the command *\pdfinterwordspaceon* immediately after **\begin{document}** to correct this behavior.
 
+***Note 2:*** A more understandable version of the manual can be found in the repository [wiki](https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/wiki)
+
 ## Institution and program
 
 Universidad Autónoma Agraria Antonio Narro (UAAAN)
