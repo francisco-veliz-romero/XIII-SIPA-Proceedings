@@ -1,0 +1,17 @@
+cff-version: 1.0.1-release
+message: If for some reason you want to cite this work, you can cite it as below.
+title: LaTeX template for conference proceedings (XIII SIPA ver.)
+authors:
+  - family-names: Véliz-Romero
+    given-names: Francisco Gerardo
+preferred-citation:
+  type: software
+  title: LaTeX template for conference proceedings (XIII SIPA ver.)
+  authors:
+    - family-names: Véliz-Romero
+      given-names: Francisco Gerardo
+  publisher:
+    name: Zenodo
+  year: 2026
+  doi: 10.5281/zenodo.23270784
+  url: https://github.com/francisco-veliz-romero/XIII-SIPA-Proceedings/
